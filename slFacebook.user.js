@@ -2,7 +2,7 @@
 // @name			slFacebook
 // @version			2018.08.11.1736
 // @namespace		seanloos.com
-// @homepageURL		http://seanloos.com/gm/
+// @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @icon			http://seanloos.com/icon.png
 // @description   

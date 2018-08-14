@@ -3,7 +3,7 @@
 // @namespace		seanloos.com
 // @version			2017.01.01
 // @icon			http://seanloos.com/icons/sean.png
-// @homepageURL		http://seanloos.com/gm/
+// @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @description		Move NirSoft download links to the top of the page
 // @include			http://www.nirsoft.net/*

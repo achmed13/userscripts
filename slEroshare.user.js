@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name			slEroshare
 // @namespace		seanloos.com
-// @homepageURL		http://seanloos.com/gm/
+// @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @icon			http://seanloos.com/icon.png
 // @include			https://eroshare.com/*

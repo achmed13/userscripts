@@ -3,7 +3,7 @@
 // @icon			http://seanloos.com/icons/sean.png
 // @namespace		seanloos.com
 // @version			2018.08.11
-// @homepageURL		http://seanloos.com/gm/
+// @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @description		Sean's Global Hotkeys
 // @include			*

@@ -3,7 +3,7 @@
 // @version			2018.02.06.1511
 // @namespace		seanloos.com
 // @icon			http://seanloos.com/icon.png
-// @homepageURL		http://seanloos.com/gm/
+// @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @description
 // @include			http://imgur.com/a/*
