@@ -2,7 +2,7 @@
 // @name			slYoutubeRemoveRedirect
 // @version			2017.01.01
 // @namespace		seanloos.com
-// @homepageURL		http://seanloos.com/gm/
+// @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @icon			http://seanloos.com/icons/sean.png
 // @description
