@@ -2,7 +2,7 @@
 // @name			slRedditTweaks
 // @icon			http://seanloos.com/icons/sean.png
 // @namespace		seanloos.com
-// @version			2018.08.11
+// @version			2018.08.14.1718
 // @description		Highlights comments for reddit stories based on comment points, loads images in comments, highlights author posts, go straight to URL
 // @include			https://*reddit.com/*
 // @include			http://*reddit.com/*
@@ -10,7 +10,7 @@
 // @grant			GM_addStyle
 // @grant			GM_openInTab
 // @grant			GM_log
-// @run-at			document-end
+// @run-at			document-idle
 // ==/UserScript==
 
 var start = new Date().getTime();
@@ -120,7 +120,7 @@ function goToURL(){
 		}
 		if(go && !vid){
 			url = imgurAlbum(url);
-			setTimeout(function(u){location.href=u},400,url);
+			setTimeout(function(u){location.href=u},1000,url);
 			return true;
 		}
 		return false;
