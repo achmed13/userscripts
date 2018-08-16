@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slNetvibesMarkRead
-// @version			2018.08.11
+// @version			2018.08.12.1315
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
@@ -26,7 +26,7 @@ waitForKeyElements('#column01 .rssreader-container .item-title',fixAmp);
 // --------------------------------------
 // Keyboard Listener
 // --------------------------------------
-	document.addEventListener('keydown',function(e){
+	document.addEventListener('keyup',function(e){
 		// check to see if we are in a text box
 		if (e.shiftKey || e.ctrlKey || e.target.tagName=='INPUT' || e.target.tagName=='TEXTAREA'){
 			return;
