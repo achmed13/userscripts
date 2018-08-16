@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slNetvibesMarkRead
-// @version			2018.08.12.1315
+// @version			2018.08.12.1320
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
