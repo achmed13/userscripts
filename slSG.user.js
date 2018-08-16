@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name			slSG
 // @namespace		seanloos.com
-// @icon			http://seanloos.com/icons/sean.png
+// @homepageURL		https://github.com/achmed13/userscripts/
+// @author			Sean Loos
+// @icon			http://seanloos.com/icon.png
+// @version			2018.08.16
 // @include			*suicidegirls.com/*
-// @version			2018.08.11
 // @grant			GM_openInTab
 // @grant			GM_setValue
 // @grant			GM_getValue

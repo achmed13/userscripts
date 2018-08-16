@@ -3,8 +3,8 @@
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
-// @icon			http://seanloos.com/icons/sean.png
-// @version			2018.08.14.1750
+// @icon			http://seanloos.com/icon.png
+// @version			2018.08.16
 // @description		Highlights comments for reddit stories based on comment points, loads images in comments, highlights author posts, go straight to URL
 // @include			https://*reddit.com/*
 // @include			http://*reddit.com/*

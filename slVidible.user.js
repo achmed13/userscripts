@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name			slVidible
 // @namespace		seanloos.com
-// @icon			http://seanloos.com/icons/sean.png
+// @homepageURL		https://github.com/achmed13/userscripts/
+// @author			Sean Loos
+// @icon			http://seanloos.com/icon.png
+// @version			2018.08.16
 // @include			http://www.vidble.com/album/*
 // @include			https://www.vidble.com/album/*
 // @include			http://vidble.com/album/*
 // @include			https://vidble.com/album/*
-// @version			2017.01.01
 // @grant			none
 // ==/UserScript==
 

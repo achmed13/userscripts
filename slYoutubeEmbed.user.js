@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name			slYoutubeEmbed
 // @namespace		seanloos.com
-// @icon			http://seanloos.com/icons/sean.png
-// @version			2018.08.11
+// @homepageURL		https://github.com/achmed13/userscripts/
+// @author			Sean Loos
+// @icon			http://seanloos.com/icon.png
+// @version			2018.08.16
 // @include			*
 // @exclude			*.youtube.*/*
 // @exclude			*.newsblur.*/*

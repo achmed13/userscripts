@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name			slPortableFreeware
+// @version			2018.08.16
 // @namespace		seanloos.com
-// @version			2017.01.01
-// @icon			http://seanloos.com/icons/sean.png
+// @homepageURL		https://github.com/achmed13/userscripts/
+// @author			Sean Loos
+// @icon			http://seanloos.com/icon.png
 // @include			http://www.portablefreeware.com/*
 // ==/UserScript==
 document.body.innerHTML = document.body.innerHTML.replace(/target=._blank./gi,'');

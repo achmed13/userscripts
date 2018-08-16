@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name			slTelLinks
-// @version			2017.01.01
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
-// @icon			http://seanloos.com/icons/sean.png
+// @icon			http://seanloos.com/icon.png
+// @version			2018.08.16
 // @description
 // @include			*
 // @exclude			https://secure.usaepay.com/console/print_receipt*

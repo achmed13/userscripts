@@ -1,8 +1,10 @@
 // ==UserScript==
 // @name			slPBSLeadImport
-// @icon			http://seanloos.com/icons/sean.png
 // @namespace		seanloos.com
-// @version			2017.01.01
+// @homepageURL		https://github.com/achmed13/userscripts/
+// @author			Sean Loos
+// @icon			http://seanloos.com/icon.png
+// @version			2018.08.16
 // @include			https://pitneybowes.force.com/*/p?*
 // ==/UserScript==
 
