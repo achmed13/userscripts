@@ -2,7 +2,7 @@
 // @name			slGlobalHotkeys
 // @icon			http://seanloos.com/icons/sean.png
 // @namespace		seanloos.com
-// @version			2018.08.16.1155
+// @version			2018.08.22.1706
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @description		Sean's Global Hotkeys
@@ -19,6 +19,8 @@
 // @exclude			*sites.google.com/*
 // @exclude			*vimeo.com/*
 // @exclude			*wildapricot.com/*
+// @exclude			*mailchimp.com/*
+// @exclude			*eventbrite.com/*
 // @exclude			*zapreader.com/*
 // @exclude			*oudolfgardendetroit.squarespace.com/*
 // @exclude			*twitter.com/*

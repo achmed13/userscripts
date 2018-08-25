@@ -4,16 +4,18 @@
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @icon			http://seanloos.com/icon.png
-// @version			2018.08.16
+// @version			2018.08.21.0918
 // @include			*suicidegirls.com/*
+// @run-at			document_idle
+// @grant			GM_log
 // @grant			GM_openInTab
 // @grant			GM_setValue
 // @grant			GM_getValue
 // @grant			GM_download
 
 // ==/UserScript==
-
-var doDownload = function(){
+var photos = new Array();
+function doDownload(){
 	var m = document.title.replace(/ Photo Album.*/, '');
 	var s = document.title.replace(/.*: (.*) \|.*/, '$1');
 	var links = document.querySelectorAll('.photo-container a');
@@ -21,17 +23,34 @@ var doDownload = function(){
 
 	for (var l of links) {
 		if (l.href) {
-			var t = s + '_';
+			var t = s.replace(/\s/g,'_') + '_';
 			if (i < 10) {
 				t = t + '0';
 			}
 			t = t + i;
 			var dl = 'sg\\'+m+'\\'+t+'.jpg';
-			GM_download(l.href,dl);
+// 			dl = dl.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+			l.title = t;
+			l.download = dl;
+			var p = {url:l.href,name:dl};
+			photos.push(p);
+// 			GM_download(l.href,dl);
 			i++;
 		}
 	}
+// 	doDownloadSet(photos);
 };
+
+function doDownloadSet(photos){
+	var p = photos.pop();
+// 	console.log(url);
+	if(!p){return;}
+	GM_download(p);
+	if(photos.length > 0){
+		setTimeout(doDownloadSet,50,photos);
+		GM_log(p);
+	}
+}
 
 function getPhotos(){
 	document.getElementById('content-container').querySelector('a[href*="photos"]').click();
@@ -65,6 +84,7 @@ var listObserver = new MutationObserver(function(mutations) {
 
 listObserver.observe(document.getElementById('content-container'), {attributes: false, childList: true, characterData: false , subtree: true});
 
+doDownload();
 
 function openSets(){
 	var sets = new Array(0);
@@ -92,29 +112,30 @@ function doOpenSet(sets){
 	if(!url){return;}
 	GM_openInTab(url,true);
 	if(sets.length > 0){
-		setTimeout(doOpenSet,2000,sets);
+		setTimeout(doOpenSet,1500,sets);
 // 		console.log('loop');
 	}
 }
 
 document.addEventListener('keydown',function(e){
 	// check to see if we are in a text box
-	if (e.target.tagName=='INPUT' || e.target.tagName=='TEXTAREA' || e.target.contentEditable == true){
+	if (e.ctrlKey || e.altKey || e.target.tagName=='INPUT' || e.target.tagName=='TEXTAREA' || e.target.contentEditable == true){
 		return;
 	}
 	var key = String.fromCharCode(e.keyCode);
-	if(key == 'D' && !e.ctrlKey){
+	if(key == 'D'){
 		e.preventDefault();
 		e.stopPropagation();
 		// getDTA();
-		doDownload();
+// 		doDownload();
+		doDownloadSet(photos);
 	}
-	if(key == 'A' && !e.ctrlKey){
+	if(key == 'A'){
 		e.preventDefault();
 		e.stopPropagation();
 		getPhotos();
 	}
-	if(key == 'G' && !e.ctrlKey){
+	if(key == 'G'){
 		e.preventDefault();
 		e.stopPropagation();
 		openSets();
