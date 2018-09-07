@@ -4,7 +4,7 @@
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @icon			http://seanloos.com/icon.png
-// @version			2018.08.21.0918
+// @version			2018.09.07.0906
 // @include			*suicidegirls.com/*
 // @run-at			document_idle
 // @grant			GM_log
@@ -107,7 +107,7 @@ function openSets(){
 }
 
 function doOpenSet(sets){
-	var url = sets.pop();
+	var url = sets.shift();
 // 	console.log(url);
 	if(!url){return;}
 	GM_openInTab(url,true);
