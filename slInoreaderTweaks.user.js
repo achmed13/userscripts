@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name			slInoreaderTweaks
+// @version			2018.09.12.1002
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @icon			http://seanloos.com/icons/sean.png
 // @description
 // @include			*inoreader.com*
-// @version			2018.08.11
 // @runat			document-idle
 // @grant			GM_openInTab
 // @noframes
@@ -289,7 +289,7 @@
 				// ****************************************
 				// ***** add anchor to links *****
 				// ****************************************
-				content.innerHTML = content.innerHTML.replace(/([^"'=\?&])(http[^"'<>\s\n]+)/gi,'$1<a href="$2" target="_blank">$2</a><br/>');
+				content.innerHTML = content.innerHTML.replace(/([^"'=\?&])(http[^"'<>\s\n]+)/gi,'$1<br/><a href="$2" target="_blank">$2</a><br/>');
 
 
 				// ****************************************
