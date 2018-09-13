@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name			slSG
+// @version			2018.9.13-0928
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @icon			http://seanloos.com/icon.png
-// @version			2018.09.07.0906
 // @include			*suicidegirls.com/*
 // @run-at			document_idle
 // @grant			GM_log
@@ -112,7 +112,7 @@ function doOpenSet(sets){
 	if(!url){return;}
 	GM_openInTab(url,true);
 	if(sets.length > 0){
-		setTimeout(doOpenSet,1500,sets);
+		setTimeout(doOpenSet,1000,sets);
 // 		console.log('loop');
 	}
 }
