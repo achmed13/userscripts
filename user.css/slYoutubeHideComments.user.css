@@ -1,0 +1,13 @@
+/* ==UserStyle==
+@name           slYoutubeHideComments
+@version        2018.9.12-1742
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+
+@-moz-document domain("youtube.com") {
+#comments, #watch-discussion {display:none !important;}
+
+
+}

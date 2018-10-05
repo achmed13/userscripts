@@ -1,0 +1,14 @@
+/* ==UserStyle==
+@name           slKinjaDeals
+@version        2018.9.24-1422
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+
+@-moz-document domain("kinjadeals.theinventory.com") {
+    /* Insert code here... */
+    .sidebar,.mezzanine,#dfp-ad-1, #splashy-ad-container-top {display:none !important;}
+    .main {width:100% !important;float:none !important;}
+    .main__content {max-width:1100px !important;}
+}

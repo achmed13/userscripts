@@ -1,0 +1,26 @@
+/* ==UserStyle==
+@name           slSG
+@version        2018.9.12-1742
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+@-moz-document domain("suicidegirls.com") {
+	#main-header {
+		display: none !important;
+	}
+
+	.layout-inner {
+		width: 90% !important;
+		max-width: unset !important;
+	}
+
+	li.photo-container {
+		width: 16.66% !important;
+	}
+
+	.splFound {
+		border: 0px solid #f00 !important;
+		border-width: 40px 0px !important;
+	}
+}

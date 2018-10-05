@@ -1,0 +1,22 @@
+/* ==UserStyle==
+@name           slNewser
+@version        2018.9.17-909
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+@-moz-document domain("newser.com")
+{
+    header,
+    #carousel_StoryInSection2,
+    #divRightRail,
+    #divVote,
+    #divSocialAndCommentsButtonsBottom,
+    #YouMightLike,
+    #divNextStoryHeadline,
+    #divStoryColumn > div:last-of-type,
+    footer
+    {
+        display: none !important;
+    }
+}

@@ -1,0 +1,55 @@
+/* ==UserStyle==
+@name           slPaperclips
+@version        2018.9.12-1743
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+
+@-moz-document url("http://www.decisionproblem.com/paperclips/index2.html") {
+body {
+	font-family: Arial !important;
+	font-size: 13px !important;
+	background-color: #fffffa !important
+}
+
+#middleColumn,
+#rightColumn {
+	width: 320px !important;
+}
+
+#qComputing {
+	width: 265px !important;
+}
+
+.projectButton {
+	height: auto !important;
+	min-height: 50px !important;
+	width: 100% !important;
+	font-size: 12px !important;
+	font-family: Arial Narrow !important;
+	padding: 1px !important;
+}
+
+.button2 {
+	padding: 2px 5px !important;
+	border-radius: unset !important;
+}
+
+.button2,
+.projectButton {
+	text-shadow: unset !important;
+	background: unset !important;
+	background-color: #ddd !important;
+}
+
+.button2:hover {
+	background-color: #c7ecc7 !important;
+}
+
+.button2:disabled,
+.projectButton:disabled {
+	background-color: #fffffa !important;
+	opacity: .5 !important;
+}
+}

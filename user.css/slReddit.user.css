@@ -1,0 +1,102 @@
+/* ==UserStyle==
+@name           slReddit
+@version        2018.9.14-917
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+
+@-moz-document domain("reddit.com") {
+
+.splRedditImg {
+    object-fit: contain !important;
+    max-width: 25vw !important;
+    max-height: 25vh !important;
+    object-position: top left !important;
+}
+
+.splGfycat {
+    border: 15px solid green !important;
+}
+
+.splAlbum {
+    height: 30px;
+    width: 200px;
+    background-color: #0c0;
+}
+
+.splThing {
+    width: 25vw !important;
+    height: 35vh !important;
+    display: table-cell !important;
+    float: left !important;
+    border: 1px dotted #ccc !important;
+    overflow: hidden !important;
+}
+.clearleft {
+    float: left !important;
+    clear: none !important;
+}
+
+.nav-buttons {float:left !important;}
+
+.sidecontentbox {
+    display: none !important;
+}
+
+a:link {
+    color: #b00 !important;
+}
+a:visited {
+    color: #909 !important;
+}
+
+.entry .buttons li a {
+    color: #777 !important;
+    font-weight: normal !important;
+}
+
+li.first a:link {
+    color: #00f !important;
+}
+li.first a:visited {
+    color: #909 !important;
+}
+
+.md {
+    font-family: arial !important;
+    max-width: 100% !important;
+}
+
+.comment .child {
+    margin-top: 5px !important;
+}
+
+.tagline,
+.score,
+.panestack-title .title {
+    font-size: 10px !important;
+}
+
+.fancy-toggle-button a {
+    color: white !important;
+}
+
+.usertext-edit textarea {
+    height: 20px !important;
+}
+
+.usertext-edit textarea:focus {
+    height: 100px !important;
+}
+
+.usertext .bottom-area {
+    margin-top: -30px !important;
+    margin-left: 520px !important;
+}
+
+.morecomments,
+.morechildren {
+    display: none !important;
+}
+}

@@ -1,0 +1,11 @@
+/* ==UserStyle==
+@name           slLifehackerHideVideo
+@version        2018.9.12-1739
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+
+@-moz-document domain("lifehacker.com") {
+.instream-native-video {display:none !important;}
+}

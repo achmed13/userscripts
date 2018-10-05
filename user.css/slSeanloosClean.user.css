@@ -1,0 +1,13 @@
+/* ==UserStyle==
+@name           slSeanloosClean
+@version        2018.9.12-1740
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+
+@-moz-document url-prefix("http://seanloos.com/blog/archives") {
+.site-name,#branding, nav, #secondary {display:none !important;}
+
+.large-9 {width:100% !important;}
+}
