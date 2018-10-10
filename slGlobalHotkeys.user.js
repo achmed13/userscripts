@@ -1,69 +1,71 @@
 // ==UserScript==
-// @name			slGlobalHotkeys
-// @icon			http://seanloos.com/icons/sean.png
-// @namespace		seanloos.com
-// @version			2018.08.22.1706
-// @homepageURL		https://github.com/achmed13/userscripts/
-// @author			Sean Loos
-// @description		Sean's Global Hotkeys
-// @include			*
-// @exclude			*newsblur.com/*
-// @exclude			*inoreader.com/*
-// @exclude			*plus.google.com/*
-// @exclude			*mail.google.com/*
-// @exclude			*groups.google.com/*
-// @exclude			*calendar.google.com/*
-// @exclude			http*://console.developers.google.com/*
-// @exclude			*docs.google.com/*
-// @exclude			*drive.google.com/*
-// @exclude			*sites.google.com/*
-// @exclude			*vimeo.com/*
-// @exclude			*wildapricot.com/*
-// @exclude			*mailchimp.com/*
-// @exclude			*eventbrite.com/*
-// @exclude			*zapreader.com/*
-// @exclude			*oudolfgardendetroit.squarespace.com/*
-// @exclude			*twitter.com/*
-// @exclude			*wildapricot.org/*
-// @exclude			*trello.com/*
-// @exclude			*yapp.us/editor*
-// @exclude			*slack.com/*
-// @exclude			*pb.sharedvue.net/*
-// @exclude			*/wp-admin/*
-// @exclude			*mappingsolutions.com/sql/*
-// @run-at			window-load
-// @grant			GM_log
+// @name          slGlobalHotkeys
+// @icon          http://seanloos.com/icons/sean.png
+// @namespace     seanloos.com
+// @version       2018.10.10-1151
+// @homepageURL   http://seanloos.com/userscripts/
+// @updateURL     http://seanloos.com/userscripts/slGlobalHotkeys.user.js
+// @author        Sean Loos
+// @description   Sean's Global Hotkeys
+// @include       *
+// @exclude       *newsblur.com/*
+// @exclude       *inoreader.com/*
+// @exclude       *plus.google.com/*
+// @exclude       *mail.google.com/*
+// @exclude       *groups.google.com/*
+// @exclude       *calendar.google.com/*
+// @exclude       http*://console.developers.google.com/*
+// @exclude       *docs.google.com/*
+// @exclude       *drive.google.com/*
+// @exclude       *sites.google.com/*
+// @exclude       *vimeo.com/*
+// @exclude       *wildapricot.com/*
+// @exclude       *mailchimp.com/*
+// @exclude       *github.com/*
+// @exclude       *eventbrite.com/*
+// @exclude       *zapreader.com/*
+// @exclude       *oudolfgardendetroit.squarespace.com/*
+// @exclude       *twitter.com/*
+// @exclude       *wildapricot.org/*
+// @exclude       *trello.com/*
+// @exclude       *yapp.us/editor*
+// @exclude       *slack.com/*
+// @exclude       *pb.sharedvue.net/*
+// @exclude       */wp-admin/*
+// @exclude       *mappingsolutions.com/sql/*
+// @run-at        window-load
+// @grant         GM_log
 // ==/UserScript==
 
 
 var added = false;
-var sInterval=0;
-var scrolls=0;
-var scrollheight=75;
-var scrollsteps=3;
-var scrolltime=60;
-var hideInterval=0;
-var hideDelay=900;
-var pixels = window.innerHeight*(scrollheight/scrollsteps/100);
+var sInterval = 0;
+var scrolls = 0;
+var scrollheight = 75;
+var scrollsteps = 3;
+var scrolltime = 60;
+var hideInterval = 0;
+var hideDelay = 900;
+var pixels = window.innerHeight * (scrollheight / scrollsteps / 100);
 var line;
 
 // --------------------------------------
 // Keyboard Listener
 // --------------------------------------
-document.addEventListener('keydown',function(e){
+document.addEventListener('keydown', function (e) {
 	// check to see if we are in a text box
 	var ed = isEditable(e.target);
-	if(e.altKey || e.ctrlKey || /INPUT|SELECT|TEXTAREA|CANVAS/i.test(e.target.tagName)){
+	if (e.altKey || e.ctrlKey || /INPUT|SELECT|TEXTAREA|CANVAS/i.test(e.target.tagName)) {
 		return;
 	}
-	if(document.location.href.match(/facebook/) && isEditable(e.target)){
+	if (document.location.href.match(/facebook/) && isEditable(e.target)) {
 		return;
 	}
 	var key = String.fromCharCode(e.keyCode);
 
 	// scroll
-	if(key == ' ' && !e.shiftKey && !document.location.href.match(/youtube/) ){
-		if (!added){
+	if (key == ' ' && !e.shiftKey && !document.location.href.match(/youtube/)) {
+		if (!added) {
 			addLine();
 		}
 		//line.style.height = window.pageYOffset + window.innerHeight - 20 + 'px';
@@ -74,7 +76,7 @@ document.addEventListener('keydown',function(e){
 		return;
 	}
 
-	if(key == 'B'){
+	if (key == 'B') {
 		window.history.back();
 		e.preventDefault();
 		return;
@@ -92,13 +94,12 @@ document.addEventListener('keydown',function(e){
 	// return;
 	// }
 	// }
-},false);
-
+}, false);
 
 // --------------------------------------
 // Sroll part way down the page, marking your spot
 // --------------------------------------
-function addLine(){
+function addLine() {
 	line = document.createElement('div');
 	line.id = 'scroll-line';
 	line.style.display = 'none';
@@ -113,38 +114,40 @@ function addLine(){
 	added = true;
 }
 
-function scrollStart(){
-	pixels = window.innerHeight*(scrollheight/scrollsteps/100);
-	scrolls=0;
+function scrollStart() {
+	pixels = window.innerHeight * (scrollheight / scrollsteps / 100);
+	scrolls = 0;
 	clearInterval(sInterval);
 	clearTimeout(hideInterval);
-	line.style.height = window.pageYOffset + (window.innerHeight/2) + 'px';
+	line.style.height = window.pageYOffset + (window.innerHeight / 2) + 'px';
 	line.style.display = 'block';
-	if(scrollsteps>1){
-		sInterval = setInterval(scrollPage,scrolltime/scrollsteps);
+	if (scrollsteps > 1) {
+		sInterval = setInterval(scrollPage, scrolltime / scrollsteps);
 	} else {
 		scrollPage();
 	}
 }
 
-function scrollPage(){
-	if(scrolls==0){
+function scrollPage() {
+	if (scrolls == 0) {
 		line.style.height = window.pageYOffset + window.innerHeight - 20 + 'px';
 	}
-	window.scrollBy(0,pixels);
-	scrolls+=1;
-	if(scrolls==scrollsteps){
-		hideInterval=setTimeout(hideLine,hideDelay);
+	window.scrollBy(0, pixels);
+	scrolls += 1;
+	if (scrolls == scrollsteps) {
+		hideInterval = setTimeout(hideLine, hideDelay);
 		clearInterval(sInterval);
 	}
 }
 
-function hideLine(){
+function hideLine() {
 	line.style.display = 'none';
 }
 
 // returns true if the element or one of its parents has the class classname
 function isEditable(e) {
-	if (e.contentEditable==true || e.contentEditable=='true' || e.contenteditable==true || e.contenteditable=='true'){return true};
+	if (e.contentEditable == true || e.contentEditable == 'true' || e.contenteditable == true || e.contenteditable == 'true') {
+		return true
+	};
 	return e.parentNode && isEditable(e.parentNode);
 }
