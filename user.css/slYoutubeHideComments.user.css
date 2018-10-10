@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slYoutubeHideComments
-@version        2018.10.9-1652
+@version        2018.10.10-1007
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -11,23 +11,15 @@
 		display: none !important;
 	}
 
-	.player-height {
-		height: 80vh !important;
+	#player-theater-container,   video  {
+		height: 75vh !important;
 		max-height: unset !important;
 		max-width: unset !important;
 	}
 
-	video,
-	#player-api {
-		width: 99vw !important;
-		left: 0 !important;
-		margin: 0 !important;
-		padding: 0 !important;
-	}
-
 	.ytp-chrome-bottom {
-		width: 70vw !important;
+		width: 70% !important;
 		left: 0 !important;
-		margin-left: 15vw !important;
+		margin-left: 15% !important;
 	}
 }
