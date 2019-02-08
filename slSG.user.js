@@ -3,7 +3,6 @@
 // @version       2018.10.9-1034
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
-// @updateURL     http://seanloos.com/userscripts/slSG.user.js
 // @author        Sean Loos
 // @icon          http://seanloos.com/icon.png
 // @include       *suicidegirls.com/*

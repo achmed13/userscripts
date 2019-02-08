@@ -4,7 +4,6 @@
 // @namespace     seanloos.com
 // @version       2018.10.10-1151
 // @homepageURL   http://seanloos.com/userscripts/
-// @updateURL     http://seanloos.com/userscripts/slGlobalHotkeys.user.js
 // @author        Sean Loos
 // @description   Sean's Global Hotkeys
 // @include       *
