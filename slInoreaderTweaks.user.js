@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2019.2.8-1250
+// @version       2019.2.20-1051
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
+// @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
 // @author        Sean Loos
 // @icon          http://seanloos.com/icons/sean.png
 // @include       *inoreader.com*
@@ -22,20 +23,27 @@
 
 	(function () {
 		// Keyboard Listener
-		var onKeyDown = function (e) {
+		var onKeyboard = function (e) {
 			if (e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') {
 				return;
 			}
-			var key = String.fromCharCode(e.keyCode);
-			//console.log(key);
+// 			var key = String.fromCharCode(e.keyCode);
+			var key = e.key;
+			if(key==undefined){
+// 				console.log('key undefined');
+				return;
+			}
+			key = key.toUpperCase();
+// 			console.log(e.code + ' = ' + key);
 			// if(e.keyCode == 13 /*enter*/) {
 			// e.preventDefault();
 			// collapseArticle();
 			// }
-			if (key == 'A' && !e.ctrlKey && e.altKey) {
+			if (key == 'A' && e.altKey) {
 				e.preventDefault();
 				e.stopPropagation();
-				simulateKey(65,null,{shiftKey:true});
+				simulateKey(65,"down",{shiftKey:true});
+				simulateKey(65,"up",{shiftKey:true});
 				return;
 			}
 			if (key == 'W' && !e.ctrlKey && !e.altKey) {
@@ -78,7 +86,7 @@
 				return;
 			}
 		};
-		window.addEventListener('keydown', onKeyDown, true);
+		window.addEventListener('keyup', onKeyboard, true);
 	})();
 
 	function openArticle(backgroundTab) {
