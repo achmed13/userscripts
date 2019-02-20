@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slYoutubeHideComments
-@version        2018.10.18-1011
+@version        2019.2.20-1210
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -10,7 +10,6 @@
 	#watch-discussion {
 		display: none !important;
 	}
-
 	#player-theater-container,   video  {
 		height: 75vh !important;
 		max-height: unset !important;
@@ -22,6 +21,10 @@
 		left: 0 !important;
 		margin-left: 15% !important;
 	} */
+	#comments {
+		display: none !important;
+	}
+
 	html[youtube-version="new"][page="video"]:not([improvedtube-player-size="undefined"]):not([improvedtube-player-size="normal"]):not([embed]):not([mini-player]) ytd-app:not([player-fullscreen_]) ytd-watch-flexy:not([fullscreen])[theater] #player-theater-container,
 	html[youtube-version="new"][page="video"]:not([improvedtube-player-size="undefined"]):not([improvedtube-player-size="normal"]):not([embed]):not([mini-player]) ytd-app:not([player-fullscreen_]) ytd-watch-flexy:not([fullscreen]) #player-container,
 	html[youtube-version="new"][page="video"]:not([improvedtube-player-size="undefined"]):not([improvedtube-player-size="normal"]):not([embed]):not([mini-player]) ytd-app:not([player-fullscreen_]) ytd-watch-flexy:not([fullscreen]) .html5-video-player,
@@ -31,6 +34,6 @@
 		height: 75vh !important;
 		max-height: unset !important;
 		max-width: unset !important;
-		width:auto !important;
+		width: auto !important;
 	}
 }
