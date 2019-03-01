@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2019.2.20-1051
+// @version       2019.3.1-1451
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -18,28 +18,27 @@
 	document.title = 'Inoreader - ' + document.title;
 
 	var js = document.createElement('script');
-	js.src = 'https://platform.twitter.com/widgets.js';
+	js.src = '//platform.twitter.com/widgets.js';
 	(document.body || document.head || document.documentElement).appendChild(js);
 
 	(function () {
 		// Keyboard Listener
 		var onKeyboard = function (e) {
-			if (e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA') {
-				return;
+
+			if ( /INPUT|SELECT|TEXTAREA|CANVAS/i.test(e.target.tagName) ) {
+// 				console.log('dump out');
+				return true;
 			}
-// 			var key = String.fromCharCode(e.keyCode);
+
 			var key = e.key;
 			if(key==undefined){
 // 				console.log('key undefined');
-				return;
+				return true;
 			}
 			key = key.toUpperCase();
-// 			console.log(e.code + ' = ' + key);
-			// if(e.keyCode == 13 /*enter*/) {
-			// e.preventDefault();
-			// collapseArticle();
-			// }
+
 			if (key == 'A' && e.altKey) {
+// 				console.log('alt+a');
 				e.preventDefault();
 				e.stopPropagation();
 				simulateKey(65,"down",{shiftKey:true});
@@ -86,7 +85,7 @@
 				return;
 			}
 		};
-		window.addEventListener('keyup', onKeyboard, true);
+		window.addEventListener('keyup', onKeyboard, {capture:true,passive:false});
 	})();
 
 	function openArticle(backgroundTab) {
@@ -169,14 +168,16 @@ function simulateKey (keyCode, type, modifiers) {
 	var evtName = (typeof(type) === "string") ? "key" + type : "keydown";
 	var modifier = (typeof(modifiers) === "object") ? modifier : {};
 
-	var event = document.createEvent("HTMLEvents");
-	event.initEvent(evtName, true, false);
-	event.keyCode = keyCode;
-
-	for (var i in modifiers) {
-		event[i] = modifiers[i];
+	var options = {
+		"keyCode": keyCode
+		,"cancelable":false
+		,"bubbles":true
 	}
-
+	for (var i in modifiers) {
+		options[i] = modifiers[i];
+	}
+	var event = new KeyboardEvent(evtName,options);
+// 	console.log(event);
 	document.dispatchEvent(event);
 }
 
@@ -227,7 +228,7 @@ function simulateKey (keyCode, type, modifiers) {
 					content.querySelectorAll('embed,iframe').forEach(function (em) {
 						if (em.src.match(/youtube/)) {
 							var rex = /.*(youtube)(-nocookie)?(\.com)?(\/|%2F)?(embed|v)?(\/|%2F)?(.*video-|.*v=)?([\w\d-]*).*/;
-							var rep = 'http://$1.com/watch?v=$8';
+							var rep = '//$1.com/watch?v=$8';
 							var yt = document.createElement('div');
 							yt.innerHTML = '<a id="splYouTube" href="' + em.src.replace(rex, rep) + '" target="_blank" class="splYouTube">Watch on YouTube</a>';
 							em.style.border = '2px solid #f00';
@@ -258,7 +259,7 @@ function simulateKey (keyCode, type, modifiers) {
 								if (img.match(/(#)/)) {
 									img = img.replace(/(.*?)(#).*/, '$1');
 								}
-								img = 'http://img.youtube.com/vi/' + img + '/0.jpg';
+								img = '//img.youtube.com/vi/' + img + '/0.jpg';
 								node.innerHTML += '<img src="' + img + '" class="splRedditImg">';
 								//link.parentNode.insertBefore(node,link.parentNode.firstChild);
 							}
@@ -268,7 +269,7 @@ function simulateKey (keyCode, type, modifiers) {
 								if (img.match(/\?/)) {
 									img = img.replace(/(.*?)\?.*/, '$1');
 								}
-								img = 'http://img.youtube.com/vi/' + img + '/0.jpg';
+								img = '//img.youtube.com/vi/' + img + '/0.jpg';
 								node.innerHTML = '<img src="' + img + '" class="splRedditImg">';
 								//link.parentNode.insertBefore(node,link.parentNode.firstChild);
 							}
@@ -280,14 +281,14 @@ function simulateKey (keyCode, type, modifiers) {
 							// gfycat
 							else if (!link.href.match(/jpg|gif|png/) && link.href.match(/gfycat/)) {
 								img = link.href.match(/.*gfycat\.com\/([^\/"]+)/)[1];
-								node.innerHTML = "<div style='position:relative;padding-bottom:calc(100% / 1.78)'><iframe src='https://gfycat.com/ifr/" + img + "' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>";
+								node.innerHTML = "<div style='position:relative;padding-bottom:calc(100% / 1.78)'><iframe src='//gfycat.com/ifr/" + img + "' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>";
 
 								//node.innerHTML = '<video autoplay="" loop="" poster="//thumbs.gfycat.com/'+img+'-poster.jpg" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);max-width:100%;max-height:calc((100vh - 100px)*.95);"><source id="mp4source" src="//zippy.gfycat.com/'+img+'.mp4" type="video/mp4"><source id="mp4source" src="//giant.gfycat.com/'+img+'.mp4" type="video/mp4"><source id="mp4source" src="//fat.gfycat.com/'+img+'.mp4" type="video/mp4"></video>';
 							}
 							// Pornbot videos
 							else if (!link.href.match(/jpg|gif|png/) && link.href.match(/pornbot/)) {
 								img = link.href.replace(/(.*pornbot\.net\/)(.*)/, '$2');
-								node.innerHTML = '<video autoplay="" src="http://asstro.pornbot.net/public/pbot/' + img + '/' + img + '_720p.mp4" -webkit-transform: scale(1);max-width:100%;max-height:calc((100vh - 100px)*.95);"><source src="http://asstro.pornbot.net/public/pbot/' + img + '/' + img + '_720p.mp4" type="video/mp4"></video>';
+								node.innerHTML = '<video autoplay="" src="//asstro.pornbot.net/public/pbot/' + img + '/' + img + '_720p.mp4" -webkit-transform: scale(1);max-width:100%;max-height:calc((100vh - 100px)*.95);"><source src="//asstro.pornbot.net/public/pbot/' + img + '/' + img + '_720p.mp4" type="video/mp4"></video>';
 							}
 							// Imgur Album
 							else if (!link.href.match(/jpg|png/) && link.href.match(/imgur/)) {
