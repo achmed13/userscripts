@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2019.3.1-1451
+// @version       2019.3.1-1649
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -85,7 +85,7 @@
 				return;
 			}
 		};
-		window.addEventListener('keyup', onKeyboard, {capture:true,passive:false});
+		window.addEventListener('keydown', onKeyboard, {capture:true,passive:false});
 	})();
 
 	function openArticle(backgroundTab) {
