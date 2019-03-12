@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name          slSG
-// @version       2018.10.9-1034
+// @version       2019.3.12-1210
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
+// @updateURL     http://seanloos.com/userscripts/slSG.user.js
 // @author        Sean Loos
 // @icon          http://seanloos.com/icon.png
 // @include       *suicidegirls.com/*
@@ -15,6 +16,16 @@
 
 // ==/UserScript==
 var photos = new Array();
+var firstRun = true;
+// GM_setValue('lastSet','https://www.suicidegirls.com/members/dacay/album/3517230/brown-sofa/');
+var lastSet = GM_getValue('lastSet', 'none');
+console.log('last: ' + lastSet);
+var lastIndex = GM_getValue('lastIndex', 'none');
+var indexURL = document.location.href;
+if(indexURL.match('spl')){
+	document.location.href = lastIndex;
+}
+
 function doDownload() {
 	var m = document.title.replace(/ Photo Album.*/, '');
 	var s = document.title.replace(/.*: (.*) \|.*/, '$1');
@@ -25,9 +36,9 @@ function doDownload() {
 		if (l.href) {
 			var t = s.replace(/\s/g, '_') + '_';
 			if (i < 10) {
-				t = t + '0';
+				t += '0';
 			}
-			t = t + i;
+			t += i;
 			var dl = 'sg\\\\' + m + '\\\\' + t + '.jpg';
 			//            dl = dl.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 			l.title = t;
@@ -50,21 +61,16 @@ function doDownloadSet(photos) {
 	if (!p) {
 		return;
 	}
-	GM_download(p);
+	GM_download(p.url,p.name);
 	if (photos.length > 0) {
-		setTimeout(doDownloadSet, 50, photos);
-// 		GM_log(p);
+		setTimeout(doDownloadSet, 70, photos);
+		GM_log(p);
 	}
 }
 
 function getPhotos() {
 	document.getElementById('content-container').querySelector('a[href*="photos"]').click();
 }
-
-var firstRun = true;
-// GM_setValue('lastSet','https://www.suicidegirls.com/members/dacay/album/3517230/brown-sofa/');
-var lastSet = GM_getValue('lastSet', 'none');
-console.log('last: ' + lastSet);
 
 var sets = document.querySelectorAll('article section a');
 for (var i = 0; i < sets.length; i++) {
@@ -124,9 +130,13 @@ function doOpenSet(sets) {
 	}
 	GM_openInTab(url, true);
 	if (sets.length > 0) {
-		setTimeout(doOpenSet, 800, sets);
+		setTimeout(doOpenSet, 600, sets);
 		//        console.log('loop');
 	}
+}
+
+function savePosition(){
+	GM_setValue('lastIndex',document.location.href);
 }
 
 document.addEventListener('keydown', function (e) {
@@ -150,6 +160,7 @@ document.addEventListener('keydown', function (e) {
 	if (key == 'G') {
 		e.preventDefault();
 		e.stopPropagation();
+		savePosition();
 		openSets();
 	}
 }, false);
