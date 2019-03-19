@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name			slPaperclips
-// @version			2018.02.10.1247
+// @version			2019.3.19-1635
 // @namespace		seanloos.com
 // @icon			http://seanloos.com/icon.png
-// @homepageURL		https://github.com/achmed13/userscripts/
+// @homepageURL		https://seanloos.com/userscripts/
 // @author			Sean Loos
 // @description
 // @match			http://www.decisionproblem.com/paperclips/index2.html
@@ -15,6 +15,7 @@ document.title='UniversalPaperclips';
 setInterval(blurAll,2000);
 var bQuant = false;
 var bTourn=false;
+
 // --------------------------------------
 // Keyboard Listener
 // --------------------------------------
@@ -27,38 +28,25 @@ document.addEventListener('keydown',function(e){
 
 	blurAll();
 
-	var clicks = 10;
-	if(e.shiftKey){clicks=100;}
 	var i = 0;
 	var val = 0;
-	// projects
-	if(key == 'X'){
+
+	// paperclips
+	if(key == 'Q'){
 		e.preventDefault();
-		buyItem();
+		clipClick(100000);
 		return;
 	}
-	// Run Tournament
-	if(key == 'R'){
+	// wire
+	if(key == 'W'){
 		e.preventDefault();
-		bTourn = !bTourn;
-		runTournament();
+		doClicks('btnBuyWire',100);
 		return;
 	}
-	// Compute
-	if(key == 'C'){
-		e.preventDefault();
-		bQuant = !bQuant;
-		clickQuantum();
-		return;
-	}
-	// Launch Probe
-	if(key == 'H'){
-		e.preventDefault();
-		var ele = document.getElementById('btnMakeProbe');
-		for( i=0;i<50000;i++){
-			ele.click();
-		}
-	}
+
+	var clicks = 1;
+	if(e.shiftKey){clicks*=10;}
+
 	// lower
 	if(key == 'S'){
 		e.preventDefault();
@@ -77,93 +65,7 @@ document.addEventListener('keydown',function(e){
 		doClicks('btnExpandMarketing',1);
 		return;
 	}
-	// paperclips
-	if(key == 'Q'){
-		e.preventDefault();
-		clipClick(100000);
-		return;
-	}
-	// wire
-	if(key == 'W'){
-		e.preventDefault();
-		doClicks('btnBuyWire',100);
-		return;
-	}
-	// processors
-	if(key == 'T'){
-		e.preventDefault();
-		doClicks('btnAddProc',clicks);
-		return;
-	}
-	// memory
-	if(key == 'G'){
-		e.preventDefault();
-		doClicks('btnAddMem',clicks);
-		return;
-	}
-	// harvester
-	if(key == 'F'){
-		e.preventDefault();
-		doClicks('btnHarvesterx1000',clicks);
-		return;
-	}
-	// wire
-	if(key == 'V'){
-		e.preventDefault();
-		doClicks('btnWireDronex1000',clicks);
-		return;
-	}
-	// mega clipper
-	if(key == 'Z'){
-		e.preventDefault();
-		doClicks('btnMakeMegaClipper',10);
-		return;
-	}
-	// autoclipper
-	if(key == 'A'){
-		e.preventDefault();
-		doClicks('btnMakeClipper',10);
-		return;
-	}
-	// Increase Probe Trust
-	if(key == 'N'){
-		e.preventDefault();
-		doClicks('btnIncreaseProbeTrust',10);
-		return;
-	}
-	// Increase Max Trust
-	if(key == 'M'){
-		e.preventDefault();
-		doClicks('btnIncreaseMaxTrust',1);
-		return;
-	}
 
-	if(key == 'B'){
-		e.preventDefault();
-		goCrazy();
-		return;
-	}
-
-	// All
-	if(key == 'I'){
-		e.preventDefault();
-		var ms = 2000;
-		getProbes('Fac',ms);
-		setTimeout(getProbes,ms*1.05,'Harv',ms*5);
-		setTimeout(getProbes,ms*6.05,'Wire',ms*5.1);
-	}
-	// Replication -
-	if(key == 'O'){
-		e.preventDefault();
-		doClicks('btnLowerProbeRep',1);
-		return;
-	}
-	// Replication +
-	if(key == 'P'){
-		e.preventDefault();
-		doClicks('btnRaiseProbeRep',1);
-		return;
-	}
 	// Slider Zero
 	if(key == '1'){
 		e.preventDefault();
@@ -194,12 +96,170 @@ document.addEventListener('keydown',function(e){
 		document.getElementById('slider').value=val;
 		return;
 	}
+	// Compute
+	if(key == 'C'){
+		e.preventDefault();
+		bQuant = !bQuant;
+		clickQuantum();
+		return;
+	}
+	// projects
+	if(key == 'X'){
+		e.preventDefault();
+		buyItem();
+		return;
+	}
+
+	// Run Tournament
+	if(key == 'R'){
+		e.preventDefault();
+		bTourn = !bTourn;
+		runTournament();
+		return;
+	}
+
+	clicks = 10;
+	if(e.shiftKey){clicks*=10;}
+
+	// autoclipper
+	if(key == 'A'){
+		e.preventDefault();
+		doClicks('btnMakeClipper',clicks);
+		return;
+	}
+	// mega clipper
+	if(key == 'Z'){
+		e.preventDefault();
+		doClicks('btnMakeMegaClipper',clicks);
+		return;
+	}
+
+	// processors
+	if(key == 'T'){
+		e.preventDefault();
+		doClicks('btnAddProc',clicks);
+		return;
+	}
+	// memory
+	if(key == 'G'){
+		e.preventDefault();
+		doClicks('btnAddMem',clicks);
+		return;
+	}
+	// harvester drone
+	if(key == 'F'){
+		e.preventDefault();
+		doClicks('btnHarvesterx1000',clicks);
+		return;
+	}
+	// wire drone
+	if(key == 'V'){
+		e.preventDefault();
+		doClicks('btnWireDronex1000',clicks);
+		return;
+	}
+
+	// Launch Probe
+	if(key == 'H'){
+		e.preventDefault();
+		var ele = document.getElementById('btnMakeProbe');
+		for( i=0;i<50000;i++){
+			ele.click();
+		}
+	}
+	// Replication -
+	if(key == 'O'){
+		e.preventDefault();
+		doClicks('btnLowerProbeRep',1);
+		return;
+	}
+	// Replication +
+	if(key == 'P'){
+		e.preventDefault();
+		doClicks('btnRaiseProbeRep',1);
+		return;
+	}
+	// Increase Probe Trust
+	if(key == 'N'){
+		e.preventDefault();
+		doClicks('btnIncreaseProbeTrust',10);
+		return;
+	}
+	// Increase Max Trust
+	if(key == 'M'){
+		e.preventDefault();
+		doClicks('btnIncreaseMaxTrust',1);
+		return;
+	}
+	// go crazy
+	if(key == 'B'){
+		e.preventDefault();
+		goCrazy();
+		return;
+	}
+	// All
+	if(key == 'I'){
+		e.preventDefault();
+		var ms = 2000;
+		getProbes('Fac',ms);
+		setTimeout(getProbes,ms*1.05,'Harv',ms*5);
+		setTimeout(getProbes,ms*6.05,'Wire',ms*5.1);
+	}
 
 },false);
 
+initKeyTips();
+function initKeyTips(){
+	addKeyTip('#btnMakePaperclip','q');
+
+	addKeyTip('#btnLowerPrice','s');
+	addKeyTip('#btnRaisePrice','d');
+	addKeyTip('#btnExpandMarketing','e');
+
+	addKeyTip('#btnBuyWire','w');
+	addKeyTip('#btnMakeClipper','a');
+	addKeyTip('#btnMakeMegaClipper','z');
+
+	addKeyTip('#btnHarvesterx1000','f');
+	addKeyTip('#btnWireDronex1000','v');
+
+	addKeyTip('#btnAddProc','t');
+	addKeyTip('#btnAddMem','g');
+
+	addKeyTip('#sliderLabelWork','1');
+	addKeyTip('#sliderLabelThink','4');
+
+	addKeyTip('#btnQcompute','c');
+	addKeyTip('#projectsDiv b','x');
+
+	addKeyTip('#btnRunTournament','r');
+
+	addKeyTip('#btnMakeProbe','h');
+	addKeyTip('#btnLowerProbeRep','o');
+	addKeyTip('#btnRaiseProbeRep','p');
+	addKeyTip('#btnIncreaseProbeTrust','n');
+	addKeyTip('#btnIncreaseMaxTrust','m');
+
+// 	addKeyTip('#increaseProbeTrustDiv','i');
+// 	addKeyTip('#increaseMaxTrustDiv','b');
+}
+
+
+function addKeyTip(element,key,prepend=false){
+	var elem = document.querySelector(element);
+	if(!elem){return;}
+	if(prepend){
+		elem.innerHTML = '('+key+') '+elem.innerHTML;
+	}
+	else {
+		elem.innerHTML += ' ('+key+')';
+	}
+	elem.style.width = 'auto';
+}
+
 var blacklist = [
-	'projectButton35',  // Release the HypnoDrones
-	'projectButton46',  // Space Exploration
+	'projectButton35', // Release the HypnoDrones
+	'projectButton46', // Space Exploration
 	// 'projectButton102', // Self-correcting Supply Chain
 	'projectButton134', // Glory
 	// 'projectButton147', // Accept
