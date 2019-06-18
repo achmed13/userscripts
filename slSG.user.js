@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slSG
-// @version       2019.3.12-1210
+// @version       2019.6.18-1235
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slSG.user.js
@@ -107,11 +107,11 @@ function openSets() {
 	var links = document.querySelectorAll('article section a');
 	for (i = 0; i < links.length; i++) {
 		var link = links[i];
-		if (firstRun && document.location.href.match(/com\/photos/)) {
+		if (firstRun && /com\/photos/.test(document.location.href)) {
 			GM_setValue('lastSet', link.href);
 			firstRun = false;
 		}
-		if (link.href == lastSet) {
+		if (link.href == lastSet && /com\/photos/.test(document.location.href)) {
 			console.log('found last set');
 			i = links.length + 1;
 		} else {
@@ -136,7 +136,9 @@ function doOpenSet(sets) {
 }
 
 function savePosition(){
-	GM_setValue('lastIndex',document.location.href);
+	if(/offset/.test(document.location.href)){
+		GM_setValue('lastIndex',document.location.href);
+	}
 }
 
 document.addEventListener('keydown', function (e) {
