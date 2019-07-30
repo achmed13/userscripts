@@ -1,22 +1,23 @@
 /* ==UserStyle==
 @name           slNewser
-@version        2018.9.17-909
+@version        2019.7.15-1015
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
-@-moz-document domain("newser.com")
-{
-    header,
-    #carousel_StoryInSection2,
-    #divRightRail,
-    #divVote,
-    #divSocialAndCommentsButtonsBottom,
-    #YouMightLike,
-    #divNextStoryHeadline,
-    #divStoryColumn > div:last-of-type,
-    footer
-    {
-        display: none !important;
-    }
+@-moz-document domain("newser.com") {
+	#divNSS,
+	#lightbox,
+	#div_iframe_overlay,
+	header,
+	#carousel_StoryInSection2,
+	#divRightRail,
+	#divVote,
+	#divSocialAndCommentsButtonsBottom,
+	#YouMightLike,
+	#divNextStoryHeadline,
+	#divStoryColumn > div:last-of-type,
+	footer {
+		display: none !important;
+	}
 }

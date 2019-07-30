@@ -2,8 +2,9 @@
 // @name          slGlobalHotkeys
 // @icon          http://seanloos.com/icons/sean.png
 // @namespace     seanloos.com
-// @version       2018.10.10-1151
+// @version       2019.7.30-1033
 // @homepageURL   http://seanloos.com/userscripts/
+// @updateURL     http://seanloos.com/userscripts/slGlobalHotkeys.user.js
 // @author        Sean Loos
 // @description   Sean's Global Hotkeys
 // @include       *
@@ -13,10 +14,12 @@
 // @exclude       *mail.google.com/*
 // @exclude       *groups.google.com/*
 // @exclude       *calendar.google.com/*
-// @exclude       http*://console.developers.google.com/*
+// @exclude       *console.developers.google.com/*
 // @exclude       *docs.google.com/*
 // @exclude       *drive.google.com/*
 // @exclude       *sites.google.com/*
+// @exclude       *earth.google.com/*
+// @exclude       *client*.google.com/*
 // @exclude       *vimeo.com/*
 // @exclude       *wildapricot.com/*
 // @exclude       *mailchimp.com/*
@@ -32,6 +35,7 @@
 // @exclude       *pb.sharedvue.net/*
 // @exclude       */wp-admin/*
 // @exclude       *mappingsolutions.com/sql/*
+// @exclude       */wp-admin/*
 // @run-at        window-load
 // @grant         GM_log
 // ==/UserScript==
