@@ -2,7 +2,7 @@
 // @name          slGlobalHotkeys
 // @icon          http://seanloos.com/icons/sean.png
 // @namespace     seanloos.com
-// @version       2019.9.16-1609
+// @version       2019.9.19-1021
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slGlobalHotkeys.user.js
 // @author        Sean Loos
@@ -11,6 +11,7 @@
 // @exclude       *newsblur.com/*
 // @exclude       *inoreader.com/*
 // @exclude       *plus.google.com/*
+// @exclude       *force.com/*
 // @exclude       *mail.google.com/*
 // @exclude       *groups.google.com/*
 // @exclude       *calendar.google.com/*
