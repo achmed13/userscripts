@@ -1,230 +1,236 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2018.9.12-1739
+@version        2019.10.30-1729
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document domain("inoreader.com") {
-    * {
-        font-family: Libre Franklin !important;
-    }
+	* {
+		font-family: Inter UI,Libre Frankin !important;
+	}
 
-    .sinner_under_footer,
-    .ad_title,
-    .block_article_ad,
-    .mobile_leaderboard_ad,
-    .ad_size_mobile_leaderboard {
-        display: none !important;
-    }
+	.sinner_under_footer,
+	.ad_title,
+	.block_article_ad,
+	.mobile_leaderboard_ad,
+	.ad_size_mobile_leaderboard {
+		display: none !important;
+	}
 
-    /* List Pane */
-    #reader_pane {
-        width: 500px !important;
-        max-width: 29% !important;
-    }
+	/* Tree Pane */
+	#tree_pane{
+		width: 200px !important;
+	}
+	/* List Pane */
+	#reader_pane {
+		width: 500px !important;
+		left:205px !important;
+		max-width: 29% !important;
+	}
 
-    .articles_feed_group_heading {
-        margin: 0 !important;
-        padding: 1px 0 3px !important;
-        color: #fff !important;
-        background-color: #000 !important;
-        font-weight: bold !important;
-    }
+	.articles_feed_group_heading {
+		margin: 0 !important;
+		padding: 1px 0 3px !important;
+		color: #fff !important;
+		background-color: #000 !important;
+		font-weight: bold !important;
+	}
 
-    .article_no_thumbnail {
-        margin: 0 !important;
-        padding: 0 0 0 10px !important;
-        border-bottom: 1px solid #666 !important;
-    }
+	.article_no_thumbnail {
+		margin: 0 !important;
+		padding: 0 0 0 10px !important;
+		border-bottom: 1px solid #666 !important;
+	}
 
-    .article_stripe {
-        background-color: #f00 !important;
-    }
+	.article_stripe {
+		background-color: #f00 !important;
+	}
 
-    .article_stripe_read {
-        background-color: #aaa !important;
-    }
+	.article_stripe_read {
+		background-color: #aaa !important;
+	}
 
-    .article_header {
-        top: 0 !important;
-        padding: 5px 0 !important;
-    }
+	.article_header {
+		top: 0 !important;
+		padding: 5px 0 !important;
+	}
 
-    .article_header_text,
-    .article_header_text .article_header_title {
-        font-size: 13px !important;
-        font-weight: 400 !important;
-        line-height: 18px !important;
-        color: #000!important;
-        margin-top: 0px !important;
-        display: block !important;
-    }
+	.article_header_text,
+	.article_header_text .article_header_title {
+		font-size: 13px !important;
+		font-weight: 400 !important;
+		line-height: 18px !important;
+		color: #000!important;
+		margin-top: 0px !important;
+		display: block !important;
+	}
 
-    .article_header_pane_left {
-        margin-bottom: -18px !important;
-    }
+	.article_header_pane_left {
+		margin-bottom: -18px !important;
+	}
 
-    .article_favicon {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
+	.article_favicon {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
 
-    .article_favicon .feed_favicon {
-        top: -19px !important;
-        margin-left: 18px !important;
-    }
+	.article_favicon .feed_favicon {
+		top: -19px !important;
+		margin-left: 18px !important;
+	}
 
-    .column_view_info .article_feed_title,
-    .column_view_info .header_date {
-        margin-top: -10px !important;
-        margin-bottom: 3px !important;
-        font-size: 8px !important;
-        color: #666 !important;
-        line-height: 10px !important;
-    }
+	.column_view_info .article_feed_title,
+	.column_view_info .header_date {
+		margin-top: -10px !important;
+		margin-bottom: 3px !important;
+		font-size: 8px !important;
+		color: #666 !important;
+		line-height: 10px !important;
+	}
 
-    .column_view_info .article_feed_title {
-        display: none !important;
-        margin-top: -2px !important;
-    }
+	.column_view_info .article_feed_title {
+		display: none !important;
+		margin-top: -2px !important;
+	}
 
-    .arrow_div {
-        background-color: transparent !important;
-    }
+	.arrow_div {
+		background-color: transparent !important;
+	}
 
-    .article_current,
-    .article_current .article_header_title,
-    .article_current .article_feed_title,
-    .article_current .header_date {
-        color: #fff !important;
-        background-color: #555 !important;
-    }
+	.article_current,
+	.article_current .article_header_title,
+	.article_current .article_feed_title,
+	.article_current .header_date {
+		color: #fff !important;
+		background-color: #555 !important;
+	}
 
-    #no_more_div {
-        height: 50px !important;
-        line-height: 50px !important;
-    }
+	#no_more_div {
+		height: 50px !important;
+		line-height: 50px !important;
+	}
 
-    /* Article */
-    #three_way_contents {
-        padding: 0 !important;
-        margin-left: 15px !important;
-    }
+	/* Article */
+	#three_way_contents {
+		padding: 0 !important;
+		margin-left: 15px !important;
+	}
 
-    .article_full_contents {
-        padding: 0 !important;
-        width: 100% !important;
-        margin: 0 !important;
-    }
+	.article_full_contents {
+		padding: 0 !important;
+		width: 100% !important;
+		margin: 0 !important;
+	}
 
-    .article_footer {
-        top: 40px !important;
-        margin: 0 !important;
-        padding: 0 0 0 10px !important;
-        border: 1px solid #bbb !important;
-    }
+	.article_footer {
+		top: 40px !important;
+		margin: 0 !important;
+		padding: 0 0 0 10px !important;
+		border: 1px solid #bbb !important;
+	}
 
-    .article_title_link {
-        font-weight: unset !important;
-    }
+	.article_title_link {
+		font-weight: unset !important;
+	}
 
-    .article_title {
-        font-size: 16px !important;
-        font-weight: 500 !important;
-        margin: 27px 0 0 0 !important;
-        padding: 3px 0px 3px 10px !important;
-        background-color: #eee !important;
-        border: 1px solid #bbb !important;
-    }
+	.article_title {
+		font-size: 16px !important;
+		font-weight: 600 !important;
+		margin: 27px 0 0 0 !important;
+		padding: 3px 0px 3px 10px !important;
+		background-color: #eee !important;
+		border: 1px solid #bbb !important;
+	}
 
-    .article_sub_title {
-        top: 38px !important;
-        right: 15px !important;
-        position: fixed !important;
-        z-index: 70 !important;
-    }
+	.article_sub_title {
+		top: 38px !important;
+		right: 15px !important;
+		position: fixed !important;
+		z-index: 70 !important;
+	}
 
-    .article_content {
-        font-size: 16px !important;
-        max-width: unset !important;
-        margin: 0 !important;
-        padding: 5px 20px !important;
-        color: #000 !important;
-    }
+	.article_content {
+		font-size: 16px !important;
+		font-weight: 400 !important;
+		max-width: unset !important;
+		margin: 0 !important;
+		padding: 5px 20px !important;
+		color: #000 !important;
+	}
 
-    blockquote {
-        background-color: #eee !important;
-        padding: 5px 15px !important;
-    }
+	blockquote {
+		background-color: #eee !important;
+		padding: 5px 15px !important;
+	}
 
-    .article_content img,
-    .article_content video {
-        max-width: 100% !important;
-        display: table-cell;
-        padding: 0 10px 15px 0 !important;
-    }
+	.article_content img,
+	.article_content video {
+		max-width: 100% !important;
+		display: table-cell;
+		padding: 0 10px 15px 0 !important;
+	}
 
-    /* img, video {max-width:100% !important;max-height:calc((100vh - 100px)*.95) !important;} */
-    /* Reddit Images */
-    .splRedditImg {
-        position: relative!important;
-        z-index: 100!important;
-        width: auto!important;
-        max-width: 100% !important;
-        max-height: calc((100vh - 100px) * .95) !important;
-    }
+	/* img, video {max-width:100% !important;max-height:calc((100vh - 100px)*.95) !important;} */
+	/* Reddit Images */
+	.splRedditImg {
+		position: relative!important;
+		z-index: 100!important;
+		width: auto!important;
+		max-width: 100% !important;
+		max-height: calc((100vh - 100px) * .95) !important;
+	}
 
-    .splAlbum {
-        font-weight: bold!important;
-        background-color: #0f0!important;
-        color: #000;
-    }
+	.splAlbum {
+		font-weight: bold!important;
+		background-color: #0f0!important;
+		color: #000;
+	}
 
-    .splFavIcon {
-        max-height: 24px!important;
-        max-width: 24px!important;
-        padding: 0px 5px !important;
-        margin-bottom: -6px!important
-    }
+	.splFavIcon {
+		max-height: 24px!important;
+		max-width: 24px!important;
+		padding: 0px 5px !important;
+		margin-bottom: -6px!important
+	}
 
-    /* YouTube Embed Link */
-    .splYouTube {
-        color: #fff !important;
-        font-size: 10px!important;
-        font-weight: bold!important;
-        padding: 3px;
-        background-color: #f00!important;
-    }
+	/* YouTube Embed Link */
+	.splYouTube {
+		color: #fff !important;
+		font-size: 10px!important;
+		font-weight: bold!important;
+		padding: 3px;
+		background-color: #f00!important;
+	}
 
-    embed,
-    iframe {
-        min-height: 400px !important;
-        max-width: 700px !important;
-    }
+	embed,
+	iframe {
+		min-height: 400px !important;
+		max-width: 700px !important;
+	}
 
-    /* BoingBoing duplicate gif
+	/* BoingBoing duplicate gif
 	img.alignnone.size-full {display:none !important;}
 	*/
-    /* Gawker Dup Image */
-    .dupimg {
-        display: none !important;
-        border: 2px solid #f00!important;
-        height: 10px!important;
-        width: 10px!important;
-        margin: 0 20px 0 0 !important;
-    }
+	/* Gawker Dup Image */
+	.dupimg {
+		display: none !important;
+		border: 2px solid #f00!important;
+		height: 10px!important;
+		width: 10px!important;
+		margin: 0 20px 0 0 !important;
+	}
 
-    .dupimg:hover {
-        height: auto!important;
-        width: auto!important;
-    }
+	.dupimg:hover {
+		height: auto!important;
+		width: auto!important;
+	}
 
-    /* Instagram Embeds */
-    .spl_ig {
-        width: 400px !important;
-        min-height: 550px !important;
-        overflow: auto !important;
-        border: 1px solid #ccc !important;
-    }
+	/* Instagram Embeds */
+	.spl_ig {
+		width: 400px !important;
+		min-height: 550px !important;
+		overflow: auto !important;
+		border: 1px solid #ccc !important;
+	}
 }
