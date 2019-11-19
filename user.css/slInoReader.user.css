@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2019.10.30-1729
+@version        2019.11.19-1115
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -10,7 +10,7 @@
 		font-family: Inter UI,Libre Frankin !important;
 	}
 
-	.sinner_under_footer,
+	.popularity_div,.sinner_under_footer,
 	.ad_title,
 	.block_article_ad,
 	.mobile_leaderboard_ad,
@@ -20,12 +20,12 @@
 
 	/* Tree Pane */
 	#tree_pane{
-		width: 200px !important;
+		width: 180px !important;
 	}
 	/* List Pane */
 	#reader_pane {
-		width: 500px !important;
-		left:205px !important;
+		width: 550px !important;
+		left:185px !important;
 		max-width: 29% !important;
 	}
 
@@ -63,24 +63,33 @@
 		line-height: 18px !important;
 		color: #000!important;
 		margin-top: 0px !important;
-		display: block !important;
+		display: flex !important;
 	}
 
 	.article_header_pane_left {
 		margin-bottom: -18px !important;
 	}
+	.article_header_pane_right {
+		margin-left: 30px !important;
+		margin-right: 23px !important;
+	}
 
-	.article_favicon {
+
+	.column_view_info {
+		margin-left: -40px !important;
+		max-width: 40px !important;
+	}
+	
+	.feed_favicon {
 		margin-left: 0 !important;
 		margin-right: 0 !important;
 	}
 
-	.article_favicon .feed_favicon {
-		top: -19px !important;
-		margin-left: 18px !important;
+	.article_favicon {
+		margin:-19px 1px 0px !important;
 	}
 
-	.column_view_info .article_feed_title,
+
 	.column_view_info .header_date {
 		margin-top: -10px !important;
 		margin-bottom: 3px !important;
@@ -114,7 +123,7 @@
 	/* Article */
 	#three_way_contents {
 		padding: 0 !important;
-		margin-left: 15px !important;
+		margin-left: 28px !important;
 	}
 
 	.article_full_contents {
@@ -168,19 +177,23 @@
 	.article_content video {
 		max-width: 100% !important;
 		display: table-cell;
-		padding: 0 10px 15px 0 !important;
+		padding: 0 10px 5px 0 !important;
 	}
 
 	/* img, video {max-width:100% !important;max-height:calc((100vh - 100px)*.95) !important;} */
 	/* Reddit Images */
 	.splRedditImg {
-		position: relative!important;
-		z-index: 100!important;
-		width: auto!important;
+		position: relative !important;
+		z-index: 100 !important;
+		width: auto !important;
 		max-width: 100% !important;
-		max-height: calc((100vh - 100px) * .95) !important;
+		padding: 0 !important;
+		max-height: calc((100vh - 150px)) !important;
 	}
 
+	.splInnoImage {
+		display:none !important;
+	}
 	.splAlbum {
 		font-weight: bold!important;
 		background-color: #0f0!important;
@@ -191,7 +204,8 @@
 		max-height: 24px!important;
 		max-width: 24px!important;
 		padding: 0px 5px !important;
-		margin-bottom: -6px!important
+		margin-bottom: -6px!important;
+		display: inline !important;
 	}
 
 	/* YouTube Embed Link */

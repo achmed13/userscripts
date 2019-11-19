@@ -1,70 +1,69 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2019.5.17-1601
+// @version       2019.11.19-946
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
 // @author        Sean Loos
 // @icon          http://seanloos.com/icons/sean.png
+// @require		  https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
 // @include       *inoreader.com*
-// @runat         document-idle
+// @run-at		  document-end
 // @grant         GM_openInTab
 // @noframes
 // ==/UserScript==
 
-// 	'use strict';
+'use strict';
+this.$ = this.jQuery = jQuery.noConflict(true);
 document.title = 'Inoreader - ' + document.title;
 
 var js = document.createElement('script');
 js.src = '//platform.twitter.com/widgets.js';
 (document.body || document.head || document.documentElement).appendChild(js);
 
-document.addEventListener('keyup',function(e){
-	// console.log('keyup',{e});
-	var vKey = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
-	var key = String.fromCharCode(vKey);
+$(document).keyup(function(e){
+	var vKey = e.which;
+// 	console.log('keyup: '+ key);
+	var key = String.fromCharCode(vKey).toUpperCase();
+	if (key == 'F' && !e.ctrlKey && !e.altKey) {
+		e.stopImmediatePropagation();
+		e.preventDefault();
+		e.stopPropagation();
+// 		 console.log('next');
+		goNext();
+		return;
+	}
 	if (key == 'A' && e.altKey) {
-		 console.log('alt+a');
+// 		 console.log('alt+a');
 		e.preventDefault();
 		e.stopPropagation();
 		simulateKey(65,"down",{shiftKey:true});
 		simulateKey(65,"up",{shiftKey:true});
 		return false;
 	}
-},{capture:true,passive:false});
+});
 
-document.addEventListener('keydown',function(e){
+$(document).keydown(function(e){
 	if ( /INPUT|SELECT|TEXTAREA|CANVAS/i.test(e.target.tagName) ) {
 		//  console.log('dump out');
 		return true;
 	}
-	console.log('keydown',{ e });
-	// 	var key = e.key;
-	// 	if(key==undefined){
-	// 		// 	console.log('key undefined');
-	// 		return true;
-	// 	}
+// 	console.log('keydown',{ e });
+
 	//Identifies the key
-	var vKey = e.keyCode ? e.keyCode : e.which ? e.which : e.charCode;
+	var vKey = e.which;
 
-	var key = String.fromCharCode(vKey);
-	key = key.toUpperCase();
-
+	var key = String.fromCharCode(vKey).toUpperCase();
+// 	console.log('keydown: '+ key);
 	if (key == 'W' && !e.ctrlKey && !e.altKey) {
+		e.stopImmediatePropagation();
 		e.preventDefault();
 		e.stopPropagation();
 		openArticle(true);
 		return;
 	}
-	if (key == 'F' && !e.ctrlKey && !e.altKey) {
-		// e.stopImmediatePropagation();
-		e.stopPropagation();
-		e.preventDefault();
-		//  console.log('next');
-		goNext();
-		return;
-	}
 	if (key == 'R' && !e.ctrlKey && !e.altKey) {
+		e.stopImmediatePropagation();
 		e.preventDefault();
 		e.stopPropagation();
 		goPrev();
@@ -90,7 +89,7 @@ document.addEventListener('keydown',function(e){
 		simulateKey(75, "up", {'shiftKey':true});
 		return;
 	}
-},{capture:true,passive:false});
+});
 
 
 function openArticle(backgroundTab) {
@@ -205,27 +204,27 @@ var articleObserver = new MutationObserver(function (mutations) {
 			}
 			content.parentNode.querySelector('.article_footer').style.background = 'hsl(' + c + ',95%,90%)';
 
-			// ****************************************
-			// ***** Embedded Facebook *****
-			// ****************************************
-			var m = document.getElementById('fb-root');
-			if (m) {
-				var js = document.createElement('script');
-				js.id = 'facebook-jssdk';
-				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-				var v = content.querySelector('.fb-video');
-				var p = content.querySelector('.fb-post');
-				if (v) {
-					var vid = content.innerHTML.match(/cite=.*?com(.*?)"/)[1];
-					v.outerHTML = v.outerHTML.replace('class="fb-video"', 'class="fb-video" data-allowfullscreen="1" data-href="' + vid + '?type=3"');
-					m.parentNode.insertBefore(js, m);
-				}
-				if (p) {
-					var post = content.innerHTML.match(/cite="(.*?)"/)[1];
-					p.outerHTML = p.outerHTML.replace('class="fb-post"', 'class="fb-post" data-href="' + post + '" data-width="500"');
-					m.parentNode.insertBefore(js, m);
-				}
-			}
+// 			// ****************************************
+// 			// ***** Embedded Facebook *****
+// 			// ****************************************
+// 			var m = document.getElementById('fb-root');
+// 			if (m) {
+// 				var js = document.createElement('script');
+// 				js.id = 'facebook-jssdk';
+// 				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
+// 				var v = content.querySelector('.fb-video');
+// 				var p = content.querySelector('.fb-post');
+// 				if (v) {
+// 					var vid = content.innerHTML.match(/cite=.*?com(.*?)"/)[1];
+// 					v.outerHTML = v.outerHTML.replace('class="fb-video"', 'class="fb-video" data-allowfullscreen="1" data-href="' + vid + '?type=3"');
+// 					m.parentNode.insertBefore(js, m);
+// 				}
+// 				if (p) {
+// 					var post = content.innerHTML.match(/cite="(.*?)"/)[1];
+// 					p.outerHTML = p.outerHTML.replace('class="fb-post"', 'class="fb-post" data-href="' + post + '" data-width="500"');
+// 					m.parentNode.insertBefore(js, m);
+// 				}
+// 			}
 
 			// ****************************************
 			// ***** YouTube Links *****
@@ -248,8 +247,6 @@ var articleObserver = new MutationObserver(function (mutations) {
 			// ****************************************
 			content.querySelectorAll('a').forEach(function (link) {
 				if (link.innerHTML.match(/\[link\]/)) {
-					//var wid = document.getElementById('three_way_contents').clientWidth - 50;
-					//mvar hei = document.getElementById('three_way_contents').clientHeight - 100;
 					var imgStyle = 'position:relative;z-index:100;width:auto;'; //max-width:'+wid+'px !important;max-height:' + hei + 'px;'
 					var img;
 					var img2;
@@ -286,9 +283,9 @@ var articleObserver = new MutationObserver(function (mutations) {
 					// gfycat
 					else if (!link.href.match(/jpg|gif|png/) && link.href.match(/gfycat/)) {
 						img = link.href.match(/.*gfycat\.com\/([^\/"]+)/)[1];
+// 						console.log('gfycat: '+img);
+						$('iframe',content).hide();
 						node.innerHTML = "<div style='position:relative;padding-bottom:calc(100% / 1.78)'><iframe src='//gfycat.com/ifr/" + img + "' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>";
-
-						//node.innerHTML = '<video autoplay="" loop="" poster="//thumbs.gfycat.com/'+img+'-poster.jpg" style="-webkit-backface-visibility: hidden;-webkit-transform: scale(1);max-width:100%;max-height:calc((100vh - 100px)*.95);"><source id="mp4source" src="//zippy.gfycat.com/'+img+'.mp4" type="video/mp4"><source id="mp4source" src="//giant.gfycat.com/'+img+'.mp4" type="video/mp4"><source id="mp4source" src="//fat.gfycat.com/'+img+'.mp4" type="video/mp4"></video>';
 					}
 					// Pornbot videos
 					else if (!link.href.match(/jpg|gif|png/) && link.href.match(/pornbot/)) {
@@ -308,6 +305,14 @@ var articleObserver = new MutationObserver(function (mutations) {
 							node.innerHTML = '<img src="' + img2 + '" class="splRedditImg">';
 						}
 					}
+							var innoImage = $("a img",content);
+							innoImage.each((key,value) => {
+// 								console.log({ value });
+								if(value.dataset.originalSrc.match(/redd\.it/gi)){
+									value.classList.add('splInnoImage');
+// 									node.innerHTML = '';
+								}
+							});
 
 					content.insertBefore(node, content.firstChild);
 
@@ -319,7 +324,7 @@ var articleObserver = new MutationObserver(function (mutations) {
 
 					content.querySelectorAll('img').forEach(function (i) {
 						// 								if (i.src.match(/.*thumbs\.reddit.*/)) {
-						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/.*thumbs\.reddit.*/)) {
+						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/(.*thumbs\.reddit.*)|(.*imgur.*)/)) {
 							if (img || img2) {
 								i.style.display = "none";
 							} else {
