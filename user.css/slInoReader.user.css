@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2019.11.19-1115
+@version        2019.12.26-1304
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -164,10 +164,12 @@
 		font-weight: 400 !important;
 		max-width: unset !important;
 		margin: 0 !important;
-		padding: 5px 20px !important;
+		padding: 5px !important;
 		color: #000 !important;
 	}
-
+	.article_content p {
+		margin: 0 !important;
+	}
 	blockquote {
 		background-color: #eee !important;
 		padding: 5px 15px !important;
@@ -188,7 +190,7 @@
 		width: auto !important;
 		max-width: 100% !important;
 		padding: 0 !important;
-		max-height: calc((100vh - 150px)) !important;
+		max-height: calc((100vh - 140px)) !important;
 	}
 
 	.splInnoImage {

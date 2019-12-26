@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2019.11.19-946
+// @version       2019.12.26-1226
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -37,8 +37,8 @@ $(document).keyup(function(e){
 // 		 console.log('alt+a');
 		e.preventDefault();
 		e.stopPropagation();
-		simulateKey(65,"down",{shiftKey:true});
-		simulateKey(65,"up",{shiftKey:true});
+		simulateKey("a","down",{shiftKey:true});
+		simulateKey("a","up",{shiftKey:true});
 		return false;
 	}
 });
@@ -78,15 +78,15 @@ $(document).keydown(function(e){
 	if (key == 'Z') {
 		e.preventDefault();
 		e.stopPropagation();
-		simulateKey(74, "down", {'shiftKey':true});
-		simulateKey(74, "up", {'shiftKey':true});
+		simulateKey('j', "down", {'shiftKey':true});
+		simulateKey('j', "up", {'shiftKey':true});
 		return;
 	}
 	if (key == 'Q') {
 		e.preventDefault();
 		e.stopPropagation();
-		simulateKey(75, "down", {'shiftKey':true});
-		simulateKey(75, "up", {'shiftKey':true});
+		simulateKey('k', "down", {'shiftKey':true});
+		simulateKey('k', "up", {'shiftKey':true});
 		return;
 	}
 });
@@ -168,10 +168,10 @@ function getHue(title) {
  * @param {String} type (optional) The type of event : down, up or press. The default is down
  * @param {Object} modifiers (optional) An object which contains modifiers keys { ctrlKey: true, altKey: false, ...}
  */
-function simulateKey (keyCode, type, modifiers) {
+function simulateKey (key, type, modifiers) {
 	var evtName = (typeof(type) === "string") ? "key" + type : "keydown";
 	var modifier = (typeof(modifiers) === "object") ? modifier : {};
-
+	var keyCode = (typeof(key) === "string") ? key.toUpperCase().charCodeAt(0) : key;
 	var options = {
 		"keyCode": keyCode
 		,"cancelable":false
@@ -277,8 +277,8 @@ var articleObserver = new MutationObserver(function (mutations) {
 					}
 					// gifv
 					else if ((link.href.match(/\.(jpg|gif|png)/) && !link.href.match(/\.gifv/)) || link.href.match(/reddituploads/)) {
-						img = link.href;
-						node.innerHTML = '<img src="' + img + '" class="splRedditImg">';
+// 						img = link.href;
+// 						node.innerHTML = '<img src="' + img + '" class="splRedditImg">';
 					}
 					// gfycat
 					else if (!link.href.match(/jpg|gif|png/) && link.href.match(/gfycat/)) {
@@ -305,14 +305,14 @@ var articleObserver = new MutationObserver(function (mutations) {
 							node.innerHTML = '<img src="' + img2 + '" class="splRedditImg">';
 						}
 					}
-							var innoImage = $("a img",content);
-							innoImage.each((key,value) => {
-// 								console.log({ value });
-								if(value.dataset.originalSrc.match(/redd\.it/gi)){
-									value.classList.add('splInnoImage');
-// 									node.innerHTML = '';
-								}
-							});
+// 							var innoImage = $("a img",content);
+// 							innoImage.each((key,value) => {
+// // 								console.log({ value });
+// 								if(value.dataset.originalSrc.match(/redd\.it/gi)){
+// 									value.classList.add('splInnoImage');
+// // 									node.innerHTML = '';
+// 								}
+// 							});
 
 					content.insertBefore(node, content.firstChild);
 
@@ -323,8 +323,8 @@ var articleObserver = new MutationObserver(function (mutations) {
 					link.innerHTML = link.innerHTML.replace(/\[link\]/, link.href.match(/.*:\/\/(www\.)?(.*?)\//)[2]);
 
 					content.querySelectorAll('img').forEach(function (i) {
-						// 								if (i.src.match(/.*thumbs\.reddit.*/)) {
-						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/(.*thumbs\.reddit.*)|(.*imgur.*)/)) {
+						if (i.src.match(/.*thumbs\.reddit.*/)) {
+// 						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/(.*thumbs\.reddit.*)|(.*imgur.*)/)) {
 							if (img || img2) {
 								i.style.display = "none";
 							} else {
