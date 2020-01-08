@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2019.12.26-1304
+@version        2020.1.8-1734
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -20,12 +20,12 @@
 
 	/* Tree Pane */
 	#tree_pane{
-		width: 180px !important;
+		width: 200px !important;
 	}
 	/* List Pane */
 	#reader_pane {
 		width: 550px !important;
-		left:185px !important;
+		left:205px !important;
 		max-width: 29% !important;
 	}
 
@@ -120,10 +120,14 @@
 		line-height: 50px !important;
 	}
 
+	#column-resizer:after{
+		left: -12px !important;
+		display: none !important;
+	}
 	/* Article */
 	#three_way_contents {
 		padding: 0 !important;
-		margin-left: 28px !important;
+		/*margin-left: 28px !important;*/
 	}
 
 	.article_full_contents {
@@ -164,7 +168,7 @@
 		font-weight: 400 !important;
 		max-width: unset !important;
 		margin: 0 !important;
-		padding: 5px !important;
+		padding: 10px !important;
 		color: #000 !important;
 	}
 	.article_content p {
@@ -179,7 +183,7 @@
 	.article_content video {
 		max-width: 100% !important;
 		display: table-cell;
-		padding: 0 10px 5px 0 !important;
+		padding: 0 5px 5px 0 !important;
 	}
 
 	/* img, video {max-width:100% !important;max-height:calc((100vh - 100px)*.95) !important;} */
