@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slSG
-// @version       2019.6.18-1235
+// @version       2020.1.9-931
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slSG.user.js
@@ -12,6 +12,7 @@
 // @grant         GM_openInTab
 // @grant         GM_setValue
 // @grant         GM_getValue
+// @grant         GM_setClipboard
 // @grant         GM_download
 
 // ==/UserScript==
@@ -25,6 +26,7 @@ var indexURL = document.location.href;
 if(indexURL.match('spl')){
 	document.location.href = lastIndex;
 }
+var path = '';
 
 function doDownload() {
 	var m = document.title.replace(/ Photo Album.*/, '');
@@ -39,7 +41,8 @@ function doDownload() {
 				t += '0';
 			}
 			t += i;
-			var dl = 'sg\\\\' + m + '\\\\' + t + '.jpg';
+			path = m + '\\';
+			var dl = t + '.jpg';
 			//            dl = dl.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 			l.title = t;
 			l.download = dl;
@@ -56,16 +59,30 @@ function doDownload() {
 };
 
 function doDownloadSet(photos) {
-	var p = photos.pop();
-	//    console.log(url);
-	if (!p) {
-		return;
+// 	var p = photos.pop();
+// 	//    console.log(url);
+// 	if (!p) {
+// 		return;
+// 	}
+// 	GM_download(p.url,p.name);
+// 	if (photos.length > 0) {
+// 		setTimeout(doDownloadSet, 70, photos);
+// // 		GM_log(p);
+// 	}
+	let cmd = 'cd c:\\temp\\sean\\sg';
+	cmd += '\n';
+	cmd += 'curl --create-dirs --parallel --parallel-max '+(photos.length+1);
+	for(var p of photos){
+		cmd += ' --url "'+p.url+'"';
+		cmd += ' --output "'+path+p.name+'"';
+// 		cmd += ' --time-cond "'+path+p.name+'"';
 	}
-	GM_download(p.url,p.name);
-	if (photos.length > 0) {
-		setTimeout(doDownloadSet, 70, photos);
-		GM_log(p);
-	}
+	cmd += '\n';
+	cmd += 'start c:\\temp\\sean\\sg\\'+path;
+	cmd += '\n';
+	cmd += 'choice /N /T 10 /D Y >nul  2>&1';
+	GM_setClipboard(cmd);
+	GM_log(cmd);
 }
 
 function getPhotos() {
