@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.1.8-1734
+@version        2020.1.29-1121
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -10,7 +10,10 @@
 		font-family: Inter UI,Libre Frankin !important;
 	}
 
-	.popularity_div,.sinner_under_footer,
+/*
+*/
+	.popularity_div,
+	.sinner_under_footer,
 	.ad_title,
 	.block_article_ad,
 	.mobile_leaderboard_ad,
@@ -36,19 +39,11 @@
 		background-color: #000 !important;
 		font-weight: bold !important;
 	}
-
+	
 	.article_no_thumbnail {
 		margin: 0 !important;
-		padding: 0 0 0 10px !important;
+		padding: 0 0 0 0px !important;
 		border-bottom: 1px solid #666 !important;
-	}
-
-	.article_stripe {
-		background-color: #f00 !important;
-	}
-
-	.article_stripe_read {
-		background-color: #aaa !important;
 	}
 
 	.article_header {
@@ -69,15 +64,23 @@
 	.article_header_pane_left {
 		margin-bottom: -18px !important;
 	}
+
 	.article_header_pane_right {
-		margin-left: 30px !important;
+		margin-left: 58px !important;
 		margin-right: 23px !important;
 	}
 
-
+	.column_view_title {
+		position: relative !important;
+		top: 0px !important;
+		left: 0px !important;
+	}
+	
 	.column_view_info {
-		margin-left: -40px !important;
-		max-width: 40px !important;
+		width: 100% !important;
+		margin-left: -60px !important;
+		margin-top: -18px !important;
+		max-width: 60px !important;
 	}
 	
 	.feed_favicon {
@@ -85,14 +88,14 @@
 		margin-right: 0 !important;
 	}
 
-	.article_favicon {
-		margin:-19px 1px 0px !important;
+	.article_favicon,.article_unread_dot,.article_feed_favicon {
+		margin: 0px 1px 0px !important;
 	}
 
-
 	.column_view_info .header_date {
-		margin-top: -10px !important;
+		margin-top: 8px !important;
 		margin-bottom: 3px !important;
+		position: relative !important;
 		font-size: 8px !important;
 		color: #666 !important;
 		line-height: 10px !important;
@@ -100,9 +103,7 @@
 
 	.column_view_info .article_feed_title {
 		display: none !important;
-		margin-top: -2px !important;
 	}
-
 	.arrow_div {
 		background-color: transparent !important;
 	}
@@ -150,14 +151,14 @@
 	.article_title {
 		font-size: 16px !important;
 		font-weight: 600 !important;
-		margin: 27px 0 0 0 !important;
+		margin: 0px 0 0 0 !important;
 		padding: 3px 0px 3px 10px !important;
 		background-color: #eee !important;
 		border: 1px solid #bbb !important;
 	}
 
 	.article_sub_title {
-		top: 38px !important;
+		top: 22px !important;
 		right: 15px !important;
 		position: fixed !important;
 		z-index: 70 !important;
@@ -253,4 +254,5 @@
 		overflow: auto !important;
 		border: 1px solid #ccc !important;
 	}
+	
 }
