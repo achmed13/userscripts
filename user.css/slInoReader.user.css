@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.1.29-1121
+@version        2020.1.30-1431
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -184,8 +184,10 @@
 	.article_content video {
 		max-width: 100% !important;
 		display: table-cell;
+		
 		padding: 0 5px 5px 0 !important;
-	}
+		max-height: calc((100vh - 140px)) !important;
+}
 
 	/* img, video {max-width:100% !important;max-height:calc((100vh - 100px)*.95) !important;} */
 	/* Reddit Images */
