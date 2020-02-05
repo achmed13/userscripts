@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.1.30-1431
+@version        2020.2.5-1245
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -24,6 +24,12 @@
 	/* Tree Pane */
 	#tree_pane{
 		width: 200px !important;
+	}
+	#sb_tree_part{
+		width:207px !important;
+	}
+	#sb_reading_part{
+		width: calc(100% - 207px) !important;
 	}
 	/* List Pane */
 	#reader_pane {
