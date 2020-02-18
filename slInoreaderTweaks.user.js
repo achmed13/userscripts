@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2019.12.26-1226
+// @version       2020.2.18-1037
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -191,18 +191,20 @@ var articleObserver = new MutationObserver(function (mutations) {
 		var done = false;
 		// document.title = 'Inoreader - ' + document.title;
 
-		var content = e.target.querySelector('.article_content');
+		let content = e.target.querySelector('.article_content');
 		if (content) {
 			if (content.classList.contains('splDone')) {
 				return;
 			}
-			var s = content.parentNode.querySelector('.article_title');
-			var f = content.parentNode.querySelector('.article_sub_title a[title="Go to feed"]');
-			var c = 0;
+			let s = content.parentNode.querySelector('.article_title');
+			let f = content.parentNode.querySelector('.article_sub_title a[title="Go to feed"]');
+			let c = 0;
 			if (f) {
 				c = getHue(f.innerHTML.trim());
 			}
-			content.parentNode.querySelector('.article_footer').style.background = 'hsl(' + c + ',95%,90%)';
+			if(s && c){
+				s.style.backgroundColor = 'hsl(' + c + ',95%,90%)';
+			}
 
 // 			// ****************************************
 // 			// ***** Embedded Facebook *****
@@ -330,6 +332,9 @@ var articleObserver = new MutationObserver(function (mutations) {
 							} else {
 								i.style.width = '350px';
 							}
+						}
+						if (i.src.match(/(i\.redd\.it)|(imgur)/)) {
+							i.classList.add('splRedditImg');
 						}
 					});
 				}

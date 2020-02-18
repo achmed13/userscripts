@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.2.5-1245
+@version        2020.2.18-1105
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -83,21 +83,25 @@
 	}
 	
 	.column_view_info {
-		width: 100% !important;
 		margin-left: -60px !important;
 		margin-top: -18px !important;
 		max-width: 60px !important;
 	}
 	
 	.feed_favicon {
-		margin-left: 0 !important;
-		margin-right: 0 !important;
+		margin: 0 0 !important;
 	}
 
 	.article_favicon,.article_unread_dot,.article_feed_favicon {
 		margin: 0px 1px 0px !important;
 	}
 
+	.article_unread_dot .article_unread_dot_internal {
+		opacity:0;
+	}
+	.article_unreaded .article_unread_dot_internal {
+		opacity:1 !important;
+	}
 	.column_view_info .header_date {
 		margin-top: 8px !important;
 		margin-bottom: 3px !important;
@@ -152,6 +156,8 @@
 
 	.article_title_link {
 		font-weight: unset !important;
+		max-width: calc(100% - 400px) !important;
+		display: inline-block !important;
 	}
 
 	.article_title {
@@ -159,17 +165,37 @@
 		font-weight: 600 !important;
 		margin: 0px 0 0 0 !important;
 		padding: 3px 0px 3px 10px !important;
-		background-color: #eee !important;
+		/* background-color: #eee !important; */
 		border: 1px solid #bbb !important;
+		min-height:18px !important;
 	}
 
 	.article_sub_title {
-		top: 22px !important;
-		right: 15px !important;
+		top: 30px !important;
+		right: 0px !important;
 		position: fixed !important;
 		z-index: 70 !important;
 	}
 
+	.article_author, .article_microblog_author_title {
+		display:inline-block !important;
+		float:right !important;
+		text-align:right !important;
+		font-size:9px !important;
+		line-height:9px !important;
+		max-width: 400px !important;
+	}
+	
+	.article_author .feed_favicon {
+		margin: 2px 0 0 !important;
+		height:18px !important;
+		width:auto !important;
+	}
+
+	.article_sub_title_author_picture{
+		max-height:22px !important;
+		width:auto !important;
+	}
 	.article_content {
 		font-size: 16px !important;
 		font-weight: 400 !important;
