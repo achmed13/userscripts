@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slSG
-// @version       2020.1.9-931
+// @version       2020.2.18-1349
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slSG.user.js
@@ -14,19 +14,20 @@
 // @grant         GM_getValue
 // @grant         GM_setClipboard
 // @grant         GM_download
-
 // ==/UserScript==
+
 var photos = new Array();
 var firstRun = true;
-// GM_setValue('lastSet','https://www.suicidegirls.com/members/dacay/album/3517230/brown-sofa/');
+// GM_setValue('lastSet','https://www.suicidegirls.com/members/ellared/album/4240702/notorious/');
 var lastSet = GM_getValue('lastSet', 'none');
 console.log('last: ' + lastSet);
 var lastIndex = GM_getValue('lastIndex', 'none');
 var indexURL = document.location.href;
 if(indexURL.match('spl')){
-	document.location.href = lastIndex;
+	document.location.href = lastIndex ;
 }
 var path = '';
+var bFound = false;
 
 function doDownload() {
 	var m = document.title.replace(/ Photo Album.*/, '');
@@ -43,7 +44,7 @@ function doDownload() {
 			t += i;
 			path = m + '\\';
 			var dl = t + '.jpg';
-			//            dl = dl.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+			// dl = dl.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
 			l.title = t;
 			l.download = dl;
 			var p = {
@@ -51,7 +52,7 @@ function doDownload() {
 				name: dl
 			};
 			photos.push(p);
-			//            GM_download(l.href,dl);
+			// GM_download(l.href,dl);
 			i++;
 		}
 	}
@@ -59,23 +60,13 @@ function doDownload() {
 };
 
 function doDownloadSet(photos) {
-// 	var p = photos.pop();
-// 	//    console.log(url);
-// 	if (!p) {
-// 		return;
-// 	}
-// 	GM_download(p.url,p.name);
-// 	if (photos.length > 0) {
-// 		setTimeout(doDownloadSet, 70, photos);
-// // 		GM_log(p);
-// 	}
 	let cmd = 'cd c:\\temp\\sean\\sg';
 	cmd += '\n';
 	cmd += 'curl --create-dirs --parallel --parallel-max '+(photos.length+1);
 	for(var p of photos){
 		cmd += ' --url "'+p.url+'"';
 		cmd += ' --output "'+path+p.name+'"';
-// 		cmd += ' --time-cond "'+path+p.name+'"';
+		// 		cmd += ' --time-cond "'+path+p.name+'"';
 	}
 	cmd += '\n';
 	cmd += 'start c:\\temp\\sean\\sg\\'+path;
@@ -98,17 +89,15 @@ for (var i = 0; i < sets.length; i++) {
 }
 
 var listObserver = new MutationObserver(function (mutations) {
-		mutations.forEach(function (e) {
-			var stories = e.target.querySelectorAll('article section a');
-
-			stories.forEach(function (s) {
-				// console.log('added: '+s.href);
-				if (s.href == lastSet) {
-					s.parentNode.parentNode.classList.add('splFound');
-				}
-			});
+	mutations.forEach(function (e) {
+		var stories = e.target.querySelectorAll('article section a');
+		stories.forEach(function (s) {
+			if (s.href == lastSet) {
+				s.parentNode.parentNode.classList.add('splFound');
+			}
 		});
 	});
+});
 
 listObserver.observe(document.getElementById('content-container'), {
 	attributes: false,
@@ -133,7 +122,6 @@ function openSets() {
 			i = links.length + 1;
 		} else {
 			sets.push(link.href);
-			//       setTimeout(GM_openInTab(link.href,true),500*i);
 		}
 	}
 	doOpenSet(sets);
@@ -148,7 +136,7 @@ function doOpenSet(sets) {
 	GM_openInTab(url, true);
 	if (sets.length > 0) {
 		setTimeout(doOpenSet, 600, sets);
-		//        console.log('loop');
+		// console.log('loop');
 	}
 }
 
@@ -168,7 +156,7 @@ document.addEventListener('keydown', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
 		// getDTA();
-		//        doDownload();
+		// doDownload();
 		doDownloadSet(photos);
 	}
 	if (key == 'A') {
@@ -194,3 +182,4 @@ function selectNodes(context, xpath) {
 	}
 	return result;
 }
+

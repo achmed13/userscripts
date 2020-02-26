@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.2.18-1105
+@version        2020.2.26-1230
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -156,34 +156,42 @@
 
 	.article_title_link {
 		font-weight: unset !important;
-		max-width: calc(100% - 400px) !important;
 		display: inline-block !important;
+		overflow: hidden !important;
+		/*
+		max-width: calc(100% - 250px) !important;
+		 */
 	}
 
 	.article_title {
 		font-size: 16px !important;
 		font-weight: 600 !important;
 		margin: 0px 0 0 0 !important;
-		padding: 3px 0px 3px 10px !important;
+		padding: 3px 3px 3px 10px !important;
 		/* background-color: #eee !important; */
 		border: 1px solid #bbb !important;
 		min-height:18px !important;
 	}
 
 	.article_sub_title {
+		margin-top:5px !important;
+		/*
+		position: fixed !important;
 		top: 30px !important;
 		right: 0px !important;
-		position: fixed !important;
 		z-index: 70 !important;
+		*/
 	}
 
 	.article_author, .article_microblog_author_title {
+		/*
 		display:inline-block !important;
 		float:right !important;
 		text-align:right !important;
-		font-size:9px !important;
-		line-height:9px !important;
-		max-width: 400px !important;
+		max-width: 220px !important;
+		*/
+		font-size:11px !important;
+		line-height:11px !important;
 	}
 	
 	.article_author .feed_favicon {
@@ -196,6 +204,11 @@
 		max-height:22px !important;
 		width:auto !important;
 	}
+
+	.article_footer_placeholder_middle{
+		margin-bottom: 0px !important;
+	}
+	
 	.article_content {
 		font-size: 16px !important;
 		font-weight: 400 !important;
