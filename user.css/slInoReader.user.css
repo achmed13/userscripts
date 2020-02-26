@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.2.26-1230
+@version        2020.2.26-1734
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -21,7 +21,9 @@
 		display: none !important;
 	}
 
-	/* Tree Pane */
+/***************************************/
+/* Tree Pane */
+/***************************************/
 	#tree_pane{
 		width: 200px !important;
 	}
@@ -31,7 +33,10 @@
 	#sb_reading_part{
 		width: calc(100% - 207px) !important;
 	}
-	/* List Pane */
+
+/***************************************/
+/* List Pane */
+/***************************************/
 	#reader_pane {
 		width: 550px !important;
 		left:205px !important;
@@ -123,7 +128,7 @@
 	.article_current .article_feed_title,
 	.article_current .header_date {
 		color: #fff !important;
-		background-color: #555 !important;
+		background-color: #666 !important;
 	}
 
 	#no_more_div {
@@ -131,11 +136,17 @@
 		line-height: 50px !important;
 	}
 
+	#column-resizer.ui-sidebar{
+		width:0 !important;
+	}
 	#column-resizer:after{
-		left: -12px !important;
+		left: -14px !important;
 		display: none !important;
 	}
-	/* Article */
+	
+/***************************************/
+/* Article */
+/***************************************/
 	#three_way_contents {
 		padding: 0 !important;
 		/*margin-left: 28px !important;*/
@@ -164,17 +175,20 @@
 	}
 
 	.article_title {
+		line-height:16px !important;
 		font-size: 16px !important;
 		font-weight: 600 !important;
-		margin: 0px 0 0 0 !important;
+		margin: 0 !important;
 		padding: 3px 3px 3px 10px !important;
 		/* background-color: #eee !important; */
-		border: 1px solid #bbb !important;
-		min-height:18px !important;
+		border: .5px solid #888 !important;
+		min-height:16px !important;
 	}
 
 	.article_sub_title {
-		margin-top:5px !important;
+		margin-top:0px !important;
+		background-color: #eee !important;
+		border:.5px solid #bbb !important;
 		/*
 		position: fixed !important;
 		top: 30px !important;
