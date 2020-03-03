@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2020.2.18-1037
+// @version       2020.3.3-1725
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -8,8 +8,9 @@
 // @icon          http://seanloos.com/icons/sean.png
 // @require		  https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
 // @include       *inoreader.com*
-// @run-at		  document-end
+// @run-at		  document-idle
 // @grant         GM_openInTab
+// @nocompat Chrome
 // @noframes
 // ==/UserScript==
 
@@ -129,28 +130,6 @@ function doClick(elem) {
 	evt.initEvent('click', true, true);
 	elem.dispatchEvent(evt);
 }
-
-var listObserver = new MutationObserver(function (mutations) {
-	mutations.forEach(function (e) {
-		var stories = e.target.querySelectorAll('.article_no_thumbnail');
-		// console.log(e);
-		stories.forEach(function (s) {
-			var f = s.querySelector('.article_feed_title');
-			var c = 0;
-			if (f) {
-				c = getHue(f.innerHTML.trim());
-			}
-			s.style.background = 'hsl(' + c + ',95%,90%)';
-		});
-	});
-});
-
-listObserver.observe(document.getElementById('reader_pane'), {
-	attributes: false,
-	childList: true,
-	characterData: false,
-	subtree: false
-});
 
 function getHue(title) {
 	var hue = 0;
@@ -393,4 +372,33 @@ articleObserver.observe(document.getElementById('three_way_contents'), {
 	characterData: false,
 	subtree: false
 });
+
+function colorTitles(baseNode=document){
+	let stories = baseNode.querySelectorAll('.article_no_thumbnail');
+	stories.forEach(function (s) {
+// 		console.log(s);
+		let f = s.querySelector('.article_feed_title');
+		let c = 0;
+		if (f) {
+			c = getHue(f.innerHTML.trim());
+		}
+		s.style.background = 'hsl(' + c + ',95%,90%)';
+	});
+}
+
+var listObserver = new MutationObserver(function (mutations) {
+	mutations.forEach(function (e) {
+		if(e.addedNodes.length > 0){
+			colorTitles(e.target);
+		}
+	});
+});
+
+listObserver.observe(document.getElementById('reader_pane'), {
+	attributes: false,
+	childList: true,
+	characterData: false,
+	subtree: false
+});
+
 
