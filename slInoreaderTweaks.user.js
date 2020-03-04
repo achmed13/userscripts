@@ -1,12 +1,11 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2020.3.3-1725
+// @version       2020.3.4-1556
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
 // @author        Sean Loos
 // @icon          http://seanloos.com/icons/sean.png
-// @require		  https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
 // @include       *inoreader.com*
 // @run-at		  document-idle
 // @grant         GM_openInTab
@@ -15,27 +14,23 @@
 // ==/UserScript==
 
 'use strict';
-this.$ = this.jQuery = jQuery.noConflict(true);
 document.title = 'Inoreader - ' + document.title;
 
-var js = document.createElement('script');
+let js = document.createElement('script');
 js.src = '//platform.twitter.com/widgets.js';
 (document.body || document.head || document.documentElement).appendChild(js);
 
-$(document).keyup(function(e){
-	var vKey = e.which;
-// 	console.log('keyup: '+ key);
-	var key = String.fromCharCode(vKey).toUpperCase();
+document.addEventListener('keyup', function (e) {
+	let vKey = e.which;
+	let key = String.fromCharCode(vKey).toUpperCase();
 	if (key == 'F' && !e.ctrlKey && !e.altKey) {
 		e.stopImmediatePropagation();
 		e.preventDefault();
 		e.stopPropagation();
-// 		 console.log('next');
 		goNext();
 		return;
 	}
 	if (key == 'A' && e.altKey) {
-// 		 console.log('alt+a');
 		e.preventDefault();
 		e.stopPropagation();
 		simulateKey("a","down",{shiftKey:true});
@@ -44,18 +39,14 @@ $(document).keyup(function(e){
 	}
 });
 
-$(document).keydown(function(e){
+document.addEventListener('keydown', function (e) {
 	if ( /INPUT|SELECT|TEXTAREA|CANVAS/i.test(e.target.tagName) ) {
-		//  console.log('dump out');
 		return true;
 	}
-// 	console.log('keydown',{ e });
-
 	//Identifies the key
-	var vKey = e.which;
+	let vKey = e.which;
+	let key = String.fromCharCode(vKey).toUpperCase();
 
-	var key = String.fromCharCode(vKey).toUpperCase();
-// 	console.log('keydown: '+ key);
 	if (key == 'W' && !e.ctrlKey && !e.altKey) {
 		e.stopImmediatePropagation();
 		e.preventDefault();
@@ -94,7 +85,7 @@ $(document).keydown(function(e){
 
 
 function openArticle(backgroundTab) {
-	var l = document.querySelector('.article_current .column_view_title a');
+	let l = document.querySelector('.article_current .column_view_title a');
 	if (l) {
 		GM_openInTab(l.href, backgroundTab);
 	} else {
@@ -108,7 +99,7 @@ function goNext() {
 }
 
 function checkAlbum() {
-	var spa = document.querySelector('.article_content #splAlbum');
+	let spa = document.querySelector('.article_content #splAlbum');
 	if (spa) {
 		spa.removeAttribute('id');
 		openArticle(true);
@@ -126,49 +117,49 @@ function openYouTube() {
 }
 
 function doClick(elem) {
-	var evt = document.createEvent('MouseEvents');
+	let evt = document.createEvent('MouseEvents');
 	evt.initEvent('click', true, true);
 	elem.dispatchEvent(evt);
 }
 
 function getHue(title) {
-	var hue = 0;
-	var l = 0;
-	var cc = 0;
+	let hue = 0;
+	let l = 0;
+	let cc = 0;
 	for (l = 0; cc = title.charCodeAt(l); l++) {
 		hue += cc;
 	}
 	hue %= 360;
 	return hue;
 }
-/**
+
+/********************************************
  * Simulate a key event.
  * @param {Number} keyCode The keyCode of the key to simulate
  * @param {String} type (optional) The type of event : down, up or press. The default is down
  * @param {Object} modifiers (optional) An object which contains modifiers keys { ctrlKey: true, altKey: false, ...}
- */
+ ********************************************/
 function simulateKey (key, type, modifiers) {
 	var evtName = (typeof(type) === "string") ? "key" + type : "keydown";
 	var modifier = (typeof(modifiers) === "object") ? modifier : {};
 	var keyCode = (typeof(key) === "string") ? key.toUpperCase().charCodeAt(0) : key;
-	var options = {
+	let options = {
 		"keyCode": keyCode
 		,"cancelable":false
 		,"bubbles":true
 	}
-	for (var i in modifiers) {
+	for (let i in modifiers) {
 		options[i] = modifiers[i];
 	}
-	var event = new KeyboardEvent(evtName,options);
-	// 	console.log(event);
+	let event = new KeyboardEvent(evtName,options);
 	document.dispatchEvent(event);
 }
 
 // create an observer instance
-var articleObserver = new MutationObserver(function (mutations) {
+let articleObserver = new MutationObserver(function (mutations) {
 	mutations.forEach(function (e) {
-		var done = false;
-		// document.title = 'Inoreader - ' + document.title;
+		let done = false;
+		document.title = 'Inoreader - ' + document.title;
 
 		let content = e.target.querySelector('.article_content');
 		if (content) {
@@ -185,36 +176,14 @@ var articleObserver = new MutationObserver(function (mutations) {
 				s.style.backgroundColor = 'hsl(' + c + ',95%,90%)';
 			}
 
-// 			// ****************************************
-// 			// ***** Embedded Facebook *****
-// 			// ****************************************
-// 			var m = document.getElementById('fb-root');
-// 			if (m) {
-// 				var js = document.createElement('script');
-// 				js.id = 'facebook-jssdk';
-// 				js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
-// 				var v = content.querySelector('.fb-video');
-// 				var p = content.querySelector('.fb-post');
-// 				if (v) {
-// 					var vid = content.innerHTML.match(/cite=.*?com(.*?)"/)[1];
-// 					v.outerHTML = v.outerHTML.replace('class="fb-video"', 'class="fb-video" data-allowfullscreen="1" data-href="' + vid + '?type=3"');
-// 					m.parentNode.insertBefore(js, m);
-// 				}
-// 				if (p) {
-// 					var post = content.innerHTML.match(/cite="(.*?)"/)[1];
-// 					p.outerHTML = p.outerHTML.replace('class="fb-post"', 'class="fb-post" data-href="' + post + '" data-width="500"');
-// 					m.parentNode.insertBefore(js, m);
-// 				}
-// 			}
-
 			// ****************************************
 			// ***** YouTube Links *****
 			// ****************************************
 			content.querySelectorAll('embed,iframe').forEach(function (em) {
 				if (em.src.match(/youtube/)) {
-					var rex = /.*(youtube)(-nocookie)?(\.com)?(\/|%2F)?(embed|v)?(\/|%2F)?(.*video-|.*v=)?([\w\d-]*).*/;
-					var rep = '//$1.com/watch?v=$8';
-					var yt = document.createElement('div');
+					let rex = /.*(youtube)(-nocookie)?(\.com)?(\/|%2F)?(embed|v)?(\/|%2F)?(.*video-|.*v=)?([\w\d-]*).*/;
+					let rep = '//$1.com/watch?v=$8';
+					let yt = document.createElement('div');
 					yt.innerHTML = '<a id="splYouTube" href="' + em.src.replace(rex, rep) + '" target="_blank" class="splYouTube">Watch on YouTube</a>';
 					em.style.border = '2px solid #f00';
 					em.parentNode.insertBefore(yt, em);
@@ -228,10 +197,10 @@ var articleObserver = new MutationObserver(function (mutations) {
 			// ****************************************
 			content.querySelectorAll('a').forEach(function (link) {
 				if (link.innerHTML.match(/\[link\]/)) {
-					var imgStyle = 'position:relative;z-index:100;width:auto;'; //max-width:'+wid+'px !important;max-height:' + hei + 'px;'
-					var img;
-					var img2;
-					var node = document.createElement('div');
+					let imgStyle = 'position:relative;z-index:100;width:auto;'; //max-width:'+wid+'px !important;max-height:' + hei + 'px;'
+					let img;
+					let img2;
+					let node = document.createElement('div');
 
 					// Youtube
 					if (link.href.match(/youtube\.com/)) {
@@ -258,14 +227,14 @@ var articleObserver = new MutationObserver(function (mutations) {
 					}
 					// gifv
 					else if ((link.href.match(/\.(jpg|gif|png)/) && !link.href.match(/\.gifv/)) || link.href.match(/reddituploads/)) {
-// 						img = link.href;
-// 						node.innerHTML = '<img src="' + img + '" class="splRedditImg">';
+						// 						img = link.href;
+						// 						node.innerHTML = '<img src="' + img + '" class="splRedditImg">';
 					}
 					// gfycat
 					else if (!link.href.match(/jpg|gif|png/) && link.href.match(/gfycat/)) {
 						img = link.href.match(/.*gfycat\.com\/([^\/"]+)/)[1];
-// 						console.log('gfycat: '+img);
-						$('iframe',content).hide();
+						// 						console.log('gfycat: '+img);
+						content.querySelector('iframe').style.visibility='hidden';
 						node.innerHTML = "<div style='position:relative;padding-bottom:calc(100% / 1.78)'><iframe src='//gfycat.com/ifr/" + img + "' frameborder='0' scrolling='no' width='100%' height='100%' style='position:absolute;top:0;left:0;' allowfullscreen></iframe></div>";
 					}
 					// Pornbot videos
@@ -286,18 +255,18 @@ var articleObserver = new MutationObserver(function (mutations) {
 							node.innerHTML = '<img src="' + img2 + '" class="splRedditImg">';
 						}
 					}
-// 							var innoImage = $("a img",content);
-// 							innoImage.each((key,value) => {
-// // 								console.log({ value });
-// 								if(value.dataset.originalSrc.match(/redd\.it/gi)){
-// 									value.classList.add('splInnoImage');
-// // 									node.innerHTML = '';
-// 								}
-// 							});
+					// 							let innoImage = $("a img",content);
+					// 							innoImage.each((key,value) => {
+					// // 								console.log({ value });
+					// 								if(value.dataset.originalSrc.match(/redd\.it/gi)){
+					// 									value.classList.add('splInnoImage');
+					// // 									node.innerHTML = '';
+					// 								}
+					// 							});
 
 					content.insertBefore(node, content.firstChild);
 
-					var icon = document.createElement('img');
+					let icon = document.createElement('img');
 					icon.src = '//www.google.com/s2/favicons?domain=' + link.href.match(/.*:\/\/(.*?)\//)[1];
 					icon.classList.add('splFavIcon');
 					link.parentNode.insertBefore(icon, link);
@@ -305,7 +274,7 @@ var articleObserver = new MutationObserver(function (mutations) {
 
 					content.querySelectorAll('img').forEach(function (i) {
 						if (i.src.match(/.*thumbs\.reddit.*/)) {
-// 						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/(.*thumbs\.reddit.*)|(.*imgur.*)/)) {
+							// 						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/(.*thumbs\.reddit.*)|(.*imgur.*)/)) {
 							if (img || img2) {
 								i.style.display = "none";
 							} else {
@@ -327,7 +296,7 @@ var articleObserver = new MutationObserver(function (mutations) {
 			//                // ****************************************
 			//                // ***** Gawker double image *****
 			//                // ****************************************
-			//                var dupimg = content.querySelector('img[src*="fl_progressive"]:first-of-type');
+			//                let dupimg = content.querySelector('img[src*="fl_progressive"]:first-of-type');
 			//                if(dupimg && dupimg.nextSibling.tagName=='IMG'){
 			//                    dupimg.classList.add('dupimg');
 			//                }
@@ -342,13 +311,13 @@ var articleObserver = new MutationObserver(function (mutations) {
 			// ***** Embedded Tweets *****
 			// ****************************************
 			if (content.innerHTML.match(/twitter\-tweet/i)) {
-				var ch = content.innerHTML;
+				let ch = content.innerHTML;
 				ch = ch.replace(/&lt;/g, '<');
 				ch = ch.replace(/&gt;/g, '>');
 				content.innerHTML = ch;
 			}
 			//content.innerHTML = content.innerHTML.replace(/([^"'].*?)(http.*?twitter.*?status.*)([^0-9]?)/gi,'$1<blockquote class="twitter-tweet"><a href="$2">$2</a></blockquote>$3');
-			var bq = content.querySelectorAll('blockquote');
+			let bq = content.querySelectorAll('blockquote');
 			if (bq) {
 				bq.forEach(function (b) {
 					if (b.innerHTML.match(/twitter.*?status.*?>/i)) {
@@ -356,7 +325,7 @@ var articleObserver = new MutationObserver(function (mutations) {
 					}
 				});
 
-				var script = document.createElement('script');
+				let script = document.createElement('script');
 				script.appendChild(document.createTextNode('(function(){twttr.widgets.load(document.querySelector(\'.article_content\'));})();'));
 				content.appendChild(script);
 			}
@@ -373,24 +342,25 @@ articleObserver.observe(document.getElementById('three_way_contents'), {
 	subtree: false
 });
 
-function colorTitles(baseNode=document){
-	let stories = baseNode.querySelectorAll('.article_no_thumbnail');
-	stories.forEach(function (s) {
-// 		console.log(s);
-		let f = s.querySelector('.article_feed_title');
-		let c = 0;
-		if (f) {
-			c = getHue(f.innerHTML.trim());
+
+let colorTitles = (nodeList) => {
+	for(let i = 0;i < nodeList.length;i++){
+		let s = nodeList[i];
+		if(s.nodeType == 1){
+			let f = s.querySelector('.article_feed_title');
+			let c = 0;
+			if (f) {
+				c = getHue(f.innerHTML.trim());
+				s.style.background = 'hsl(' + c + ',95%,90%)';
+			}
 		}
-		s.style.background = 'hsl(' + c + ',95%,90%)';
-	});
+	}
 }
 
-var listObserver = new MutationObserver(function (mutations) {
+let listObserver = new MutationObserver(function (mutations) {
 	mutations.forEach(function (e) {
-		if(e.addedNodes.length > 0){
-			colorTitles(e.target);
-		}
+		let stories = e.target.querySelectorAll('.article_no_thumbnail'); // e.addedNodes;
+		colorTitles(stories);
 	});
 });
 
