@@ -1,15 +1,29 @@
 /* ==UserStyle==
 @name           slSwarmSim
-@version        2019.10.10-1117
+@version        2020.3.4-1151
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document url-prefix("https://www.swarmsim.com") {
-	body {
-		font-size: 12px !important;
+	.navbar {
+		margin-bottom:5px !important;
+		min-height:5px !important;
 	}
-
+	.navbar-brand{
+		height:auto !important;
+		padding:5px 15px !important;
+	}
+	
+	body {
+		font-size: 14px !important;
+	}
+	p{
+		margin: 0 0 5px !important;
+	}
+	.btn, th, td{
+		padding:5px !important;
+	}
 	@media (min-width: 1200px) {
 		.container {
 			width: 1200px !important;
