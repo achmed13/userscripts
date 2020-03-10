@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2020.3.4-1556
+// @version       2020.3.10-954
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -28,6 +28,7 @@ document.addEventListener('keyup', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
 		goNext();
+		colorTitles();
 		return;
 	}
 	if (key == 'A' && e.altKey) {
@@ -343,7 +344,10 @@ articleObserver.observe(document.getElementById('three_way_contents'), {
 });
 
 
-let colorTitles = (nodeList) => {
+let colorTitles = (nodeList = null) => {
+	if(!nodeList){
+		nodeList = document.getElementById('reader_pane').querySelectorAll('.article_no_thumbnail');
+	}
 	for(let i = 0;i < nodeList.length;i++){
 		let s = nodeList[i];
 		if(s.nodeType == 1){
