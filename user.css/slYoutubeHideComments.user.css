@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slYoutubeHideComments
-@version        2019.2.20-1210
+@version        2020.4.2-2030
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -21,7 +21,7 @@
 		left: 0 !important;
 		margin-left: 15% !important;
 	} */
-	#comments {
+	#comments,#watch-discussion {
 		display: none !important;
 	}
 

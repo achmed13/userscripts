@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.2.26-1734
+@version        2020.3.24-1027
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -149,7 +149,6 @@
 /***************************************/
 	#three_way_contents {
 		padding: 0 !important;
-		/*margin-left: 28px !important;*/
 	}
 
 	.article_full_contents {
@@ -169,9 +168,6 @@
 		font-weight: unset !important;
 		display: inline-block !important;
 		overflow: hidden !important;
-		/*
-		max-width: calc(100% - 250px) !important;
-		 */
 	}
 
 	.article_title {
@@ -180,30 +176,24 @@
 		font-weight: 600 !important;
 		margin: 0 !important;
 		padding: 3px 3px 3px 10px !important;
-		/* background-color: #eee !important; */
 		border: .5px solid #888 !important;
 		min-height:16px !important;
+		position:sticky;
+		top:0px;
+		width:inherit;
+		z-index:555;
 	}
 
 	.article_sub_title {
 		margin-top:0px !important;
 		background-color: #eee !important;
 		border:.5px solid #bbb !important;
-		/*
-		position: fixed !important;
-		top: 30px !important;
-		right: 0px !important;
-		z-index: 70 !important;
-		*/
+		position: sticky !important;
+		top:25px;
+		z-index:554;
 	}
 
 	.article_author, .article_microblog_author_title {
-		/*
-		display:inline-block !important;
-		float:right !important;
-		text-align:right !important;
-		max-width: 220px !important;
-		*/
 		font-size:11px !important;
 		line-height:11px !important;
 	}
@@ -230,6 +220,7 @@
 		margin: 0 !important;
 		padding: 10px !important;
 		color: #000 !important;
+		position:relative;
 	}
 	.article_content p {
 		margin: 0 !important;
@@ -248,7 +239,6 @@
 		max-height: calc((100vh - 140px)) !important;
 }
 
-	/* img, video {max-width:100% !important;max-height:calc((100vh - 100px)*.95) !important;} */
 	/* Reddit Images */
 	.splRedditImg {
 		position: relative !important;
@@ -291,9 +281,6 @@
 		max-width: 700px !important;
 	}
 
-	/* BoingBoing duplicate gif
-	img.alignnone.size-full {display:none !important;}
-	*/
 	/* Gawker Dup Image */
 	.dupimg {
 		display: none !important;
@@ -309,11 +296,13 @@
 	}
 
 	/* Instagram Embeds */
+	/*
 	.spl_ig {
 		width: 400px !important;
 		min-height: 550px !important;
 		overflow: auto !important;
 		border: 1px solid #ccc !important;
 	}
+	*/
 	
 }
