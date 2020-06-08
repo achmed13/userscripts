@@ -1,0 +1,14 @@
+/* ==UserStyle==
+@name           slGoogleFormDate
+@version        2020.6.3-1243
+@namespace      seanloos.com
+@description    make google form date field wide enough to view
+@author         Sean Loos
+@homepageURL    https://github.com/achmed13/userscripts/
+==/UserStyle== */
+
+@-moz-document url-prefix("https://docs.google.com/forms/d/e/1FAIpQLSeDEcw9MwGtnLVRxTMYxj37zpRAk9ynPEIBJJT2rYLFp-Rvqg/viewform") {
+	input[type="date"]{
+		min-width:130px !important;
+	}
+}

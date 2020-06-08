@@ -1,12 +1,14 @@
 /* ==UserStyle==
 @name           slSG
-@version        2018.9.12-1742
+@version        2020.6.8-1418
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document domain("suicidegirls.com") {
-	#main-header {
+	#main-header,
+	.span1-2,
+	footer {
 		display: none !important;
 	}
 
