@@ -22,7 +22,6 @@
 [slYoutubeEmbed.user.js](/../../raw/master/slYoutubeEmbed.user.js)  
 [slYoutubeRemoveRedirect.user.js](/../../raw/master/slYoutubeRemoveRedirect.user.js)  
 
-switched to ppk
 ---  
 # userstyles
 ---
