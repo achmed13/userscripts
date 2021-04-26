@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name			slPaperclips
-// @version			2019.3.19-1635
+// @version			2021.4.26-1425
 // @namespace		seanloos.com
 // @icon			http://seanloos.com/icon.png
 // @homepageURL		https://seanloos.com/userscripts/
 // @author			Sean Loos
 // @description
-// @match			http://www.decisionproblem.com/paperclips/index2.html
+// @match			https://www.decisionproblem.com/paperclips/index2.html
 // @grant			none
 // ==/UserScript==
 
@@ -34,13 +34,13 @@ document.addEventListener('keydown',function(e){
 	// paperclips
 	if(key == 'Q'){
 		e.preventDefault();
-		clipClick(100000);
+		clipClick(1000);
 		return;
 	}
 	// wire
 	if(key == 'W'){
 		e.preventDefault();
-		doClicks('btnBuyWire',100);
+		doClicks('btnBuyWire',10);
 		return;
 	}
 
@@ -163,7 +163,7 @@ document.addEventListener('keydown',function(e){
 	if(key == 'H'){
 		e.preventDefault();
 		var ele = document.getElementById('btnMakeProbe');
-		for( i=0;i<50000;i++){
+		for( i=0;i<1000;i++){
 			ele.click();
 		}
 	}
@@ -191,19 +191,21 @@ document.addEventListener('keydown',function(e){
 		doClicks('btnIncreaseMaxTrust',1);
 		return;
 	}
-	// go crazy
+	// Withdraw Investments
 	if(key == 'B'){
 		e.preventDefault();
-		goCrazy();
+		doClicks('btnWithdraw',1);
 		return;
 	}
 	// All
 	if(key == 'I'){
 		e.preventDefault();
-		var ms = 2000;
+		var ms = 500;
+		var msHarv = 4*ms;
+		var msWire = 6*ms;
 		getProbes('Fac',ms);
-		setTimeout(getProbes,ms*1.05,'Harv',ms*5);
-		setTimeout(getProbes,ms*6.05,'Wire',ms*5.1);
+		setTimeout(getProbes,ms*1.05,'Harv',msHarv);
+		setTimeout(getProbes,(ms+msHarv)*1.05,'Wire',msWire);
 	}
 
 },false);
@@ -219,6 +221,8 @@ function initKeyTips(){
 	addKeyTip('#btnBuyWire','w');
 	addKeyTip('#btnMakeClipper','a');
 	addKeyTip('#btnMakeMegaClipper','z');
+
+	addKeyTip('#btnWithdraw','b');
 
 	addKeyTip('#btnHarvesterx1000','f');
 	addKeyTip('#btnWireDronex1000','v');
@@ -321,7 +325,7 @@ function clickQuantum(){
 		quant += parseFloat(q.style.opacity);
 	}
 	if(quant > 0){
-		for(i=0;i<100;i++){
+		for(var i=0;i<100;i++){
 			document.getElementById('btnQcompute').click();
 		}
 		setTimeout(clickQuantum,100);
