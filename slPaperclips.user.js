@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slPaperclips
-// @version			2021.4.26-1425
+// @version			2021.5.21-1406
 // @namespace		seanloos.com
 // @icon			http://seanloos.com/icon.png
 // @homepageURL		https://seanloos.com/userscripts/
@@ -124,7 +124,12 @@ document.addEventListener('keydown',function(e){
 	// autoclipper
 	if(key == 'A'){
 		e.preventDefault();
-		doClicks('btnMakeClipper',clicks);
+		if(document.getElementById('megaClipperDiv').style.display!='none'){
+			doClicks('btnMakeMegaClipper',clicks);
+		}
+		else{
+			doClicks('btnMakeClipper',clicks);
+		}
 		return;
 	}
 	// mega clipper
