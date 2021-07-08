@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2020.3.24-1027
+@version        2021.7.2-1308
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -12,6 +12,9 @@
 
 /*
 */
+	.article_comment_bar.article_footer,
+	.article_create_annotation_link,
+	.article_social_bar.article_footer,
 	.popularity_div,
 	.sinner_under_footer,
 	.ad_title,
