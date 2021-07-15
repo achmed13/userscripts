@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2021.7.8-1555
+// @version       2021.7.15-1614
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -292,7 +292,7 @@ let articleObserver = new MutationObserver(function (mutations) {
 			// ****************************************
 			// ***** Instagram Embed *****
 			// ****************************************
-			content.innerHTML = content.innerHTML.replace(/<blockquote[\w\W]*?(http.*?instagram.*?\/p\/(.*?))[\/"'][\w\W]*?<\/blockquote>/gi, '<iframe class="spl_ig" src="$1/embed/captioned" scrolling="auto"></iframe><br/>$1<br/>');
+			// content.innerHTML = content.innerHTML.replace(/<blockquote[\w\W]*?(http.*?instagram.*?\/p\/(.*?))[\/"'][\w\W]*?<\/blockquote>/gi, '<iframe class="spl_ig" src="$1/embed/captioned" scrolling="auto"></iframe><br/>$1<br/>');
 
 			//                // ****************************************
 			//                // ***** Gawker double image *****
@@ -363,8 +363,9 @@ let colorTitles = (nodeList = null) => {
 
 let listObserver = new MutationObserver(function (mutations) {
 	mutations.forEach(function (e) {
-		let stories = e.target.querySelectorAll('.article_no_thumbnail'); // e.addedNodes;
-		colorTitles(stories);
+		setTimeout(colorTitles,500);
+		// let stories = e.target.querySelectorAll('.article_no_thumbnail'); // e.addedNodes;
+		// colorTitles(stories);
 	});
 });
 
