@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2021.7.15-1614
+// @version       2021.8.27-1624
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -20,6 +20,12 @@ let js = document.createElement('script');
 js.src = '//platform.twitter.com/widgets.js';
 (document.body || document.head || document.documentElement).appendChild(js);
 
+// if ('loading' == document.readyState) {
+//   alert("This script is running at document-start time.");
+// } else {
+//   alert("This script is running with document.readyState: " + document.readyState);
+// }
+
 document.addEventListener('keyup', function (e) {
 	let vKey = e.which;
 	let key = String.fromCharCode(vKey).toUpperCase();
@@ -28,7 +34,7 @@ document.addEventListener('keyup', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
 		goNext();
-		//colorTitles();
+		// colorTitles();
 		return;
 	}
 	if (key == 'A' && e.altKey) {
@@ -73,6 +79,7 @@ document.addEventListener('keydown', function (e) {
 		e.stopPropagation();
 		simulateKey('j', "down", {'shiftKey':true});
 		simulateKey('j', "up", {'shiftKey':true});
+		setTimeout(colorTitles,1000);
 		return;
 	}
 	if (key == 'Q') {
@@ -80,6 +87,7 @@ document.addEventListener('keydown', function (e) {
 		e.stopPropagation();
 		simulateKey('k', "down", {'shiftKey':true});
 		simulateKey('k', "up", {'shiftKey':true});
+		setTimeout(colorTitles,1000);
 		return;
 	}
 });
@@ -89,7 +97,7 @@ function openArticle(backgroundTab) {
 	let l = document.querySelector('.article_current .column_view_title a');
 	if (l) {
 		GM_openInTab(l.href, backgroundTab);
-	} else {
+	// } else {
 		//  console.log('***no link found***');
 	}
 }
@@ -167,6 +175,7 @@ let articleObserver = new MutationObserver(function (mutations) {
 			if (content.classList.contains('splDone')) {
 				return;
 			}
+
 			let s = content.parentNode.querySelector('.article_title');
 			let f = content.parentNode.querySelector('.article_sub_title a[title="Go to feed"]');
 			let c = 0;
@@ -375,5 +384,7 @@ listObserver.observe(document.getElementById('reader_pane'), {
 	characterData: false,
 	subtree: false
 });
+
+setTimeout(colorTitles,1500);
 
 
