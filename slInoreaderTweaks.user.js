@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2021.8.27-1624
+// @version       2021.8.30-1801
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -34,7 +34,7 @@ document.addEventListener('keyup', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
 		goNext();
-		// colorTitles();
+		colorTitles();
 		return;
 	}
 	if (key == 'A' && e.altKey) {
@@ -385,6 +385,6 @@ listObserver.observe(document.getElementById('reader_pane'), {
 	subtree: false
 });
 
-setTimeout(colorTitles,1500);
+setTimeout(colorTitles,2000);
 
 
