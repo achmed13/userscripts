@@ -1,5 +1,5 @@
-# userscripts
----
+# userscripts  
+  
 [slBlogHotkeys.user.js](/../../raw/master/slBlogHotkeys.user.js)  
 [slCookieClicker.user.js](/../../raw/master/slCookieClicker.user.js)  
 [slEroshare.user.js](/../../raw/master/slEroshare.user.js)  
@@ -21,7 +21,25 @@
 [slVidible.user.js](/../../raw/master/slVidible.user.js)  
 [slYoutubeEmbed.user.js](/../../raw/master/slYoutubeEmbed.user.js)  
 [slYoutubeRemoveRedirect.user.js](/../../raw/master/slYoutubeRemoveRedirect.user.js)  
-
+  
+  
 ---  
-# userstyles
----
+  
+  
+# userstyles  
+  
+[sGoogleFormDate.user.css](/../../raw/master/user.css/sGoogleFormDate.user.css)  
+[slInoReader.user.css](/../../raw/master/user.css/slInoReader.user.css)  
+[slKinjaDeals.user.css](/../../raw/master/user.css/slKinjaDeals.user.css)  
+[slLifehackerHideVideo.user.css](/../../raw/master/user.css/slLifehackerHideVideo.user.css)  
+[slNetvibes.user.css](/../../raw/master/user.css/slNetvibes.user.css)  
+[slNewser.user.css](/../../raw/master/user.css/slNewser.user.css)  
+[slPaperclips.user.css](/../../raw/master/user.css/slPaperclips.user.css)  
+[slReddit.user.css](/../../raw/master/user.css/slReddit.user.css)  
+[slSeanloosClean.user.css](/../../raw/master/user.css/slSeanloosClean.user.css)  
+[slSG.user.css](/../../raw/master/user.css/slSG.user.css)  
+[slSwarmSim.user.css](/../../raw/master/user.css/slSwarmSim.user.css)  
+[slUSAePay.user.css](/../../raw/master/user.css/slUSAePay.user.css)  
+[slVidble.user.css](/../../raw/master/user.css/slVidble.user.css)  
+[slYoutubeHideComments.user.css](/../../raw/master/user.css/slYoutubeHideComments.user.css)  
+

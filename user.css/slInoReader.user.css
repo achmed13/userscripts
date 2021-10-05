@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2021.7.2-1308
+@version        2021.10.5-1406
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -68,11 +68,12 @@
 	.article_header_text,
 	.article_header_text .article_header_title {
 		font-size: 13px !important;
-		font-weight: 400 !important;
+		font-weight: 500 !important;
 		line-height: 18px !important;
-		color: #000!important;
+		color: #111!important;
 		margin-top: 0px !important;
 		display: flex !important;
+		opacity:1 !important;
 	}
 
 	.article_header_pane_left {
