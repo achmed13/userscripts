@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2021.10.5-1406
+@version        2021.12.29-901
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -62,18 +62,19 @@
 
 	.article_header {
 		top: 0 !important;
-		padding: 5px 0 !important;
+		padding: 5px 0  !important;
 	}
 
 	.article_header_text,
 	.article_header_text .article_header_title {
 		font-size: 13px !important;
 		font-weight: 500 !important;
-		line-height: 18px !important;
+		line-height: 1.3em !important;
 		color: #111!important;
-		margin-top: 0px !important;
-		display: flex !important;
+		display: inline-block !important;
 		opacity:1 !important;
+		overflow: hidden;
+		padding-bottom: 5px;
 	}
 
 	.article_header_pane_left {
@@ -86,15 +87,15 @@
 	}
 
 	.column_view_title {
-		position: relative !important;
-		top: 0px !important;
+		margin-top: 2px !important;
 		left: 0px !important;
+		max-height: unset;
 	}
 	
 	.column_view_info {
 		margin-left: -60px !important;
-		margin-top: -18px !important;
-		max-width: 60px !important;
+		margin-top: -26px !important;
+		max-width: 60px !important; 
 	}
 	
 	.feed_favicon {
@@ -112,9 +113,9 @@
 		opacity:1 !important;
 	}
 	.column_view_info .header_date {
-		margin-top: 8px !important;
-		margin-bottom: 3px !important;
-		position: relative !important;
+		right: 0;
+		bottom: 0;
+		position: absolute !important;
 		font-size: 8px !important;
 		color: #666 !important;
 		line-height: 10px !important;
@@ -125,6 +126,9 @@
 	}
 	.arrow_div {
 		background-color: transparent !important;
+		right: 0;
+		top: 0;
+		position: absolute !important;
 	}
 
 	.article_current,
@@ -175,11 +179,10 @@
 	}
 
 	.article_title {
-		line-height:16px !important;
 		font-size: 16px !important;
 		font-weight: 600 !important;
 		margin: 0 !important;
-		padding: 3px 3px 3px 10px !important;
+		padding: 3px 3px 0px 10px !important;
 		border: .5px solid #888 !important;
 		min-height:16px !important;
 		position:sticky;

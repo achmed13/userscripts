@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slReddit
-@version        2021.10.8-1015
+@version        2021.10.11-954
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -66,6 +66,10 @@
         width: 100%;
         height: auto;
         max-height: 320px;
+    }
+    .thing {
+        width: 40vw;
+        float: left;
     }
     .entry.unvoted {
         float: left;

@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slRedditTweaks
-// @version			2021.10.8-1022
+// @version			2021.10.11-912
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
@@ -28,12 +28,15 @@ var thresholds = {
 	.95: '#7f7'
 };
 var fontFactor = 1;
-if (!goToURL()) {
-	show_images();
-	sizeThings();
-	highlightComments();
-	authorColor();
-}
+
+setTimeout(1000, () => {
+	if (!goToURL()) {
+		show_images();
+		sizeThings();
+		highlightComments();
+		authorColor();
+	}
+});
 
 document.addEventListener('keydown', function (e) {
 	// check to see if we are in a text box
@@ -68,36 +71,36 @@ document.addEventListener('keydown', function (e) {
 
 //-----functions-------
 function goToURL() {
-	//try {
-	var link = document.querySelector('p.title a');
-	//GM_log(link);
-	var linkParent = link.parentNode.innerHTML;
-	url = link.href;
-	toolbar = new RegExp(/this.href=\'(.*?)\'/i)
-		.test(linkParent) ? linkParent.match(/this.href=\'(.*?)\'/i)[1] : link.href;
-	var page = document.querySelector('span.pagename');
-	var domain = document.querySelector('span.domain');
-	var go = (history.length > 1 || page.innerHTML.match(new RegExp(document.location.href, 'i')) || domain.innerHTML.match(/(self\.|v\.redd\.it)/)) ? false : true;
-	var vid = false;
-	if (vid) {
-		var v = document.createElement('span');
-		v.innerHTML = '[VIDEO]';
-		v.style.backgroundColor = '#ff0';
-		v.style.color = '#000';
-		link.parentNode.appendChild(v);
-		link.style.backgroundColor = '#ff0';
+	try {
+		var link = document.querySelector('p.title a');
+		//GM_log(link);
+		var linkParent = link.parentNode.innerHTML;
+		url = link.href;
+		toolbar = new RegExp(/this.href=\'(.*?)\'/i)
+			.test(linkParent) ? linkParent.match(/this.href=\'(.*?)\'/i)[1] : link.href;
+		var page = document.querySelector('span.pagename');
+		var domain = document.querySelector('span.domain');
+		var go = (history.length > 1 || page.innerHTML.match(new RegExp(document.location.href, 'i')) || document.location.href.match(/submitted/) || domain.innerHTML.match(/(self\.|v\.redd\.it)/)) ? false : true;
+		var vid = false;
+		if (vid) {
+			var v = document.createElement('span');
+			v.innerHTML = '[VIDEO]';
+			v.style.backgroundColor = '#ff0';
+			v.style.color = '#000';
+			link.parentNode.appendChild(v);
+			link.style.backgroundColor = '#ff0';
+		}
+		if (go && !vid) {
+			url = imgurAlbum(url);
+			setTimeout(function (u) {
+				location.href = u
+			}, 1000, url);
+			return true;
+		}
+		return false;
+	} catch (e) {
+		console.log(e);
 	}
-	if (go && !vid) {
-		url = imgurAlbum(url);
-		setTimeout(function (u) {
-			location.href = u
-		}, 1000, url);
-		return true;
-	}
-	return false;
-	//} catch(e) {
-	//	GM_log(e.message + ' (' + e.fileName.replace(/.*\/(.*)/g,'$1') + ':' + e.lineNumber + ')');
-	//}
 }
 
 function imgurAlbum(url) {
