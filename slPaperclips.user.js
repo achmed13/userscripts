@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slPaperclips
-// @version			2021.5.21-1406
+// @version			2022.4.6-1219
 // @namespace		seanloos.com
 // @icon			http://seanloos.com/icon.png
 // @homepageURL		https://seanloos.com/userscripts/
@@ -205,9 +205,9 @@ document.addEventListener('keydown',function(e){
 	// All
 	if(key == 'I'){
 		e.preventDefault();
-		var ms = 500;
-		var msHarv = 4*ms;
-		var msWire = 6*ms;
+		var ms = 50;
+		var msHarv = 20*ms;
+		var msWire = 10*ms;
 		getProbes('Fac',ms);
 		setTimeout(getProbes,ms*1.05,'Harv',msHarv);
 		setTimeout(getProbes,(ms+msHarv)*1.05,'Wire',msWire);
