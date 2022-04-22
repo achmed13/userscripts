@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slPaperclips
-// @version			2022.4.6-1219
+// @version			2022.4.11-1415
 // @namespace		seanloos.com
 // @icon			http://seanloos.com/icon.png
 // @homepageURL		https://seanloos.com/userscripts/
@@ -154,13 +154,13 @@ document.addEventListener('keydown',function(e){
 	// harvester drone
 	if(key == 'F'){
 		e.preventDefault();
-		doClicks('btnHarvesterx1000',clicks);
+		doClicks('btnHarvesterx1000',clicks/10);
 		return;
 	}
 	// wire drone
 	if(key == 'V'){
 		e.preventDefault();
-		doClicks('btnWireDronex1000',clicks);
+		doClicks('btnWireDronex1000',clicks/10);
 		return;
 	}
 
@@ -205,9 +205,9 @@ document.addEventListener('keydown',function(e){
 	// All
 	if(key == 'I'){
 		e.preventDefault();
-		var ms = 50;
-		var msHarv = 20*ms;
-		var msWire = 10*ms;
+		var ms = 80;
+		var msHarv = 14*ms;
+		var msWire = 18*ms;
 		getProbes('Fac',ms);
 		setTimeout(getProbes,ms*1.05,'Harv',msHarv);
 		setTimeout(getProbes,(ms+msHarv)*1.05,'Wire',msWire);
