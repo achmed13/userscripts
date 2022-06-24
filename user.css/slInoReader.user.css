@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2021.12.29-901
+@version        2022.6.24-1723
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -75,6 +75,7 @@
 		opacity:1 !important;
 		overflow: hidden;
 		padding-bottom: 5px;
+		padding-left: 60px;
 	}
 
 	.article_header_pane_left {
@@ -93,8 +94,7 @@
 	}
 	
 	.column_view_info {
-		margin-left: -60px !important;
-		margin-top: -26px !important;
+		margin-top: -34px !important;
 		max-width: 60px !important; 
 	}
 	
@@ -110,7 +110,8 @@
 		opacity:0;
 	}
 	.article_unreaded .article_unread_dot_internal {
-		opacity:1 !important;
+		/* opacity:1 !important; */
+		opacity:0;
 	}
 	.column_view_info .header_date {
 		right: 0;
