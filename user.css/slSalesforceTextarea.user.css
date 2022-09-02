@@ -1,0 +1,15 @@
+/* ==UserStyle==
+@name           slSalesforceTextarea
+@version        2022.9.2-1426
+@description    enlarge textarea inputs
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+
+@-moz-document domain("oudolfgardendetroit.lightning.force.com") {
+    /* Insert code here... */
+	textarea{
+		min-height: 30em !important;
+	}
+}

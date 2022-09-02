@@ -1,27 +1,28 @@
 // ==UserScript==
-// @name			slYoutubeEmbed
-// @namespace		seanloos.com
-// @homepageURL		https://github.com/achmed13/userscripts/
-// @author			Sean Loos
-// @icon			http://seanloos.com/icon.png
-// @version			2018.08.16
-// @include			*
-// @exclude			*.youtube.*/*
-// @exclude			*.newsblur.*/*
-// @exclude			*.inoreader.*/*
-// @exclude			*.google.*/mail/*
-// @exclude			http*://console.developers.google.com/*
-// @exclude			*.facebook.com/*
-// @exclude			*.reddit.com/*
-// @require			http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
-// @run-at			document-end
-// @grant			GM_openInTab 
+// @name          slYoutubeEmbed
+// @namespace     seanloos.com
+// @homepageURL   http://seanloos.com/userscripts/
+// @updateURL     http://seanloos.com/userscripts/slYoutubeEmbed.user.js
+// @author        Sean Loos
+// @icon          http://seanloos.com/icon.png
+// @version       2020-12-01
+// @include       *
+// @exclude       *.youtube.*/*
+// @exclude       *.newsblur.*/*
+// @exclude       *.inoreader.*/*
+// @exclude       *.google.*/mail/*
+// @exclude       http*://console.developers.google.com/*
+// @exclude       *.facebook.com/*
+// @exclude       *.reddit.com/*
+// @require       http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
+// @run-at        document-end
+// @grant         GM_openInTab 
 // ==/UserScript==
 
 //var gotoURL = '';
 window.addEventListener ("load", init);
 function init(){
-	if (!document.body.innerHTML.match(/youtube(.*)\//i))	{
+	if (!document.body.innerHTML.match(/youtube(.*)\//i)){
 		return;
 	}
 	var found = false;
@@ -34,7 +35,7 @@ function init(){
 			if (o.src.match(/youtube(.*)\/(embed|v)\//i))
 			{
 				var url = o.src.replace(/\/(embed|v)\//i,'/watch?v=');
-				var url = url.replace('-nocookie','');
+				url = url.replace('-nocookie','');
 				var d = getDiv(url);
 				insertAfter(d,o);
 				//gotoURL = gotoURL == '' ? url : gotoURL;
@@ -45,14 +46,14 @@ function init(){
 		}
 	});
 
-	var vids = $('object');
+	vids = $('object');
 	vids.each(function(){
 		try{
 			var o = this;
 			if (o.data.match(/youtube(.*)\/v\//i))
 			{
 				var url = o.data.replace(/\/v\//i,'/watch?v=');
-				var url = url.replace('-nocookie','');
+				url = url.replace('-nocookie','');
 				var d = getDiv(url);
 				insertAfter(d,o);
 				//gotoURL = gotoURL == '' ? url : gotoURL;
