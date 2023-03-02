@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2023.2.24-1148
+@version        2023.3.2-1226
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -231,15 +231,12 @@
 		padding: 5px 15px !important;
 	}
 
-/*	.article_content img,
+	.article_content img,
 	.article_content video {
 		max-width: 100% !important;
-		display: table-cell;
-		
-		padding: 0 5px 5px 0 !important;
-		max-height: calc((100vh - 140px)) !important;
+		max-height: calc(100vh - 150px) !important;
 	}
-*/
+
 	/* Reddit Images */
 	.splRedditImg {
 		position: relative !important;
@@ -247,7 +244,7 @@
 		width: auto !important;
 		max-width: 100% !important;
 		padding: 0 !important;
-		max-height: calc((100vh - 140px)) !important;
+		max-height: calc(100vh - 140px) !important;
 	}
 
 	.splInnoImage {

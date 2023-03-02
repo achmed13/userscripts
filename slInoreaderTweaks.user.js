@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2021.8.30-1801
+// @version       2023.3.2-1234
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -36,6 +36,12 @@ document.addEventListener('keyup', function (e) {
 		goNext();
 		colorTitles();
 		return;
+	}
+	if (key == 'S' && e.shiftKey) {
+		e.preventDefault();
+		e.stopPropagation();
+		simulateKey("f","press",{shiftKey:false});
+		return false;
 	}
 	if (key == 'A' && e.altKey) {
 		e.preventDefault();
@@ -202,6 +208,7 @@ let articleObserver = new MutationObserver(function (mutations) {
 				}
 			});
 
+
 			// ****************************************
 			// ***** Reddit thumbnails *****
 			// ****************************************
@@ -283,15 +290,15 @@ let articleObserver = new MutationObserver(function (mutations) {
 					link.innerHTML = link.innerHTML.replace(/\[link\]/, link.href.match(/.*:\/\/(www\.)?(.*?)\//)[2]);
 
 					content.querySelectorAll('img').forEach(function (i) {
-						if (i.src.match(/.*thumbs\.reddit.*/)) {
-							// 						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/(.*thumbs\.reddit.*)|(.*imgur.*)/)) {
+						// if (i.src.match(/.*thumbs\.reddit.*/)) {
+						if ('originalSrc' in i.dataset && i.dataset.originalSrc.match(/(.*\.redd\.?it.*)|(.*imgur.*)/)) {
 							if (img || img2) {
 								i.style.display = "none";
 							} else {
-								i.style.width = '350px';
+								//i.style.width = '350px';
 							}
 						}
-						if (i.src.match(/(i\.redd\.it)|(imgur)/)) {
+						if (i.src.match(/(\.redd\.?it)|(imgur)/)) {
 							i.classList.add('splRedditImg');
 						}
 					});
