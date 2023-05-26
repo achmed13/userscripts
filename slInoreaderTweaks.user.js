@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2023.3.2-1234
+// @version       2023.5.26-1622
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -261,11 +261,9 @@ let articleObserver = new MutationObserver(function (mutations) {
 					}
 					// Imgur Album
 					else if (!link.href.match(/jpg|png/) && link.href.match(/imgur/)) {
-						if (link.href.match(/\/a|gallery\//)) {
-							link.innerHTML += ' <span id="splAlbum" class="splAlbum">ALBUM<\/span>';
-						} else if (link.href.match(/\.gifv|\.mp4/)) {
+						if (link.href.match(/\.gifv|\.mp4/)) {
 							img = link.href.replace(/gifv/, 'mp4');
-							node.innerHTML = '<video autoplay="" loop="loop" muted="muted" style="-webkit-transform: scale(1);max-width:100%;max-height:calc((100vh - 100px)*.95);"><source src="' + img + '" type="video/mp4"></video>';
+							node.innerHTML = '<video autoplay="" loop="loop" controls="true" muted="muted" style="-webkit-transform: scale(1);max-width:100%;max-height:calc((100vh - 100px)*.95);"><source src="' + img + '" type="video/mp4"></video>';
 							//link.innerHTML += ' <span id="splAlbum" style="font-weight:bold;background-color:#0f0;color:#000;">GIFV<\/span>';
 						} else {
 							img2 = link.href + '.jpg';
@@ -295,6 +293,7 @@ let articleObserver = new MutationObserver(function (mutations) {
 							if (img || img2) {
 								i.style.display = "none";
 							} else {
+								i.src = i.dataset.originalSrc;
 								//i.style.width = '350px';
 							}
 						}
@@ -324,28 +323,28 @@ let articleObserver = new MutationObserver(function (mutations) {
 			// ****************************************
 			content.innerHTML = content.innerHTML.replace(/([^"'=\?&])(http[^"'<>\s\n]+)/gi, '$1<br/><a href="$2" target="_blank">$2</a><br/>');
 
-			// ****************************************
-			// ***** Embedded Tweets *****
-			// ****************************************
-			if (content.innerHTML.match(/twitter\-tweet/i)) {
-				let ch = content.innerHTML;
-				ch = ch.replace(/&lt;/g, '<');
-				ch = ch.replace(/&gt;/g, '>');
-				content.innerHTML = ch;
-			}
-			//content.innerHTML = content.innerHTML.replace(/([^"'].*?)(http.*?twitter.*?status.*)([^0-9]?)/gi,'$1<blockquote class="twitter-tweet"><a href="$2">$2</a></blockquote>$3');
-			let bq = content.querySelectorAll('blockquote');
-			if (bq) {
-				bq.forEach(function (b) {
-					if (b.innerHTML.match(/twitter.*?status.*?>/i)) {
-						b.classList.add('twitter-tweet');
-					}
-				});
+// 			// ****************************************
+// 			// ***** Embedded Tweets *****
+// 			// ****************************************
+// 			if (content.innerHTML.match(/twitter\-tweet/i)) {
+// 				let ch = content.innerHTML;
+// 				ch = ch.replace(/&lt;/g, '<');
+// 				ch = ch.replace(/&gt;/g, '>');
+// 				content.innerHTML = ch;
+// 			}
+// 			//content.innerHTML = content.innerHTML.replace(/([^"'].*?)(http.*?twitter.*?status.*)([^0-9]?)/gi,'$1<blockquote class="twitter-tweet"><a href="$2">$2</a></blockquote>$3');
+// 			let bq = content.querySelectorAll('blockquote');
+// 			if (bq) {
+// 				bq.forEach(function (b) {
+// 					if (b.innerHTML.match(/twitter.*?status.*?>/i)) {
+// 						b.classList.add('twitter-tweet');
+// 					}
+// 				});
 
-				let script = document.createElement('script');
-				script.appendChild(document.createTextNode('(function(){twttr.widgets.load(document.querySelector(\'.article_content\'));})();'));
-				content.appendChild(script);
-			}
+// 				let script = document.createElement('script');
+// 				script.appendChild(document.createTextNode('(function(){twttr.widgets.load(document.querySelector(\'.article_content\'));})();'));
+// 				content.appendChild(script);
+// 			}
 
 			content.classList.add('splDone');
 		}

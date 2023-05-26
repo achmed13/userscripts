@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name          slImgurGIFV
-// @version       2022.4.22-1110
-// @description   redirect .gifv to regular page
+// @version       2023.5.26-1252
+// @description   redirect .gifv to .mp4
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @downloadURL   http://seanloos.com/userscripts/slImgurGIFV.user.js
@@ -16,7 +16,7 @@
     'use strict';
 
 	let url = window.location.href;
-	url = url.replace(/.gifv$/i,'');
+	url = url.replace(/gifv$/i,'mp4');
 	console.log( url );
 	//window.location.href = url;
 	window.history.pushState('','',url);
