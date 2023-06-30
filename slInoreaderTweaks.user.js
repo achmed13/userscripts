@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slInoreaderTweaks
-// @version       2023.5.26-1622
+// @version       2023.6.14-1446
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
 // @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -16,9 +16,9 @@
 'use strict';
 document.title = 'Inoreader - ' + document.title;
 
-let js = document.createElement('script');
-js.src = '//platform.twitter.com/widgets.js';
-(document.body || document.head || document.documentElement).appendChild(js);
+// let js = document.createElement('script');
+// js.src = '//platform.twitter.com/widgets.js';
+// (document.body || document.head || document.documentElement).appendChild(js);
 
 // if ('loading' == document.readyState) {
 //   alert("This script is running at document-start time.");
@@ -113,16 +113,17 @@ function goNext() {
 	//window.setTimeout(checkAlbum, 150);
 }
 
-function checkAlbum() {
-	let spa = document.querySelector('.article_content #splAlbum');
-	if (spa) {
-		spa.removeAttribute('id');
-		openArticle(true);
-		if (document.querySelector('#sb_rp_next_article')) {
-			goNext();
-		}
-	}
-}
+// function checkAlbum() {
+// 	let spa = document.querySelector('.article_content #splAlbum');
+// 	if (spa) {
+// 		spa.removeAttribute('id');
+// 		openArticle(true);
+// 		if (document.querySelector('#sb_rp_next_article')) {
+// 			goNext();
+// 		}
+// 	}
+// }
+
 function goPrev() {
 	document.querySelector('#sb_rp_prev_article').click();
 }
@@ -321,7 +322,7 @@ let articleObserver = new MutationObserver(function (mutations) {
 			// ****************************************
 			// ***** add anchor to links *****
 			// ****************************************
-			content.innerHTML = content.innerHTML.replace(/([^"'=\?&])(http[^"'<>\s\n]+)/gi, '$1<br/><a href="$2" target="_blank">$2</a><br/>');
+			// content.innerHTML = content.innerHTML.replace(/([^"'=\?&])(http[^"'<>\s\n]+)/gi, '$1<br/><a href="$2" target="_blank">$2</a><br/>');
 
 // 			// ****************************************
 // 			// ***** Embedded Tweets *****

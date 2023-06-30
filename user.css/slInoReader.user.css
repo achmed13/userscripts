@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2023.3.2-1226
+@version        2023.6.30-1517
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -136,8 +136,9 @@
 	#no_more_div {
 		height: 50px !important;
 		line-height: 50px !important;
+    	margin-top: 150px;
 	}
-
+	
 	#column-resizer.ui-sidebar{
 		width:0 !important;
 	}
