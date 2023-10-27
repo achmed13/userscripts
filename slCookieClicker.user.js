@@ -1,247 +1,272 @@
 // ==UserScript==
-// @name			slCookieClicker
-// @version			2017.01.01
-// @namespace		seanloos.com
-// @homepageURL		https://github.com/achmed13/userscripts/
-// @author			Sean Loos
-// @icon			http://seanloos.com/icons/sean.png
-// @description
-// @include			http://orteil.dashnet.org/cookieclicker/*
-// @grant			none
-// @run-at			document-end
+// @name          slCookieClicker
+// @version       2023.10.27-1612
+// @description   Automation for Cookie Clicker
+// @namespace     seanloos.com
+// @homepageURL   https://seanloos.com/userscripts/
+// @downloadURL     https://seanloos.com/userscripts/slCookieClicker.user.js
+// @updateURL     https://seanloos.com/userscripts/slCookieClicker.user.js
+// @author        Sean Loos
+// @icon          https://seanloos.com/icons/sean.png
+// @match         https://orteil.dashnet.org/cookieclicker/*
+// @grant         none
+// @run-at        document-end
 // ==/UserScript==
 
-// var ac = document.createElement('script');
-// ac.src = "http://seanloos.com/cc/cc.js";
-// document.head.appendChild(ac);
-
-var n = document.createElement('div');
-n.innerHTML = '<input type="button" id="ac" value="AutoClick"> <input type="button" id="gcc" value="GoldenCookie"> <input type="button" id="ab" value="AutoBuy"> <input type="button" id="au" value="AutoUpgrade">';
-n.style.cssFloat = 'left';
-document.getElementById('links').parentNode.appendChild(n);
-
-
-var ac; 
-var gcc; 
-var abI = false;
-var acPs=0;
+var autoClick;
+var autoGoldenClick;
+var autoUpgrades = false;
+var autoCPS = 0;
 var interval = 50;
 var autoBuy = false;
 //var doNotBuy = [11,64,69,73,74,84,85,181,182,183,184,185,209,333,331,361];
-var doNotBuy = [69,74,84,85,181,182,183,184,185,209,333,331,361];
+var doNotBuy = [
+	69, 74, 84, 85, 181, 182, 183, 184, 185, 209, 333, 331, 361, 414, 452, 563,
+	806,
+];
+var price;
+var cnt = 0;
+
+var buttonClick = document.createElement('button');
+buttonClick.textContent = 'AutoClick';
+buttonClick.addEventListener('click', acToggle);
+
+var buttonGolden = document.createElement('button');
+buttonGolden.textContent = 'GoldenCookie';
+buttonGolden.addEventListener('click', gccToggle);
+
+var buttonBuy = document.createElement('button');
+buttonBuy.textContent='AutoBuy';
+buttonBuy.addEventListener('click', autoBuyToggle);
+
+var buttonUpgrades = document.createElement('button');
+buttonUpgrades.textContent = 'AutoUpgrade';
+buttonUpgrades.addEventListener('click', autoUpgradeToggle);
+
+var buttons = document.createElement('div');
+buttons.style.cssFloat = 'left';
+buttons.appendChild(buttonClick);
+buttons.appendChild(buttonGolden);
+buttons.appendChild(buttonBuy);
+buttons.appendChild(buttonUpgrades);
+document.getElementById('links').parentNode.appendChild(buttons);
 
 
-if(autoBuy){
-	setTimeout(OptimalItem,5000);
-	gccOn();
-	abOn();
-	acOn();
-}
-
-document.addEventListener('keydown', function(e) {
-	var key = String.fromCharCode(e.keyCode);
-    if(key == 'A') {
+document.addEventListener('keydown', function (e) {
+	var key = e.key;
+	if (key == 'a') {
 		acToggle();
 		gccToggle();
-        autoBuyToggle();
+		autoBuyToggle();
 		autoUpgradeToggle();
-    }
-    if(key == 'B') {
-        autoBuyToggle();
-    }
-    if(key == 'C') {
+	}
+	if (key == 'b') {
+		autoBuyToggle();
+	}
+	if (key == 'c') {
 		acToggle();
-    }
-    if(key == 'G') {
+	}
+	if (key == 'g') {
 		gccToggle();
-    }
-    if(key == 'U') {
+	}
+	if (key == 'u') {
 		autoUpgradeToggle();
-    }
+	}
 });
 
-var ab = setInterval(function(){
-	if(autoBuy){
+var restartInterval = setInterval(function () {
+	if (autoBuy) {
 		autoBuy = false;
-		setTimeout(function(){
+		setTimeout(function () {
 			autoBuy = true;
 			OptimalItem();
-		},3000);
+		}, 3000);
 	}
-},90000);
+}, 90000);
 
 // autoBuy On
-document.getElementById('ab').addEventListener('click', autoBuyToggle);
-function autoBuyToggle(){
-    if(autoBuy){
+function autoBuyToggle() {
+	if (autoBuy) {
 		autoBuy = false;
-		document.getElementById('ab').style.backgroundColor='red';
-	}else{
+		buttonBuy.style.backgroundColor = 'red';
+	} else {
 		autoBuy = true;
 		OptimalItem();
-		document.getElementById('ab').style.backgroundColor='green';
+		buttonBuy.style.backgroundColor = 'green';
 	}
 }
 
 // autoClick On
-document.getElementById('ac').addEventListener('click', acToggle);
-function acToggle(){ 
-	if(ac>0){
-		clearInterval(ac); 
-		ac=0;
-		acPs = 0;
-		document.getElementById('ac').style.backgroundColor='red';
-	}else{
+function acToggle() {
+	if (autoClick > 0) {
+		clearInterval(autoClick);
+		autoClick = 0;
+		autoCPS = 0;
+		buttonClick.style.backgroundColor = 'red';
+	} else {
 		var ms = 250;
 		var cl = 100000; //window.prompt('How Many CPS?', 100000);
-		cl = cl  / (1000/ms);
-		acPs = cl*(1000/ms);
-		ac = autoClicker(cl, ms);
-		document.getElementById('ac').style.backgroundColor='green';
+		cl = cl / (1000 / ms);
+		autoCPS = cl * (1000 / ms);
+		autoClick = autoClicker(cl, ms);
+		buttonClick.style.backgroundColor = 'green';
 	}
-}; 
+}
 
 // gcc On
-document.getElementById('gcc').addEventListener('click', gccToggle);
-function gccToggle(){ 
-	if(gcc>0){
-		clearInterval(gcc); 
-		gcc=0;
-		document.getElementById('gcc').style.backgroundColor='red';
-	}else{
-		gcc = setInterval(function() { if (Game.shimmers[0]) { Game.shimmers[0].wrath=0; Game.shimmers[0].l.click(); } }, 1500);
-		document.getElementById('gcc').style.backgroundColor='green';
-	}		
+function gccToggle() {
+	if (autoGoldenClick > 0) {
+		clearInterval(autoGoldenClick);
+		autoGoldenClick = 0;
+		buttonGolden.style.backgroundColor = 'red';
+	} else {
+		autoGoldenClick = setInterval(function () {
+			if (Game.shimmers[0]) {
+				Game.shimmers[0].wrath = 0;
+				Game.shimmers[0].l.click();
+			}
+		}, 1500);
+		buttonGolden.style.backgroundColor = 'green';
+	}
 }
 
 // autoUpgrade On
-document.getElementById('au').addEventListener('click', autoUpgradeToggle);
-function autoUpgradeToggle(){ 
-	if(abI){
-		abI = false; 
-		document.getElementById('au').style.backgroundColor='red';
-	}else{
-		abI = true;
-		selected=0;
-		document.getElementById('au').style.backgroundColor='green';
+function autoUpgradeToggle() {
+	if (autoUpgrades) {
+		autoUpgrades = false;
+		buttonUpgrades.style.backgroundColor = 'red';
+	} else {
+		autoUpgrades = true;
+		buttonUpgrades.style.backgroundColor = 'green';
 	}
 }
 
-
-function autoClicker(clicksAtOnce, repeatInterval) { 
-	var cheated = false; 
-	var intoTheAbyss = function() { 
-		if(!cheated) { 
-			cheated = true; 
-			for(var i = 0; i < clicksAtOnce; i++) { 
-				Game.ClickCookie(); 
+function autoClicker(clicksAtOnce, repeatInterval) {
+	var cheated = false;
+	var intoTheAbyss = function () {
+		if (!cheated) {
+			cheated = true;
+			for (var i = 0; i < clicksAtOnce; i++) {
+				Game.ClickCookie();
 				Game.lastClick = 0;
-			} 
-			cheated = false; 
-		} 
-	} 
-	return setInterval(intoTheAbyss, repeatInterval); 
-};
+			}
+			cheated = false;
+		}
+	};
+	return setInterval(intoTheAbyss, repeatInterval);
+}
 
-
-var name;
-var price;
-var cpsItem;
-var selected=0;
-var currentCps=Game.cookiesPs;
-var selectedItem;
-var cnt = 0;
- 
+var currentCps = Game.cookiesPs;
 function OptimalItem() {
 	var cpc = Number.MAX_VALUE;
-	var upgradeName='';
-	var sel;
-	var st = Game.UpgradesInStore.length-1;
-	st = st > 10 ? 10 : st;
+	var me;
+	var tmpCPS = 0;
+	var upgradeName = '';
+	var selectedItem;
+	var upgradeItems = Game.UpgradesInStore.length - 1;
+	upgradeItems = upgradeItems > 20 ? 20 : upgradeItems;
 	//if(abI && (selected==0 || cnt % 150 == 0)){
-	if(abI){
-		cnt=0;
-		for(i = st; i >= 0; i--) {
-			var cps1 = 0;
-			var me = Game.UpgradesInStore[i];
-			var x = me.id;
-			if (!doNotBuy.some(arrVal => x == arrVal)) {
-					sel = me;
-					selectedItem=sel;
-					upgradeName = me.name;
-					price = Math.round(me.basePrice);
-					selected=1;
-					if(selectedItem){
-						if(autoBuy && Game.cookies >= price && selected==1){selectedItem.buy();selected=0;}
-					}
-					sel = null;
+	if (autoUpgrades) {
+		cnt = 0;
+		for (var i = upgradeItems; i >= 0; i--) {
+			tmpCPS = 0;
+			me = Game.UpgradesInStore[i];
+			if (!doNotBuy.some((arrVal) => me.id == arrVal)) {
+				// console.log('upgrade',me);
+				upgradeName = me.name;
+				price = Math.round(me.getPrice());
+				// selectedItem = me;
+				if (autoBuy && Game.cookies >= price) {
+					me.buy();
+				}
 			}
 		}
 	}
- 
-	for(i = Game.ObjectsById.length-1; i >= 0; i--){
-		var cps1=0;
-		var me = Game.ObjectsById[i];
+
+	for (i = Game.ObjectsById.length - 1; i >= 0; i--) {
+		tmpCPS = 0;
+		me = Game.ObjectsById[i];
+		// console.log('building',me);
 		me.amount++;
 		Game.CalculateGains();
-		for(j = Game.ObjectsById.length-1; j >= 0; j--){ cps1 += Game.ObjectsById[j].cps(Game.ObjectsById[j])*Game.ObjectsById[j].amount;}
-		var cps2 = cps1 * Game.globalCpsMult;
+		for (var j = Game.ObjectsById.length - 1; j >= 0; j--) {
+			tmpCPS +=
+				Game.ObjectsById[j].cps(Game.ObjectsById[j]) *
+				Game.ObjectsById[j].amount;
+		}
+		// var newCPS = tmpCPS * Game.globalCpsMult;
+		var newCPS = Game.cookiesPs;
+		// console.log(Game.cookiesPs);
 		me.amount--;
 		Game.CalculateGains();
-		var myCps = cps2 - currentCps;
-		var cpsBuilding = me.price *(Game.cookiesPs + myCps) / myCps;
-		if (cpsBuilding < cpc && myCps >= 0.1)
-		{	
+		var myCps = newCPS - currentCps;
+		var cpsBuilding = (me.price * newCPS) / myCps;
+		if (cpsBuilding < cpc && myCps >= 0.1) {
 			cpc = cpsBuilding;
-			sel = me;
-			cpsItem = myCps;
+			selectedItem = me;
 			upgradeName = me.name;
 			price = Math.round(me.price);
 		}
 	}
 	currentCps = Game.cookiesPs;
-	selected=1;
-	selectedItem=sel;
-	if(selectedItem){
-		if(autoBuy && Game.cookies >= price && selected==1){selectedItem.buy();selected=0;}
+	if (selectedItem && autoBuy && Game.cookies >= price) {
+		selectedItem.buy();
 	}
-	if(cnt % (1000/interval/2) == 0){Display(upgradeName);}
+	if (cnt % (1000 / interval / 2) == 0) {
+		Display(upgradeName);
+	}
 	cnt++;
-	if(autoBuy){setTimeout(OptimalItem,interval);}
+	if (autoBuy) {
+		setTimeout(OptimalItem, interval);
+	}
 }
 
 function Display(upgradeName) {
-	var mCPS = Game.computedMouseCps*acPs;
-	var tCPS = Game.cookiesPs + mCPS;
-	var time = (price - Game.cookies) / tCPS;
-	var txt = "" + upgradeName + "<br>" + Beautify(price) + "<br>" + getHHMMSS(time) + "<br>" + Beautify(acPs) + " : " + Beautify(mCPS) + " /s";
-	if(Game.version >= 1.05){
+	var mouseCPS = Game.computedMouseCps * autoCPS;
+	var totalCPS = Game.cookiesPs + mouseCPS;
+	var time = (price - Game.cookies) / totalCPS;
+	var txt =
+		'' +
+		upgradeName +
+		'<br>' +
+		Beautify(price) +
+		'<br>' +
+		getHHMMSS(time) +
+		'<br>' +
+		Beautify(autoCPS) +
+		' : ' +
+		Beautify(mouseCPS) +
+		' /s';
+	if (Game.version >= 1.05) {
 		Game.tickerL.innerHTML = txt;
 	} else {
 		Game.Ticker = txt;
- 	}
+	}
 	Game.TickerAge = interval;
 }
- 
-function getHHMMSS(seconds){
-	seconds = parseInt(seconds,10);
+
+function getHHMMSS(seconds) {
+	seconds = parseInt(seconds, 10);
 	seconds = seconds > 0 ? seconds : 0;
-	var hours=0;
-	var minutes=0;
-	if(seconds>60){
-		hours   = Math.floor(seconds / 3600);
-		minutes = Math.floor((seconds - (hours * 3600)) / 60);
-		var seconds = seconds - (hours * 3600) - (minutes * 60);
-		if (seconds < 10 && seconds >= 0) {seconds = "0"+seconds;}
+	var hours = 0;
+	var minutes = 0;
+	if (seconds > 60) {
+		hours = Math.floor(seconds / 3600);
+		minutes = Math.floor((seconds - hours * 3600) / 60);
+		seconds = seconds - hours * 3600 - minutes * 60;
+		if (seconds < 10 && seconds >= 0) {
+			seconds = '0' + seconds;
+		}
 	}
 	var time = seconds;
-	if(minutes > 0){
-		time = minutes+':'+seconds;
+	if (minutes > 0) {
+		time = minutes + ':' + seconds;
 	}
-	if(hours > 0){
-		if (minutes < 10) {minutes = "0"+minutes;}
-		time = hours+':'+minutes+':'+seconds;
+	if (hours > 0) {
+		if (minutes < 10) {
+			minutes = '0' + minutes;
+		}
+		time = hours + ':' + minutes + ':' + seconds;
 	}
-    return time;
+	return time;
 }
-
