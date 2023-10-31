@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slCookieClicker
-// @version       2023.10.31-1517
+// @version       2023.10.31-1554
 // @description   Automation for Cookie Clicker
 // @namespace     seanloos.com
 // @homepageURL   https://seanloos.com/userscripts/
@@ -35,7 +35,7 @@ var splStyle = `
 }
 #splButtons button{
 	padding: .3em;
-	border: 1px solid #666;
+	border: 1px solid #999;
 }`;
 GM_addStyle(splStyle);
 
