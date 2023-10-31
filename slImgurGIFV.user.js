@@ -8,6 +8,7 @@
 // @updateURL     https://seanloos.com/userscripts/slImgurGIFV.user.js
 // @author        Sean Loos
 // @icon          https://seanloos.com/icon.png
+// @icon          https://seanloos.com/icon.png
 // @match         https://*.imgur.com/*.gifv
 // @grant         none
 // ==/UserScript==
