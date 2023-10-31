@@ -4,10 +4,10 @@
 // @description   redirect .gifv to .mp4
 // @namespace     seanloos.com
 // @homepageURL   http://seanloos.com/userscripts/
-// @downloadURL   http://seanloos.com/userscripts/slImgurGIFV.user.js
-// @updateURL     http://seanloos.com/userscripts/slImgurGIFV.user.js
+// @downloadURL   https://seanloos.com/userscripts/slImgurGIFV.user.js
+// @updateURL     https://seanloos.com/userscripts/slImgurGIFV.user.js
 // @author        Sean Loos
-// @icon          http://seanloos.com/icon.png
+// @icon          https://seanloos.com/icon.png
 // @match         https://*.imgur.com/*.gifv
 // @grant         none
 // ==/UserScript==

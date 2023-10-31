@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slCookieClicker
-// @version       2023.10.27-1612
+// @version       2023.10.31-1517
 // @description   Automation for Cookie Clicker
 // @namespace     seanloos.com
 // @homepageURL   https://seanloos.com/userscripts/
@@ -9,7 +9,7 @@
 // @author        Sean Loos
 // @icon          https://seanloos.com/icons/sean.png
 // @match         https://orteil.dashnet.org/cookieclicker/*
-// @grant         none
+// @grant         GM_addStyle
 // @run-at        document-end
 // ==/UserScript==
 
@@ -26,6 +26,18 @@ var doNotBuy = [
 ];
 var price;
 var cnt = 0;
+
+var splStyle = `
+#splButtons{
+	position: absolute;
+	top: 32px;
+	z-index: 999;
+}
+#splButtons button{
+	padding: .3em;
+	border: 1px solid #666;
+}`;
+GM_addStyle(splStyle);
 
 var buttonClick = document.createElement('button');
 buttonClick.textContent = 'AutoClick';
@@ -44,13 +56,12 @@ buttonUpgrades.textContent = 'AutoUpgrade';
 buttonUpgrades.addEventListener('click', autoUpgradeToggle);
 
 var buttons = document.createElement('div');
-buttons.style.cssFloat = 'left';
+buttons.id = 'splButtons';
 buttons.appendChild(buttonClick);
 buttons.appendChild(buttonGolden);
 buttons.appendChild(buttonBuy);
 buttons.appendChild(buttonUpgrades);
-document.getElementById('links').parentNode.appendChild(buttons);
-
+document.getElementById('topBar').parentNode.appendChild(buttons);
 
 document.addEventListener('keydown', function (e) {
 	var key = e.key;

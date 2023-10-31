@@ -1,15 +1,16 @@
 // ==UserScript==
-// @name          slInoreaderTweaks
-// @version       2023.6.14-1446
-// @namespace     seanloos.com
-// @homepageURL   http://seanloos.com/userscripts/
-// @updateURL     http://seanloos.com/userscripts/slInoreaderTweaks.user.js
-// @author        Sean Loos
-// @icon          http://seanloos.com/icons/sean.png
-// @include       *inoreader.com*
-// @run-at		  document-idle
-// @grant         GM_openInTab
-// @nocompat Chrome
+// @name			slInoreaderTweaks
+// @version			2023.6.14-1447
+// @namespace		seanloos.com
+// @homepageURL		http://seanloos.com/userscripts/
+// @updateURL		http://seanloos.com/userscripts/slInoreaderTweaks.user.js
+// @downloadURL		http://seanloos.com/userscripts/slInoreaderTweaks.user.js
+// @author			Sean Loos
+// @icon			http://seanloos.com/icons/sean.png
+// @match			*inoreader.com*
+// @run-at			document-idle
+// @grant			GM_openInTab
+// @nocompat		Chrome
 // @noframes
 // ==/UserScript==
 

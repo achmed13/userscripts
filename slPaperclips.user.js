@@ -1,9 +1,11 @@
 // ==UserScript==
 // @name			slPaperclips
-// @version			2022.4.11-1415
+// @version			2022.4.11-1416
 // @namespace		seanloos.com
-// @icon			http://seanloos.com/icon.png
+// @icon			https://seanloos.com/icon.png
 // @homepageURL		https://seanloos.com/userscripts/
+// @downloadURL     https://seanloos.com/userscripts/slPaperclips.user.js
+// @updateURL     	https://seanloos.com/userscripts/slPaperclips.user.js
 // @author			Sean Loos
 // @description
 // @match			https://www.decisionproblem.com/paperclips/index2.html
