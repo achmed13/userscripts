@@ -1,12 +1,14 @@
 // ==UserScript==
 // @name          slSG
-// @version       2020.2.18-1350
+// @version       2023.11.1-1346
 // @namespace     seanloos.com
 // @homepageURL   https://seanloos.com/userscripts/
+// @downloadURL   https://seanloos.com/userscripts/slSG.user.js
 // @updateURL     https://seanloos.com/userscripts/slSG.user.js
 // @author        Sean Loos
+// @description
 // @icon          https://seanloos.com/icon.png
-// @match		  *suicidegirls.com/*
+// @match		  *://*.suicidegirls.com/*
 // @run-at        document_idle
 // @grant         GM_log
 // @grant         GM_openInTab
