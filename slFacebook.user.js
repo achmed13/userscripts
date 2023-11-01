@@ -4,10 +4,10 @@
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
-// @icon			http://seanloos.com/icon.png
+// @icon			https://seanloos.com/icon.png
 // @description   
 // @include			https://www.facebook.com/*
-// @require			http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
+// @require			https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
 // @noframes
 // @grant			GM_addStyle
 // ==/UserScript==

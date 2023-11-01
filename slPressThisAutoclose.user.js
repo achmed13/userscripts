@@ -4,10 +4,10 @@
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
-// @icon			http://seanloos.com/icons/sean.png
+// @icon			https://seanloos.com/icons/sean.png
 // @description
-// @include			http://seanloos.com/blog/wp-admin/press-this.php?action=post
-// @include			http://seanloos.com/blog/archives/*
+// @include			https://seanloos.com/blog/wp-admin/press-this.php?action=post
+// @include			https://seanloos.com/blog/archives/*
 // @run-at			document-start
 // ==/UserScript==
 

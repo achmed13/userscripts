@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name          slYoutubeEmbed
 // @namespace     seanloos.com
-// @homepageURL   http://seanloos.com/userscripts/
-// @updateURL     http://seanloos.com/userscripts/slYoutubeEmbed.user.js
+// @homepageURL   https://seanloos.com/userscripts/
+// @downloadURL     https://seanloos.com/userscripts/slYoutubeEmbed.user.js
+// @updateURL     https://seanloos.com/userscripts/slYoutubeEmbed.user.js
 // @author        Sean Loos
-// @icon          http://seanloos.com/icon.png
+// @icon          https://seanloos.com/icon.png
 // @version       2020-12-01
 // @include       *
 // @exclude       *.youtube.*/*

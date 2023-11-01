@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name          slGlobalHotkeys
-// @icon          http://seanloos.com/icons/sean.png
+// @icon          https://seanloos.com/icons/sean.png
 // @namespace     seanloos.com
 // @version       2019.9.19-1021
-// @homepageURL   http://seanloos.com/userscripts/
-// @updateURL     http://seanloos.com/userscripts/slGlobalHotkeys.user.js
+// @homepageURL   https://seanloos.com/userscripts/
+// @updateURL     https://seanloos.com/userscripts/slGlobalHotkeys.user.js
 // @author        Sean Loos
 // @description   Sean's Global Hotkeys
 // @include       *

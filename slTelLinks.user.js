@@ -3,11 +3,10 @@
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
-// @icon			http://seanloos.com/icon.png
+// @icon			https://seanloos.com/icon.png
 // @version			2018.08.16
 // @description
 // @include			*
-// @exclude			https://secure.usaepay.com/console/print_receipt*
 // @run-at			document-end
 // ==/UserScript==
 

@@ -4,9 +4,9 @@
 // @namespace		seanloos.com
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
-// @icon			http://seanloos.com/icons/sean.png
+// @icon			https://seanloos.com/icons/sean.png
 // @description
-// @include			*.youtube.com/redirect?*
+// @match			*://*.youtube.com/redirect?*
 // @run-at			document-end
 // ==/UserScript==
 

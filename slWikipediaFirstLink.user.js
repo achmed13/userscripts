@@ -2,11 +2,11 @@
 // @name          slWikipediaFirstLink
 // @version       2021.9.20-1659
 // @namespace     seanloos.com
-// @homepageURL   http://seanloos.com/userscripts/
-// @updateURL     http://seanloos.com/userscripts/NAME
+// @homepageURL   https://seanloos.com/userscripts/
+// @updateURL     https://seanloos.com/userscripts/NAME
 // @author        Sean Loos
-// @icon          http://seanloos.com/icon.png
-// @match        https://en.wikipedia.org/*
+// @icon          https://seanloos.com/icon.png
+// @match         https://en.wikipedia.org/*
 // @grant         none
 // ==/UserScript==
 

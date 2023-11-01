@@ -2,7 +2,7 @@
 // @name			slImgurVerticalAlbum
 // @version			2018.02.06.1511
 // @namespace		seanloos.com
-// @icon			http://seanloos.com/icon.png
+// @icon			https://seanloos.com/icon.png
 // @homepageURL		https://github.com/achmed13/userscripts/
 // @author			Sean Loos
 // @description

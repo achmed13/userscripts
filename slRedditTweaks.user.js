@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slRedditTweaks
-// @version			2021.10.21-932
+// @version			2023.11.1-1353
 // @namespace		seanloos.com
 // @description
 // @homepageURL		https://seanloos.com/userscripts/
@@ -8,7 +8,7 @@
 // @updateURL     	https://seanloos.com/userscripts/slRedditTweaks.user.js
 // @author			Sean Loos
 // @icon			https://seanloos.com/icon.png
-// @match			https://*reddit.com/*
+// @match			*://*.reddit.com/*
 // @require			https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js
 // @grant			GM_addStyle
 // @grant			GM_openInTab
