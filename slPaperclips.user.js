@@ -1,11 +1,9 @@
 // ==UserScript==
 // @name			slPaperclips
-// @version			2022.4.11-1416
+// @version			2023.11.15
 // @namespace		seanloos.com
-// @icon			https://seanloos.com/icon.png
+// @icon			http://seanloos.com/icon.png
 // @homepageURL		https://seanloos.com/userscripts/
-// @downloadURL     https://seanloos.com/userscripts/slPaperclips.user.js
-// @updateURL     	https://seanloos.com/userscripts/slPaperclips.user.js
 // @author			Sean Loos
 // @description
 // @match			https://www.decisionproblem.com/paperclips/index2.html
@@ -16,7 +14,7 @@ document.title='UniversalPaperclips';
 
 setInterval(blurAll,2000);
 var bQuant = false;
-var bTourn=false;
+var bTourn = false;
 
 // --------------------------------------
 // Keyboard Listener
@@ -33,6 +31,9 @@ document.addEventListener('keydown',function(e){
 	var i = 0;
 	var val = 0;
 
+	var clicks = 1;
+	if(e.shiftKey){clicks*=10;}
+
 	// paperclips
 	if(key == 'Q'){
 		e.preventDefault();
@@ -42,12 +43,9 @@ document.addEventListener('keydown',function(e){
 	// wire
 	if(key == 'W'){
 		e.preventDefault();
-		doClicks('btnBuyWire',10);
+		doClicks('btnBuyWire',clicks);
 		return;
 	}
-
-	var clicks = 1;
-	if(e.shiftKey){clicks*=10;}
 
 	// lower
 	if(key == 'S'){
@@ -120,9 +118,6 @@ document.addEventListener('keydown',function(e){
 		return;
 	}
 
-	clicks = 10;
-	if(e.shiftKey){clicks*=10;}
-
 	// autoclipper
 	if(key == 'A'){
 		e.preventDefault();
@@ -140,6 +135,9 @@ document.addEventListener('keydown',function(e){
 		doClicks('btnMakeMegaClipper',clicks);
 		return;
 	}
+
+	clicks = 10;
+	if(e.shiftKey){clicks*=10;}
 
 	// processors
 	if(key == 'T'){

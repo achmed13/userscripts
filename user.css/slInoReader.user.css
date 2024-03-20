@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2023.6.30-1517
+@version        2024.3.14-1717
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -19,6 +19,7 @@
 	.sinner_under_footer,
 	.ad_title,
 	.block_article_ad,
+	.list_comment_bubble,
 	.mobile_leaderboard_ad,
 	.ad_size_mobile_leaderboard {
 		display: none !important;
