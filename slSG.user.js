@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slSG
-// @version       2023.11.1-1346
+// @version       2024.6.18-1649
 // @namespace     seanloos.com
 // @homepageURL   https://seanloos.com/userscripts/
 // @downloadURL   https://seanloos.com/userscripts/slSG.user.js
@@ -73,7 +73,7 @@ function doDownloadSet(photos) {
 	cmd += '\n';
 	cmd += 'start c:\\temp\\sean\\sg\\'+path;
 	cmd += '\n';
-	cmd += 'choice /N /T 10 /D Y >nul  2>&1';
+	// cmd += 'choice /N /T 10 /D Y >nul  2>&1';
 	GM_setClipboard(cmd);
 	GM_log(cmd);
 }
@@ -153,20 +153,20 @@ document.addEventListener('keydown', function (e) {
 	if (e.ctrlKey || e.altKey || e.target.tagName == 'INPUT' || e.target.tagName == 'TEXTAREA' || e.target.contentEditable == true) {
 		return;
 	}
-	var key = String.fromCharCode(e.keyCode);
-	if (key == 'D') {
+	var key = e.key;
+	if (key == 'd') {
 		e.preventDefault();
 		e.stopPropagation();
 		// getDTA();
 		// doDownload();
 		doDownloadSet(photos);
 	}
-	if (key == 'A') {
+	if (key == 'a') {
 		e.preventDefault();
 		e.stopPropagation();
 		getPhotos();
 	}
-	if (key == 'G') {
+	if (key == 'g') {
 		e.preventDefault();
 		e.stopPropagation();
 		savePosition();
