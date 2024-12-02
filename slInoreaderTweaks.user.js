@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slInoreaderTweaks
-// @version			2023.11.1-1353
+// @version			2024.11.4-1452
 // @namespace		seanloos.com
 // @homepageURL		https://seanloos.com/userscripts/
 // @updateURL		https://seanloos.com/userscripts/slInoreaderTweaks.user.js
@@ -110,7 +110,8 @@ function openArticle(backgroundTab) {
 }
 
 function goNext() {
-	document.querySelector('#sb_rp_next_article').click();
+	document.querySelector('a>i.icon-move-articles-list-next').parentNode.click();
+	//document.querySelector('#sb_rp_next_article').click();
 	//window.setTimeout(checkAlbum, 150);
 }
 

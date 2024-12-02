@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2024.3.14-1717
+@version        2024.11.4-1453
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
@@ -41,90 +41,6 @@
 /***************************************/
 /* List Pane */
 /***************************************/
-	#reader_pane {
-		width: 550px !important;
-		left:205px !important;
-		max-width: 29% !important;
-	}
-
-	.articles_feed_group_heading {
-		margin: 0 !important;
-		padding: 1px 0 3px !important;
-		color: #fff !important;
-		background-color: #000 !important;
-		font-weight: bold !important;
-	}
-	
-	.article_no_thumbnail {
-		margin: 0 !important;
-		padding: 0 0 0 0px !important;
-		border-bottom: 1px solid #666 !important;
-	}
-
-	.article_header {
-		top: 0 !important;
-		padding: 5px 0  !important;
-	}
-
-	.article_header_text,
-	.article_header_text .article_header_title {
-		font-size: 13px !important;
-		font-weight: 500 !important;
-		line-height: 1.3em !important;
-		color: #111!important;
-		display: inline-block !important;
-		opacity:1 !important;
-		overflow: hidden;
-		padding-bottom: 5px;
-		padding-left: 50px;
-	}
-
-	.article_header_pane_left {
-		margin-bottom: -18px !important;
-	}
-
-	.column_view_title {
-		margin-top: 2px !important;
-		left: 0px !important;
-		max-height: unset;
-	}
-	
-	.column_view_info {
-		margin-top: -35px !important;
-		max-width: 48px !important; 
-	}
-	
-	.feed_favicon {
-		margin: 0 0 !important;
-	}
-
-	.article_favicon,.article_unread_dot,.article_feed_favicon {
-		margin: 0 !important;
-	}
-
-	.article_share{
-		display:none;
-	}
-	
-	.column_view_info .article_feed_title {
-		display: none !important;
-	}
-
-	.column_view_info .header_date {
-		right: 0;
-		bottom: 0;
-		position: absolute !important;
-		font-size: 8px !important;
-		color: #666 !important;
-		line-height: 10px !important;
-	}
-
-	.arrow_div {
-		background-color: transparent !important;
-		right: 0;
-		top: 0;
-		position: absolute !important;
-	}
 
 	.article_current,
 	.article_current .article_header_title,
@@ -140,14 +56,6 @@
     	margin-top: 150px;
 	}
 	
-	#column-resizer.ui-sidebar{
-		width:0 !important;
-	}
-	#column-resizer:after{
-		left: -14px !important;
-		display: none !important;
-	}
-	
 /***************************************/
 /* Article */
 /***************************************/
@@ -161,18 +69,6 @@
 		margin: 0 !important;
 	}
 
-	.article_footer {
-		top: 40px !important;
-		margin: 0 !important;
-		padding: 0 0 0 10px !important;
-		border: 1px solid #bbb !important;
-	}
-
-	.article_title_link {
-		font-weight: unset !important;
-		display: inline-block !important;
-		overflow: hidden !important;
-	}
 
 	.article_title {
 		font-size: 16px !important;
@@ -196,17 +92,7 @@
 		z-index:554;
 	}
 
-	.article_author, .article_microblog_author_title {
-		font-size:11px !important;
-		line-height:11px !important;
-	}
 	
-	.article_author .feed_favicon {
-		margin: 2px 0 0 !important;
-		height:18px !important;
-		width:auto !important;
-	}
-
 	.article_sub_title_author_picture{
 		max-height:22px !important;
 		width:auto !important;
@@ -235,7 +121,7 @@
 
 	.article_content img,
 	.article_content video {
-		max-width: 100% !important;
+		/* max-width: 100% !important; */
 		max-height: calc(100vh - 150px) !important;
 	}
 
@@ -256,14 +142,6 @@
 		font-weight: bold!important;
 		background-color: #0f0!important;
 		color: #000;
-	}
-
-	.splFavIcon {
-		max-height: 24px!important;
-		max-width: 24px!important;
-		padding: 0px 5px !important;
-		margin-bottom: -6px!important;
-		display: inline !important;
 	}
 
 	/* YouTube Embed Link */

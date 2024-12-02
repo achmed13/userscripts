@@ -1,13 +1,13 @@
 // ==UserScript==
 // @name			slPressThisAutoclose
-// @version			2017.01.01
+// @version			2024.12.2-1309
 // @namespace		seanloos.com
-// @homepageURL		https://github.com/achmed13/userscripts/
+// @homepageURL		https://seanloos.com/userscripts/
 // @author			Sean Loos
 // @icon			https://seanloos.com/icons/sean.png
 // @description
-// @include			https://seanloos.com/blog/wp-admin/press-this.php?action=post
-// @include			https://seanloos.com/blog/archives/*
+// @include			https://achmed13.com/wp-admin/press-this.php?action=post
+// @include			https://achmed13.com/archives/*
 // @run-at			document-start
 // ==/UserScript==
 
