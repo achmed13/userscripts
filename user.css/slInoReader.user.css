@@ -1,17 +1,16 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2024.11.4-1453
+@version        2025.3.11-1741
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document domain("inoreader.com") {
 	* {
-		font-family: Inter UI,Libre Frankin !important;
+		font-family: "Inter UI", "Libre Frankin" !important;
 	}
 
-/*
-*/
+	.article_summarize_button_wrapper,
 	.article_comment_bar.article_footer,
 	.article_create_annotation_link,
 	.article_social_bar.article_footer,
@@ -25,22 +24,24 @@
 		display: none !important;
 	}
 
-/***************************************/
-/* Tree Pane */
-/***************************************/
+	/**************************************   */
+	/* Tree Pane */
+	/**************************************   */
 	#tree_pane{
 		width: 200px !important;
 	}
+
 	#sb_tree_part{
 		width:207px !important;
 	}
+
 	#sb_reading_part{
 		width: calc(100% - 207px) !important;
 	}
 
-/***************************************/
-/* List Pane */
-/***************************************/
+	/**************************************   */
+	/* List Pane */
+	/**************************************   */
 
 	.article_current,
 	.article_current .article_header_title,
@@ -53,12 +54,12 @@
 	#no_more_div {
 		height: 50px !important;
 		line-height: 50px !important;
-    	margin-top: 150px;
+		margin-top: 150px;
 	}
-	
-/***************************************/
-/* Article */
-/***************************************/
+
+	/**************************************   */
+	/* Article */
+	/**************************************   */
 	#three_way_contents {
 		padding: 0 !important;
 	}
@@ -68,7 +69,6 @@
 		width: 100% !important;
 		margin: 0 !important;
 	}
-
 
 	.article_title {
 		font-size: 16px !important;
@@ -92,7 +92,6 @@
 		z-index:554;
 	}
 
-	
 	.article_sub_title_author_picture{
 		max-height:22px !important;
 		width:auto !important;
@@ -101,7 +100,7 @@
 	.article_footer_placeholder_middle{
 		margin-bottom: 0px !important;
 	}
-	
+
 	.article_content {
 		font-size: 16px !important;
 		font-weight: 400 !important;
@@ -111,9 +110,11 @@
 		color: #000 !important;
 		position:relative;
 	}
+
 	.article_content p {
 		margin: 0 !important;
 	}
+
 	blockquote {
 		background-color: #eee !important;
 		padding: 5px 15px !important;
@@ -138,19 +139,20 @@
 	.splInnoImage {
 		display:none !important;
 	}
+
 	.splAlbum {
-		font-weight: bold!important;
-		background-color: #0f0!important;
+		font-weight: bold !important;
+		background-color: #0f0 !important;
 		color: #000;
 	}
 
 	/* YouTube Embed Link */
 	.splYouTube {
 		color: #fff !important;
-		font-size: 10px!important;
-		font-weight: bold!important;
+		font-size: 10px !important;
+		font-weight: bold !important;
 		padding: 3px;
-		background-color: #f00!important;
+		background-color: #f00 !important;
 	}
 
 	embed,
@@ -162,15 +164,15 @@
 	/* Gawker Dup Image */
 	.dupimg {
 		display: none !important;
-		border: 2px solid #f00!important;
-		height: 10px!important;
-		width: 10px!important;
+		border: 2px solid #f00 !important;
+		height: 10px !important;
+		width: 10px !important;
 		margin: 0 20px 0 0 !important;
 	}
 
 	.dupimg:hover {
-		height: auto!important;
-		width: auto!important;
+		height: auto !important;
+		width: auto !important;
 	}
 
 	/* Instagram Embeds */
@@ -182,5 +184,4 @@
 		border: 1px solid #ccc !important;
 	}
 	*/
-	
 }
