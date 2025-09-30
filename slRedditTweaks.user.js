@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name			slRedditTweaks
-// @version			2023.11.1-1353
+// @version			2025.3.31-1216
 // @namespace		seanloos.com
 // @description
 // @homepageURL		https://seanloos.com/userscripts/
@@ -33,7 +33,7 @@ init();
 
 function init(){
 	console.log('init');
-	var rc = true;
+	var rc = false;
 	// rc = goToURL();
 	if (!rc){
 		authorColor();
@@ -62,7 +62,7 @@ document.addEventListener('keydown',function(e){
 	}
 	if(key == 'A'){
 		e.preventDefault();
-		document.location.href = document.querySelector('p.tagline a.author').href + '/submitted';
+		document.location.href = document.querySelector('p.tagline a.author, .author-name').href + '/submitted/?sort=top';
 		return;
 	}
 	if(key == 'G'){
@@ -74,12 +74,9 @@ document.addEventListener('keydown',function(e){
 
 //-----functions-------
 function goToURL(){
-	// try {
 	var link = document.querySelector('p.title a');
-	// var linkParent = link.parentNode.innerHTML;
 	url = link.href;
 	GM_log(url);
-	// toolbar = new RegExp(/this.href=\'(.*?)\'/i).test(linkParent) ? linkParent.match(/this.href=\'(.*?)\'/i)[1] : link.href;
 	var page = document.querySelector('span.pagename');
 	var domain = document.querySelector('span.domain');
 	// var go = (history.length > 1 || page.innerHTML.match(new RegExp(document.location.href,'i')) || document.location.href.match(/submitted/) || domain.innerHTML.match(/(self\.|v\.redd\.it)/)) ? false : true;
@@ -95,14 +92,10 @@ function goToURL(){
 		link.style.backgroundColor='#ff0';
 	}
 	if(go && !vid){
-		// url = imgurAlbum(url);
 		setTimeout(function(u){location.href=u},1000,url);
 		return true;
 	}
 	return false;
-	// } catch(e) {
-		// console.log(e);
-	// }
 }
 
 function imgurAlbum(url) {
@@ -121,35 +114,21 @@ function imgurAlbum(url) {
 var lastGW = 0;
 var openurls=[];
 function openGWLinks(){
-	// var gwl = document.querySelectorAll('li.first a.comments');
 	var gwl = document.querySelectorAll('p.title a.title');
-	// if (lastGW >= gwl.length){
-	// 	//alert('Nothing new');
-	// 	document.location.href = document.evaluate("//a[contains(string(),'next')]",document,null,XPathResult.FIRST_ORDERED_NODE_TYPE,null).singleNodeValue;
-	// 	return;
-	// }
 	for (var i=lastGW; i<gwl.length; i++){
 		if (gwl[i].parentNode.parentNode.parentNode.parentNode.style.display!='none'){
 			openurls.push(gwl[i].href);
-			// GM_openInTab(gwl[i].href,false);
-			// lastGW = i+1;
-			// if (i>0 && i%5==0){
-			// 	i = 100;
-			// }
-			//GM_openInTab(gwl[i].href);
 		}
 	}
-		// console.log( 'urls',openurls );
 		openurls = uniq(openurls);
-		// console.log( 'urls',openurls );
 		openurls.forEach(url=>{
-			// console.log(url);
 			GM_openInTab(url,false);
 		});
 }
 
 function authorColor(){
-	var author = document.querySelector('p.tagline a.author').innerHTML;
+	var author = document.querySelector('p.tagline a.author, .author-name').innerHTML;
+	console.log('author',author);
 	var comments = document.querySelectorAll('a.author');
 	for (var i=0; i<comments.length; i++) {
 		try{

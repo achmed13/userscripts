@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slSG
-// @version       2024.6.18-1649
+// @version       2025.3.25-1334
 // @namespace     seanloos.com
 // @homepageURL   https://seanloos.com/userscripts/
 // @downloadURL   https://seanloos.com/userscripts/slSG.user.js
@@ -25,7 +25,7 @@ var lastSet = GM_getValue('lastSet', 'none');
 console.log('last: ' + lastSet);
 var lastIndex = GM_getValue('lastIndex', 'none');
 var indexURL = document.location.href;
-if(indexURL.match('spl')){
+if(indexURL.match('#spl')){
 	document.location.href = lastIndex ;
 }
 var path = '';
