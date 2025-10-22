@@ -1,0 +1,48 @@
+/* ==UserStyle==
+@name           slImgurAlbums
+@version        2018.11.28-1437
+@namespace      seanloos.com
+@description    A new userstyle
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+@-moz-document domain("imgur.com") {
+	body {
+		overflow: hidden;
+	}
+
+	#ic {
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 999;
+		margin: 0 auto;
+		padding: 0 !important;
+		background-color: #000000;
+	}
+
+	#img {
+		max-height: calc( 100vh - 50px);
+		margin: 0 auto;
+		display: block;
+	}
+
+	#pct {
+		height: 50px;
+	}
+
+	#txt {
+		font-size: 16px;
+		margin-top: -50px;
+		padding: 5px;
+		text-align: center;
+	}
+
+	#mov {
+		max-height: calc( 100vh - 50px);
+		margin: 0 auto;
+		display: block;
+	}
+}

@@ -1,0 +1,13 @@
+/* ==UserStyle==
+@name           slVidble
+@version        2018.9.12-1757
+@namespace      seanloos.com
+@author         Sean Loos
+@homepageURL    http://seanloos.com/userscripts/
+==/UserStyle== */
+@-moz-document domain("vidble.com") {
+    img {
+        max-height: 1050px !important;
+        width: auto !important;
+    }
+}
