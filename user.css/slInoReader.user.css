@@ -1,13 +1,13 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2025.12.8-1125
+@version        2025.12.8-1144
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document domain("inoreader.com") {
 	* {
-		font-family: Inter Variable, Inter ,Libre Frankin !important;
+		font-family: Inter Variable, Inter, Libre Frankin !important;
 	}
 
 /*
@@ -57,7 +57,7 @@
 	
 	.article_no_thumbnail {
 		margin: 0 !important;
-		padding: 0 0 10px 0 !important;
+		padding: 0 0 8px 0 !important;
 		border-bottom: 1px solid #666 !important;
 	}
 
@@ -69,7 +69,7 @@
 	.article_header_text .article_header_title {
 		font-size: 14px !important;
 		font-weight: 500 !important;
-		line-height: 2.5em !important;
+		line-height: 2.0em !important;
 		color: #111!important;
 		display: inline-block !important;
 		opacity:1 !important;
@@ -79,7 +79,6 @@
 
 	.d-inline {
 		display: inline-block !important;
-		line-height: 2.5em !important;
 	}
 	
 	.article_header_pane_left {
@@ -101,7 +100,7 @@
 	}
 	
 	.column_view_info {
-		margin-top: -39px !important;
+		margin-top: -30px !important;
 	}
 	
 	.feed_favicon {
@@ -123,7 +122,7 @@
 		right: 0;
 		bottom: 0;
 		position: absolute !important;
-		font-size: 8px !important;
+		font-size: 9px !important;
 		color: #666 !important;
 		line-height: 10px !important;
 	}
@@ -247,7 +246,6 @@
 	.article_content video {
 		max-width: 100% !important;
 		display: table-cell;
-		
 		padding: 0 5px 5px 0 !important;
 		max-height: calc((100vh - 140px)) !important;
 }
@@ -265,6 +263,7 @@
 	.splInnoImage {
 		display:none !important;
 	}
+	
 	.splAlbum {
 		font-weight: bold!important;
 		background-color: #0f0!important;
