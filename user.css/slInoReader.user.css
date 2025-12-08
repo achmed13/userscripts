@@ -1,16 +1,17 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2025.3.11-1741
+@version        2025.12.8-1044
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document domain("inoreader.com") {
 	* {
-		font-family: "Inter UI", "Libre Frankin" !important;
+		font-family: Inter UI,Libre Frankin !important;
 	}
 
-	.article_summarize_button_wrapper,
+/*
+*/
 	.article_comment_bar.article_footer,
 	.article_create_annotation_link,
 	.article_social_bar.article_footer,
@@ -18,31 +19,119 @@
 	.sinner_under_footer,
 	.ad_title,
 	.block_article_ad,
-	.list_comment_bubble,
 	.mobile_leaderboard_ad,
 	.ad_size_mobile_leaderboard {
 		display: none !important;
 	}
 
-	/**************************************   */
-	/* Tree Pane */
-	/**************************************   */
+/***************************************/
+/* Tree Pane */
+/***************************************/
 	#tree_pane{
 		width: 200px !important;
 	}
-
 	#sb_tree_part{
 		width:207px !important;
 	}
-
 	#sb_reading_part{
 		width: calc(100% - 207px) !important;
 	}
 
-	/**************************************   */
-	/* List Pane */
-	/**************************************   */
+/***************************************/
+/* List Pane */
+/***************************************/
+/*
+	#reader_pane {
+		width: 550px !important;
+		left:205px !important;
+		max-width: 29% !important;
+	}
+*/
+	.articles_feed_group_heading {
+		margin: 0 !important;
+		padding: 1px 0 0 0 !important;
+		color: #fff !important;
+		background-color: #000 !important;
+		font-weight: bold !important;
+	}
+	
+	.article_no_thumbnail {
+		margin: 0 !important;
+		padding: 0 0 10px 0 !important;
+		border-bottom: 1px solid #666 !important;
+	}
 
+	.article_header {
+		padding: 0  !important;
+	}
+
+	.article_header_text,
+	.article_header_text .article_header_title {
+		font-size: 13px !important;
+		font-weight: 500 !important;
+		line-height: 3.2em !important;
+		color: #111!important;
+		display: inline-block !important;
+		opacity:1 !important;
+		overflow: hidden;
+		padding-left: 30px;
+	}
+
+	.article_header_pane_left {
+		margin-bottom: -18px !important;
+	}
+
+	.article_header_pane_right {
+		margin-left: 58px !important;
+		margin-right: 23px !important;
+	}
+
+	.ar {
+		box-shadow: unset !important;
+	}
+	
+	.column_view_title {
+		left: 0px !important;
+		line-height: unset !important;
+	}
+	
+	.column_view_info {
+		margin-top: -39px !important;
+	}
+	
+	.feed_favicon {
+		margin: 0 0 !important;
+	}
+
+	.article_favicon,.article_unread_dot,.article_feed_favicon {
+		margin: 0px 5px !important;
+	}
+
+	.article_unread_dot .article_unread_dot_internal {
+		opacity:0;
+	}
+	.article_unreaded .article_unread_dot_internal {
+		/* opacity:1 !important; */
+		opacity:0;
+	}
+	.column_view_info .header_date {
+		right: 0;
+		bottom: 0;
+		position: absolute !important;
+		font-size: 8px !important;
+		color: #666 !important;
+		line-height: 10px !important;
+	}
+
+	.column_view_info .article_feed_title,
+	.article_btns {
+		display: none !important;
+	}
+	
+	.arrow_div {
+		background-color: transparent !important;
+	}
+	
 	.article_current,
 	.article_current .article_header_title,
 	.article_current .article_feed_title,
@@ -54,12 +143,19 @@
 	#no_more_div {
 		height: 50px !important;
 		line-height: 50px !important;
-		margin-top: 150px;
 	}
 
-	/**************************************   */
-	/* Article */
-	/**************************************   */
+	#column-resizer.ui-sidebar{
+		width:0 !important;
+	}
+	#column-resizer:after{
+		left: -14px !important;
+		display: none !important;
+	}
+	
+/***************************************/
+/* Article */
+/***************************************/
 	#three_way_contents {
 		padding: 0 !important;
 	}
@@ -68,6 +164,19 @@
 		padding: 0 !important;
 		width: 100% !important;
 		margin: 0 !important;
+	}
+
+	.article_footer {
+		top: 40px !important;
+		margin: 0 !important;
+		padding: 0 0 0 10px !important;
+		border: 1px solid #bbb !important;
+	}
+
+	.article_title_link {
+		font-weight: unset !important;
+		display: inline-block !important;
+		overflow: hidden !important;
 	}
 
 	.article_title {
@@ -92,6 +201,17 @@
 		z-index:554;
 	}
 
+	.article_author, .article_microblog_author_title {
+		font-size:11px !important;
+		line-height:11px !important;
+	}
+	
+	.article_author .feed_favicon {
+		margin: 2px 0 0 !important;
+		height:18px !important;
+		width:auto !important;
+	}
+
 	.article_sub_title_author_picture{
 		max-height:22px !important;
 		width:auto !important;
@@ -100,7 +220,7 @@
 	.article_footer_placeholder_middle{
 		margin-bottom: 0px !important;
 	}
-
+	
 	.article_content {
 		font-size: 16px !important;
 		font-weight: 400 !important;
@@ -110,11 +230,9 @@
 		color: #000 !important;
 		position:relative;
 	}
-
 	.article_content p {
 		margin: 0 !important;
 	}
-
 	blockquote {
 		background-color: #eee !important;
 		padding: 5px 15px !important;
@@ -122,9 +240,12 @@
 
 	.article_content img,
 	.article_content video {
-		/* max-width: 100% !important; */
-		max-height: calc(100vh - 150px) !important;
-	}
+		max-width: 100% !important;
+		display: table-cell;
+		
+		padding: 0 5px 5px 0 !important;
+		max-height: calc((100vh - 140px)) !important;
+}
 
 	/* Reddit Images */
 	.splRedditImg {
@@ -133,26 +254,33 @@
 		width: auto !important;
 		max-width: 100% !important;
 		padding: 0 !important;
-		max-height: calc(100vh - 140px) !important;
+		max-height: calc((100vh - 140px)) !important;
 	}
 
 	.splInnoImage {
 		display:none !important;
 	}
-
 	.splAlbum {
-		font-weight: bold !important;
-		background-color: #0f0 !important;
+		font-weight: bold!important;
+		background-color: #0f0!important;
 		color: #000;
+	}
+
+	.splFavIcon {
+		max-height: 24px!important;
+		max-width: 24px!important;
+		padding: 0px 5px !important;
+		margin-bottom: -6px!important;
+		display: inline !important;
 	}
 
 	/* YouTube Embed Link */
 	.splYouTube {
 		color: #fff !important;
-		font-size: 10px !important;
-		font-weight: bold !important;
+		font-size: 10px!important;
+		font-weight: bold!important;
 		padding: 3px;
-		background-color: #f00 !important;
+		background-color: #f00!important;
 	}
 
 	embed,
@@ -164,15 +292,15 @@
 	/* Gawker Dup Image */
 	.dupimg {
 		display: none !important;
-		border: 2px solid #f00 !important;
-		height: 10px !important;
-		width: 10px !important;
+		border: 2px solid #f00!important;
+		height: 10px!important;
+		width: 10px!important;
 		margin: 0 20px 0 0 !important;
 	}
 
 	.dupimg:hover {
-		height: auto !important;
-		width: auto !important;
+		height: auto!important;
+		width: auto!important;
 	}
 
 	/* Instagram Embeds */
@@ -184,4 +312,5 @@
 		border: 1px solid #ccc !important;
 	}
 	*/
+	
 }
