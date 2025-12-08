@@ -1,13 +1,13 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2025.12.8-1111
+@version        2025.12.8-1125
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document domain("inoreader.com") {
 	* {
-		font-family: Inter Variable, Libre Frankin !important;
+		font-family: Inter Variable, Inter ,Libre Frankin !important;
 	}
 
 /*
@@ -67,9 +67,9 @@
 
 	.article_header_text,
 	.article_header_text .article_header_title {
-		font-size: 13px !important;
+		font-size: 14px !important;
 		font-weight: 500 !important;
-		line-height: 3.2em !important;
+		line-height: 2.5em !important;
 		color: #111!important;
 		display: inline-block !important;
 		opacity:1 !important;
@@ -77,6 +77,11 @@
 		padding-left: 30px;
 	}
 
+	.d-inline {
+		display: inline-block !important;
+		line-height: 2.5em !important;
+	}
+	
 	.article_header_pane_left {
 		margin-bottom: -18px !important;
 	}
@@ -311,6 +316,5 @@
 		overflow: auto !important;
 		border: 1px solid #ccc !important;
 	}
-	*/
-	
+	*/	
 }
