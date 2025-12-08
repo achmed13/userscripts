@@ -1,13 +1,13 @@
 /* ==UserStyle==
 @name           slInoReader
-@version        2025.12.8-1103
+@version        2025.12.8-1111
 @namespace      seanloos.com
 @author         Sean Loos
 @homepageURL    http://seanloos.com/userscripts/
 ==/UserStyle== */
 @-moz-document domain("inoreader.com") {
 	* {
-		font-family: Inter Variable, Inter ,Libre Frankin !important;
+		font-family: Inter Variable, Libre Frankin !important;
 	}
 
 /*
