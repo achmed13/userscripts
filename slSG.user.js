@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          slSG
-// @version       2025.3.25-1334
+// @version       2026.5.5-1150
 // @namespace     seanloos.com
 // @homepageURL   https://seanloos.com/userscripts/
 // @downloadURL   https://seanloos.com/userscripts/slSG.user.js
@@ -146,6 +146,14 @@ function savePosition(){
 	if(/offset/.test(document.location.href)){
 		GM_setValue('lastIndex',document.location.href);
 	}
+	var links = document.querySelectorAll('article section a');
+	for (i = 0; i < links.length; i++) {
+		var link = links[i];
+		if (/com\/photos/.test(document.location.href)) {
+			GM_setValue('lastSet', link.href);
+			return;
+		}
+	}
 }
 
 document.addEventListener('keydown', function (e) {
@@ -165,6 +173,11 @@ document.addEventListener('keydown', function (e) {
 		e.preventDefault();
 		e.stopPropagation();
 		getPhotos();
+	}
+	if (key == 's') {
+		e.preventDefault();
+		e.stopPropagation();
+		savePosition();
 	}
 	if (key == 'g') {
 		e.preventDefault();
